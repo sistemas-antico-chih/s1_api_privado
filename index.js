@@ -13,7 +13,7 @@ const localize = require('ajv-i18n');
 
 const jsyaml = require('js-yaml');
 const fs = require('fs');
-const { post_spic, get_dependencias } = require('./controllers/Spic');
+const { post_declaraciones } = require('./controllers/Declaraciones');
 
 //require('dotenv').config({ path: './utils/.env' });
 
@@ -50,6 +50,7 @@ swaggerDoc.components.securitySchemes = {
 
 let spic = '/v1/spic';
 let dependencias = '/v1/spic/dependencias';
+let declaraciones = '/v2/declaraciones';
 swaggerDoc.paths[spic].post.security.push({ BearerAuth: [] });
 // console.log(swaggerDoc.paths[spic].post.security);
 
@@ -80,10 +81,8 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-
-app.post('/v1/spic', swaggerValidation.validate, post_spic);
-app.get('/v1/spic/dependencias', swaggerValidation.validate, get_dependencias);
+//app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.post('/v2/declaraciones', swaggerValidation.validate, post_declaraciones);
 
 app.use((err, req, res, next) => {
 	res.status(err.status || 500).json({
