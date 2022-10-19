@@ -29,9 +29,6 @@ function datosGenerales(datosGenerales) {
     if (datosGenerales.correoElectronico.institucional === null)
       datosGenerales.correoElectronico.institucional = datosGenerales.correoElectronico.personal;
   }
-  if (datosGenerales.situacionPersonalEstadoCivil.clave === "CON") {
-    datosGenerales.situacionPersonalEstadoCivil.valor = "CONCUBINA/CONCUBINARIO/UNIÓN LIBRE"
-  }
   return datosGenerales;
 }
 
