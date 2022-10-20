@@ -335,34 +335,36 @@ function vehiculos(vehiculo) {
               if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
                 delete n.transmisor;
               }
-            }
-            if (n.transmisor[0].nombreRazonSocial){
-              if (n.transmisor[0].nombreRazonSocial === null) {
-                n.transmisor[0].nombreRazonSocial = "";
+              else {
+                if (n.transmisor[0].nombreRazonSocial) {
+                  if (n.transmisor[0].nombreRazonSocial === null) {
+                    n.transmisor[0].nombreRazonSocial = "";
+                  }
+                  if (n.transmisor[0].rfc === null) {
+                    n.transmisor[0].rfc = "";
+                  }
+                }
+                if (n.lugarRegistro.pais) {
+                  if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
+                    n.lugarRegistro.pais = "MX";
+                  }
+                  if (n.lugarRegistro.entidadFederativa === null) {
+                    n.lugarRegistro.entidadFederativa = "";
+                  }
+                  if (n.lugarRegistro.pais != 'MX') {
+                    delete n.lugarRegistro.entidadFederativa;
+                  }
+                }
+                if (n.motivoBaja === null) {
+                  delete n.motivoBaja;
+                }
+                if (n.formaPago === 'CREDITO') {
+                  n.formaPago = 'CRÉDITO';
+                }
+                if (n.formaPago === 'NO_APLICA') {
+                  n.formaPago = 'NO APLICA';
+                }
               }
-              if (n.transmisor[0].rfc === null) {
-                n.transmisor[0].rfc = "";
-              }
-            }
-            if (n.lugarRegistro.pais){
-              if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
-                n.lugarRegistro.pais = "MX";
-              }
-              if (n.lugarRegistro.entidadFederativa === null) {
-                n.lugarRegistro.entidadFederativa = "";
-              }
-              if (n.lugarRegistro.pais != 'MX') {
-                delete n.lugarRegistro.entidadFederativa;
-              }
-            }
-            if (n.motivoBaja === null) {
-              delete n.motivoBaja;
-            }
-            if (n.formaPago === 'CREDITO') {
-              n.formaPago = 'CRÉDITO';
-            }
-            if (n.formaPago === 'NO_APLICA') {
-              n.formaPago = 'NO APLICA';
             }
           }
         }
