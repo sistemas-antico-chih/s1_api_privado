@@ -317,52 +317,52 @@ function vehiculos(vehiculo) {
         delete n.fechaAdquisicion;
         delete n.motivoBaja;
       }
-    }
-    else {
-      if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
-          delete n.tercero;
-        }
-        else {
-          if (n.tercero[0].nombreRazonSocial) {
-            if (n.tercero[0].nombreRazonSocial === null) {
-              n.tercero[0].nombreRazonSocial = "";
+      else {
+        if (n.titular[0].clave === "DEC") {
+          if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
+            delete n.tercero;
+          }
+          else {
+            if (n.tercero[0].nombreRazonSocial) {
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
             }
-          }
-          if (n.tercero[0].rfc === null) {
-            n.tercero[0].rfc = "";
-          }
-          if (n.transmisor[0].tipoPersona) {
-            if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
-              delete n.transmisor;
+            if (n.tercero[0].rfc === null) {
+              n.tercero[0].rfc = "";
             }
-          }
-          if (n.transmisor[0].nombreRazonSocial === null) {
-            n.transmisor[0].nombreRazonSocial = "";
-          }
-          if (n.transmisor[0].rfc === null) {
-            n.transmisor[0].rfc = "";
-          }
-          if (n.motivoBaja === null) {
-            delete n.motivoBaja;
-          }
-          if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
-            n.lugarRegistro.pais = "MX";
-          }
-          if (n.lugarRegistro.entidadFederativa === null) {
-            n.lugarRegistro.entidadFederativa = "";
-          }
-          if (n.lugarRegistro.pais != 'MX') {
-            delete n.lugarRegistro.entidadFederativa;
-          }
-          if (n.motivoBaja === null) {
-            delete n.motivoBaja;
-          }
-          if (n.formaPago === 'CREDITO') {
-            n.formaPago = 'CRÉDITO';
-          }
-          if (n.formaPago === 'NO_APLICA') {
-            n.formaPago = 'NO APLICA';
+            if (n.transmisor[0].tipoPersona) {
+              if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
+                delete n.transmisor;
+              }
+            }
+            if (n.transmisor[0].nombreRazonSocial === null) {
+              n.transmisor[0].nombreRazonSocial = "";
+            }
+            if (n.transmisor[0].rfc === null) {
+              n.transmisor[0].rfc = "";
+            }
+            if (n.motivoBaja === null) {
+              delete n.motivoBaja;
+            }
+            if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
+              n.lugarRegistro.pais = "MX";
+            }
+            if (n.lugarRegistro.entidadFederativa === null) {
+              n.lugarRegistro.entidadFederativa = "";
+            }
+            if (n.lugarRegistro.pais != 'MX') {
+              delete n.lugarRegistro.entidadFederativa;
+            }
+            if (n.motivoBaja === null) {
+              delete n.motivoBaja;
+            }
+            if (n.formaPago === 'CREDITO') {
+              n.formaPago = 'CRÉDITO';
+            }
+            if (n.formaPago === 'NO_APLICA') {
+              n.formaPago = 'NO APLICA';
+            }
           }
         }
       }
@@ -389,44 +389,44 @@ function bienesMuebles(bienMueble) {
         delete n.datoIdentificacion;
         delete n.motivoBaja;
       }
-    }
-    else {
-      if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
-          delete n.tercero;
-        }
-        else {
-          if (n.tercero[0].nombreRazonSocial) {
-            if (n.tercero[0].nombreRazonSocial === null) {
-              n.tercero[0].nombreRazonSocial = "";
-            }
+      else {
+        if (n.titular[0].clave === "DEC") {
+          if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
+            delete n.tercero;
           }
-          if (n.tercero[0].rfc === null) {
-            n.tercero[0].rfc = "";
-          }
-          if (n.transmisor[0]) {
-            if (n.transmisor[0].tipoPersona) {
-              if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
-                delete n.transmisor;
-              }
-              else {
-                if (n.transmisor[0].nombreRazonSocial === null) {
-                  n.transmisor[0].nombreRazonSocial = "";
-                }
-                if (n.transmisor[0].rfc === null) {
-                  n.transmisor[0].rfc = "";
-                }
+          else {
+            if (n.tercero[0].nombreRazonSocial) {
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
               }
             }
-          }
-          if (n.motivoBaja === null) {
-            delete n.motivoBaja;
-          }
-          if (n.formaPago === 'CREDITO') {
-            n.formaPago = 'CRÉDITO';
-          }
-          if (n.formaPago === 'NO_APLICA') {
-            n.formaPago = 'NO APLICA';
+            if (n.tercero[0].rfc === null) {
+              n.tercero[0].rfc = "";
+            }
+            if (n.transmisor[0]) {
+              if (n.transmisor[0].tipoPersona) {
+                if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
+                  delete n.transmisor;
+                }
+                else {
+                  if (n.transmisor[0].nombreRazonSocial === null) {
+                    n.transmisor[0].nombreRazonSocial = "";
+                  }
+                  if (n.transmisor[0].rfc === null) {
+                    n.transmisor[0].rfc = "";
+                  }
+                }
+              }
+            }
+            if (n.motivoBaja === null) {
+              delete n.motivoBaja;
+            }
+            if (n.formaPago === 'CREDITO') {
+              n.formaPago = 'CRÉDITO';
+            }
+            if (n.formaPago === 'NO_APLICA') {
+              n.formaPago = 'NO APLICA';
+            }
           }
         }
       }
@@ -520,35 +520,10 @@ function inversionesCuentasValores(inversion) {
         delete n.localizacionInversion;
         delete n.saldoSituacionActual;
       }
-    }
-    else {
-      if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona === "FISICA") {
-          delete n.tercero[0];
-        }
-        else {
-          if (n.tercero[0].nombreRazonSocial === null) {
-            n.tercero[0].nombreRazonSocial = "";
-          }
-          if (n.tercero[0].rfc === null) {
-            n.tercero[0].rfc = "";
-          }
-          if (n.motivoBaja === null) {
-            n.motivoBaja = "";
-          }
-          if (n.localizacionInversion) {
-            if (n.localizacionInversion.institucionRazonSocial === null) {
-              n.localizacionAdeudo.institucionRazonSocial = "";
-            }
-            if (n.localizacionInversion.rfc === null) {
-              n.localizacionInversion.rfc = "";
-            }
-            if (n.localizacionInversion.pais === null) {
-              n.localizacionInversion.pais = "MX";
-            }
-          }
-          if (n.tercero[0].tipoPersona === null) {
-            delete n.tercero;
+      else {
+        if (n.titular[0].clave === "DEC") {
+          if (n.tercero[0].tipoPersona === "FISICA") {
+            delete n.tercero[0];
           }
           else {
             if (n.tercero[0].nombreRazonSocial === null) {
@@ -557,19 +532,44 @@ function inversionesCuentasValores(inversion) {
             if (n.tercero[0].rfc === null) {
               n.tercero[0].rfc = "";
             }
-          }
-          if (n.motivoBaja === null) {
-            delete n.motivoBaja;
-          }
-          if (n.saldoSituacionActual) {
-            if (n.saldoSituacionActual.moneda === null) {
-              n.saldoSituacionActual = "MXN";
+            if (n.motivoBaja === null) {
+              n.motivoBaja = "";
+            }
+            if (n.localizacionInversion) {
+              if (n.localizacionInversion.institucionRazonSocial === null) {
+                n.localizacionAdeudo.institucionRazonSocial = "";
+              }
+              if (n.localizacionInversion.rfc === null) {
+                n.localizacionInversion.rfc = "";
+              }
+              if (n.localizacionInversion.pais === null) {
+                n.localizacionInversion.pais = "MX";
+              }
+            }
+            if (n.tercero[0].tipoPersona === null) {
+              delete n.tercero;
+            }
+            else {
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
+              if (n.tercero[0].rfc === null) {
+                n.tercero[0].rfc = "";
+              }
+            }
+            if (n.motivoBaja === null) {
+              delete n.motivoBaja;
+            }
+            if (n.saldoSituacionActual) {
+              if (n.saldoSituacionActual.moneda === null) {
+                n.saldoSituacionActual = "MXN";
+              }
             }
           }
-        }    
+        }
       }
-      return n;
     }
+    return n;
   })
   return inversion;
 }
@@ -632,27 +632,27 @@ function participacion(participacion) {
         delete n.ubicacion;
         delete n.sector;
       }
-    }
-    else {
-      if (n.tipoRelacion === "DECLARANTE") {
-        if (n.tipoOperacion === null) {
-          delete n.tipoOperacion;
-        }
-        if (n.recibeRemuneracion === false) {
-          delete n.montoMensual;
-        }
-        if (n.montoMensual) {
-          if (n.montoMensual.moneda === null) {
-            n.montoMensual.moneda = "MXN";
+      else {
+        if (n.tipoRelacion === "DECLARANTE") {
+          if (n.tipoOperacion === null) {
+            delete n.tipoOperacion;
           }
-        }
-        if (n.ubicacion) {
-          if (n.ubicacion.pais === null) {
-            n.ubicacion.pais = "MX";
+          if (n.recibeRemuneracion === false) {
+            delete n.montoMensual;
           }
-        }
-        if (n.porcentajeParticipacion === 0) {
-          n.porcentajeParticipacion = 1;
+          if (n.montoMensual) {
+            if (n.montoMensual.moneda === null) {
+              n.montoMensual.moneda = "MXN";
+            }
+          }
+          if (n.ubicacion) {
+            if (n.ubicacion.pais === null) {
+              n.ubicacion.pais = "MX";
+            }
+          }
+          if (n.porcentajeParticipacion === 0) {
+            n.porcentajeParticipacion = 1;
+          }
         }
       }
     }
@@ -675,24 +675,24 @@ function tomaDeciciones(tomaDecision) {
         delete n.montoMensual;
         delete n.ubicacion;
       }
-    }
-    else {
-      n.fechaInicioParticipacion = convertirFechaCorta(n.fechaInicioParticipacion);
-      if (n.tipoRelacion === "DECLARANTE") {
-        if (n.tipoOperacion === null) {
-          n.tipoOperacion = "AGREGAR";
-        }
-        if (n.recibeRemuneracion === false) {
-          delete n.montoMensual;
-        }
-        if (n.montoMensual) {
-          if (n.montoMensual.moneda === null) {
-            n.montoMensual.moneda = "MXN";
+      else {
+        n.fechaInicioParticipacion = convertirFechaCorta(n.fechaInicioParticipacion);
+        if (n.tipoRelacion === "DECLARANTE") {
+          if (n.tipoOperacion === null) {
+            n.tipoOperacion = "AGREGAR";
           }
-        }
-        if (n.ubicacion) {
-          if (n.ubicacion.pais === null) {
-            n.ubicacion.pais = "MX";
+          if (n.recibeRemuneracion === false) {
+            delete n.montoMensual;
+          }
+          if (n.montoMensual) {
+            if (n.montoMensual.moneda === null) {
+              n.montoMensual.moneda = "MXN";
+            }
+          }
+          if (n.ubicacion) {
+            if (n.ubicacion.pais === null) {
+              n.ubicacion.pais = "MX";
+            }
           }
         }
       }
@@ -716,12 +716,12 @@ function apoyos(apoyo) {
         delete n.montoApoyoMensual;
         delete n.especifiqueApoyo;
       }
-    }
-    else {
-      if (n.benefiarioPrograma.clave != "DC") {
-        if (n.montoApoyoMensual) {
-          if (n.montoApoyoMensual.moneda === null) {
-            n.montoApoyoMensual.moneda = 'MXN';
+      else {
+        if (n.benefiarioPrograma.clave != "DC") {
+          if (n.montoApoyoMensual) {
+            if (n.montoApoyoMensual.moneda === null) {
+              n.montoApoyoMensual.moneda = 'MXN';
+            }
           }
         }
       }
@@ -748,29 +748,29 @@ function representaciones(representacion) {
         delete n.ubicacion;
         delete n.sector;
       }
-    }
-    else {
-      if (n.tipoRelacion === "DECLARANTE") {
-        if (n.tipoOperacion === null) {
-          n.tipoOperacion = "AGREGAR";
-        }
-        if (n.recibeRemuneracion === false) {
-          if (n.montoMensual === null) {
-            delete n.montoMensual;
+      else {
+        if (n.tipoRelacion === "DECLARANTE") {
+          if (n.tipoOperacion === null) {
+            n.tipoOperacion = "AGREGAR";
           }
-        }
-        if (n.montoMensual) {
-          if (n.montoMensual.moneda === null) {
-            n.montoMensual.moneda = "MXN"
+          if (n.recibeRemuneracion === false) {
+            if (n.montoMensual === null) {
+              delete n.montoMensual;
+            }
           }
-        }
-        if (n.ubicacion) {
-          if (n.ubicacion.pais === null) {
-            n.ubicacion.pais = "MX";
+          if (n.montoMensual) {
+            if (n.montoMensual.moneda === null) {
+              n.montoMensual.moneda = "MXN"
+            }
           }
-        }
-        if (n.rfc === null) {
-          n.rfc = "";
+          if (n.ubicacion) {
+            if (n.ubicacion.pais === null) {
+              n.ubicacion.pais = "MX";
+            }
+          }
+          if (n.rfc === null) {
+            n.rfc = "";
+          }
         }
       }
     }
@@ -791,28 +791,28 @@ function clientesPrincipales(cliente) {
         delete n.montoAproximadoGanancia;
         delete n.ubicacion;
       }
-    }
-    else {
-      if (n.tipoRelacion === "DECLARANTE") {
-        if (n.empresa.rfc === null) {
-          n.empresa.rfc = "";
-        }
-        if (n.ubicacion) {
-          if (n.ubicacion.pais === null) {
-            n.ubicacion.pais = "MX";
+      else {
+        if (n.tipoRelacion === "DECLARANTE") {
+          if (n.empresa.rfc === null) {
+            n.empresa.rfc = "";
           }
-          if (n.ubicacion.entidadFederativa === null) {
-            n.ubicacion.entidadFederativa = "";
+          if (n.ubicacion) {
+            if (n.ubicacion.pais === null) {
+              n.ubicacion.pais = "MX";
+            }
+            if (n.ubicacion.entidadFederativa === null) {
+              n.ubicacion.entidadFederativa = "";
+            }
+            if (n.ubicacion.pais !== 'MX') {
+              delete n.ubicacion.entidadFederativa;
+            }
           }
-          if (n.ubicacion.pais !== 'MX') {
-            delete n.ubicacion.entidadFederativa;
+          if (n.clientePrincipal === null) {
+            n.clientePrincipal = "";
           }
-        }
-        if (n.clientePrincipal === null) {
-          n.clientePrincipal = "";
-        }
-        if (n.montoAproximadoGanancia.moneda === null) {
-          n.montoAproximadoGanancia.moneda = "MXN";
+          if (n.montoAproximadoGanancia.moneda === null) {
+            n.montoAproximadoGanancia.moneda = "MXN";
+          }
         }
       }
     }
@@ -832,25 +832,25 @@ function beneficiosPrivados(beneficio) {
         delete n.montoMensualAproximado;
         delete n.sector;
       }
-    }
-    else {
-      if (n.beneficiario[0].clave === "DC") {
-        if (n.otorgante) {
-          if (n.otorgante.tipoPersona === null) {
-            delete n.otorgante;
-          }
-          else {
-            if (n.otorgante.nombreRazonSocial === null) {
-              n.otorgante.nombreRazonSocial = "";
+      else {
+        if (n.beneficiario[0].clave === "DC") {
+          if (n.otorgante) {
+            if (n.otorgante.tipoPersona === null) {
+              delete n.otorgante;
             }
-            if (n.otorgante.rfc === null) {
-              n.otorgante.rfc = "";
+            else {
+              if (n.otorgante.nombreRazonSocial === null) {
+                n.otorgante.nombreRazonSocial = "";
+              }
+              if (n.otorgante.rfc === null) {
+                n.otorgante.rfc = "";
+              }
             }
           }
-        }
-        if (n.montoMensualAproximado) {
-          if (n.montoMensualAproximado.moneda === null) {
-            n.montoMensualAproximado.moneda = "MXN";
+          if (n.montoMensualAproximado) {
+            if (n.montoMensualAproximado.moneda === null) {
+              n.montoMensualAproximado.moneda = "MXN";
+            }
           }
         }
       }
@@ -875,26 +875,26 @@ function fideicomisos(fideicomiso) {
         delete n.fiduciario;
         delete n.fideicomisario;
       }
-    }
-    else {
-      if (n.tipoRelacion === "DECLARANTE") {
-        if (n.rfcFideicomiso === null) {
-          n.rfcFideicomiso = "";
-        }
-        if (n.fideicomitente.rfc === null) {
-          n.fideicomitente.rfc = "";
-        }
-        if (n.extranjero === null) {
-          n.extranjero = "MX";
-        }
-        if (n.fideicomitente === null) {
-          n.fideicomitente = "";
-        }
-        if (n.fiduciario === null) {
-          n.fiduciario = "";
-        }
-        if (n.fideicomisario === null) {
-          n.fideicomisario = "";
+      else {
+        if (n.tipoRelacion === "DECLARANTE") {
+          if (n.rfcFideicomiso === null) {
+            n.rfcFideicomiso = "";
+          }
+          if (n.fideicomitente.rfc === null) {
+            n.fideicomitente.rfc = "";
+          }
+          if (n.extranjero === null) {
+            n.extranjero = "MX";
+          }
+          if (n.fideicomitente === null) {
+            n.fideicomitente = "";
+          }
+          if (n.fiduciario === null) {
+            n.fiduciario = "";
+          }
+          if (n.fideicomisario === null) {
+            n.fideicomisario = "";
+          }
         }
       }
     }
