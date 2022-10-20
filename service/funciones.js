@@ -241,28 +241,36 @@ function bienesInmuebles(bienInmueble) {
             delete n.domicilioMexico;
           }
           if (n.tercero){
-            if (n.tercero[0].tipoPersona === "FISICA") {
-              delete n.tercero;
+            if (n.tercero[0].tipoPersona){
+              if (n.tercero[0].tipoPersona === "FISICA") {
+                delete n.tercero;
+              }
+              if (n.tercero[0].tipoPersona === null) {
+                delete n.tercero;
+              }
             }
-            if (n.tercero[0].tipoPersona === null) {
-              delete n.tercero;
-            }
-            if (n.tercero[0].nombreRazonSocial === null) {
-              n.tercero[0].nombreRazonSocial = "";
+            if (n.tercero[0].nombreRazonSocial){
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
             }
             if (n.tercero[0].rfc === null) {
               n.tercero[0].rfc = "";
             }
           }
           if (n.transmisor){
-            if (n.transmisor[0].tipoPersona === "FISICA") {
-              delete n.transmisor;
+            if (n.transmisor[0].tipoPersona){
+              if (n.transmisor[0].tipoPersona === "FISICA") {
+                delete n.transmisor;
+              }
+              if (n.transmisor[0].tipoPersona === null) {
+                delete n.transmisor;
+              }
             }
-            if (n.transmisor[0].tipoPersona === null) {
-              delete n.transmisor;
-            }
-            if (n.transmisor[0].nombreRazonSocial === null) {
-              n.transmisor[0].nombreRazonSocial = "";
+            if (n.transmisor[0].nombreRazonSocial){
+              if (n.transmisor[0].nombreRazonSocial === null) {
+                n.transmisor[0].nombreRazonSocial = "";
+              }
             }
             if (n.transmisor[0].rfc === null) {
               n.transmisor[0].rfc = "";
