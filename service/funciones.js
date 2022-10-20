@@ -258,12 +258,9 @@ function bienesInmuebles(bienInmueble) {
           }
           else {
             if (n.tercero[0]) {
-              console.log("1")
               if (n.tercero[0].tipoPersona) {
-                console.log("2")
                 if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
-                  console.log("3")
-                  delete n.tercero[0];
+                  delete n.tercero;
                 }
                 else {
                   if (n.tercero[0].nombreRazonSocial) {
@@ -281,7 +278,7 @@ function bienesInmuebles(bienInmueble) {
             if (n.transmisor[0]) {
               if (n.transmisor[0].tipoPersona) {
                 if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
-                  delete n.transmisor[0];
+                  delete n.transmisor;
                 }
                 else {
                   if (n.transmisor[0].nombreRazonSocial) {
