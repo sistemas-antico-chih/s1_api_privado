@@ -161,13 +161,13 @@ function ingresos(ingresos, tipoDeclaracion) {
     delete ingresos['ingresoMensualNetoDeclarante'];
     delete ingresos['totalIngresosMensualesNetos'];
   }
-  if( ingresos.enajenacion === undefined){
+  if (ingresos.enajenacion === undefined) {
     let bienesMuebles;
-    bienesMuebles={
-      remuneracionTotal: {valor:0, moneda:'MXN'},
-      bienes:[]
+    bienesMuebles = {
+      remuneracionTotal: { valor: 0, moneda: 'MXN' },
+      bienes: []
     }
-    ingresos['enajenacionBienes']=bienesMuebles;
+    ingresos['enajenacionBienes'] = bienesMuebles;
   }
   return ingresos;
 }
@@ -256,55 +256,57 @@ function bienesInmuebles(bienInmueble) {
           if (n.domicilioMexico === null) {
             delete n.domicilioMexico;
           }
-          if (n.tercero) {
-            if (n.tercero[0].tipoPersona) {
-              if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
-                delete n.tercero[0];
-              }
-              else {
-                if (n.tercero[0].nombreRazonSocial) {
-                  if (n.tercero[0].nombreRazonSocial === null) {
-                    n.tercero[0].nombreRazonSocial = "";
-                  }
+          else {
+            if (n.tercero[0]) {
+              if (n.tercero[0].tipoPersona) {
+                if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
+                  delete n.tercero[0];
                 }
+                else {
+                  if (n.tercero[0].nombreRazonSocial) {
+                    if (n.tercero[0].nombreRazonSocial === null) {
+                      n.tercero[0].nombreRazonSocial = "";
+                    }
+                  }
 
-                if (n.tercero[0].rfc === null) {
-                  n.tercero[0].rfc = "";
-                }
-              }
-            }
-          }
-          if (n.transmisor) {
-            if (n.transmisor[0].tipoPersona) {
-              if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
-                delete n.transmisor;
-              }
-              else {
-                if (n.transmisor[0].nombreRazonSocial) {
-                  if (n.transmisor[0].nombreRazonSocial === null) {
-                    n.transmisor[0].nombreRazonSocial = "";
+                  if (n.tercero[0].rfc === null) {
+                    n.tercero[0].rfc = "";
                   }
                 }
-                if (n.transmisor[0].rfc === null) {
-                  n.transmisor[0].rfc = "";
+              }
+            }
+            if (n.transmisor[0]) {
+              if (n.transmisor[0].tipoPersona) {
+                if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
+                  delete n.transmisor[0];
+                }
+                else {
+                  if (n.transmisor[0].nombreRazonSocial) {
+                    if (n.transmisor[0].nombreRazonSocial === null) {
+                      n.transmisor[0].nombreRazonSocial = "";
+                    }
+                  }
+                  if (n.transmisor[0].rfc === null) {
+                    n.transmisor[0].rfc = "";
+                  }
                 }
               }
             }
+            if (n.motivoBaja === null) {
+              delete n.motivoBaja;
+            }
+            if (n.formaPago === 'CREDITO') {
+              n.formaPago = 'CRÉDITO';
+            }
+            if (n.formaPago === 'NO_APLICA') {
+              n.formaPago = 'NO APLICA';
+            }
+            if (n.valorConformeA === 'ESCRITURA_PUBLICA') {
+              n.valorConformeA = 'ESCRITURA PÚBLICA';
+            }
+            n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
+            n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
           }
-          if (n.motivoBaja === null) {
-            delete n.motivoBaja;
-          }
-          if (n.formaPago === 'CREDITO') {
-            n.formaPago = 'CRÉDITO';
-          }
-          if (n.formaPago === 'NO_APLICA') {
-            n.formaPago = 'NO APLICA';
-          }
-          if (n.valorConformeA === 'ESCRITURA_PUBLICA') {
-            n.valorConformeA = 'ESCRITURA PÚBLICA';
-          }
-          n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
-          n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
         }
       }
     }
@@ -335,7 +337,7 @@ function vehiculos(vehiculo) {
       }
       else {
         if (n.titular[0].clave === "DEC") {
-          if (n.tercero[0].tipoPersona){
+          if (n.tercero[0].tipoPersona) {
             if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
               delete n.tercero[0];
             }
@@ -351,7 +353,7 @@ function vehiculos(vehiculo) {
             }
             if (n.transmisor[0].tipoPersona) {
               if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
-                delete n.transmisor;
+                delete n.transmisor[0];
               }
               else {
                 if (n.transmisor[0].nombreRazonSocial) {
@@ -412,7 +414,7 @@ function bienesMuebles(bienMueble) {
       }
       else {
         if (n.titular[0].clave === "DEC") {
-          if (n.tercero[0].tipoPersona){
+          if (n.tercero[0].tipoPersona) {
             if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
               delete n.tercero[0];
             }
@@ -429,7 +431,7 @@ function bienesMuebles(bienMueble) {
             if (n.transmisor[0]) {
               if (n.transmisor[0].tipoPersona) {
                 if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
-                  delete n.transmisor;
+                  delete n.transmisor[0];
                 }
                 else {
                   if (n.transmisor[0].nombreRazonSocial === null) {
@@ -477,7 +479,7 @@ function adeudosPasivos(adeudo) {
     }
     else {
       if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona){
+        if (n.tercero[0].tipoPersona) {
           if (n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero[0];
           }
@@ -547,7 +549,7 @@ function inversionesCuentasValores(inversion) {
       }
       else {
         if (n.titular[0].clave === "DEC") {
-          if (n.tercero[0].tipoPersona){
+          if (n.tercero[0].tipoPersona) {
             if (n.tercero[0].tipoPersona === "FISICA") {
               delete n.tercero[0];
             }
