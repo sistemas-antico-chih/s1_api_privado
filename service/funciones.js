@@ -259,9 +259,9 @@ function bienesInmuebles(bienInmueble) {
           else {
             if (n.tercero[0]) {
               if (n.tercero[0].tipoPersona) {
-                if (n.tercero[0].tipoPersona === "FISICA") {
+               /*if (n.tercero[0].tipoPersona === "FISICA") {
                   delete n.tercero;
-                }
+                }*/
                 if (n.tercero[0].tipoPersona === null){
                   delete n.tercero;
                 }
