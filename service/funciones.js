@@ -139,17 +139,25 @@ function experienciaLaboral(experienciaLaboral) {
 function ingresos(ingresos, tipoDeclaracion) {
   if (tipoDeclaracion === "MODIFICACION") {
     ingresos['remuneracionAnualCargoPublico'] = ingresos['remuneracionMensualCargoPublico'];
+    ingresos['otrosIngresosAnualesTotal'] = ingresos['otrosIngresosMensualesTotal'];
+    ingresos['ingresoAnualNetoParejaDependiente'] = ingresos['ingresoMensualNetoParejaDependiente'];
     ingresos['ingresoAnualNetoDeclarante'] = ingresos['ingresoMensualNetoDeclarante'];
     ingresos['totalIngresosAnualesNetos'] = ingresos['totalIngresosMensualesNetos'];
     delete ingresos['remuneracionMensualCargoPublico'];
+    delete ingresos['otrosIngresosMensualesTotal'];
+    delete ingresos['ingresoMensualNetoParejaDependiente'];
     delete ingresos['ingresoMensualNetoDeclarante'];
     delete ingresos['totalIngresosMensualesNetos'];
   }
   if (tipoDeclaracion === "CONCLUSION") {
     ingresos['remuneracionConclusionCargoPublico'] = ingresos['remuneracionMensualCargoPublico'];
+    ingresos['otrosIngresosConclusionTotal'] = ingresos['otrosIngresosMensualesTotal'];
+    ingresos['ingresoConclusionNetoParejaDependiente'] = ingresos['ingresoMensualNetoParejaDependiente'];
     ingresos['ingresoConclusionNetoDeclarante'] = ingresos['ingresoMensualNetoDeclarante'];
     ingresos['totalIngresosConclusionNetos'] = ingresos['totalIngresosMensualesNetos'];
     delete ingresos['remuneracionMensualCargoPublico'];
+    delete ingresos['otrosIngresosMensualesTotal'];
+    delete ingresos['ingresoMensualNetoParejaDependiente'];
     delete ingresos['ingresoMensualNetoDeclarante'];
     delete ingresos['totalIngresosMensualesNetos'];
   }
