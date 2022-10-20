@@ -589,9 +589,6 @@ async function post_declaraciones(body) {
           //datosEmpleoCargocomision
           datosEmpleoCargoComision(rowExtend.datosEmpleoCargoComision);
           
-          //domicilioDeclarante
-          //domicilioDeclarante(rowExtend.domicilioDeclarante);
-          
           //experienciaLaboral
           var experiencia=experienciaLaboral(rowExtend.experienciaLaboral);
           var ningunoExperienciaLaboral = false
@@ -619,23 +616,6 @@ async function post_declaraciones(body) {
             }
           }
 
-          //dependientesEconomicos
-          /*var dependienteEconomico;
-          var ningunoDependiente = false;
-          if(rowExtend.datosDependientesEconomicos === undefined){
-            ningunoDependiente = true;
-            dependienteEconomico = [];
-          }
-          if(rowExtend.datosDependientesEconomicos){
-            if(rowExtend.datosDependientesEconomicos.dependienteEconomico.length >= 1){
-              ningunoDependiente = false;
-              dependienteEconomico = datosDependientesEconomicos(rowExtend.datosDependientesEconomicos.dependienteEconomico);
-            } else {
-              ningunoDependiente = true;
-              dependienteEconomico = [];
-            }
-          }*/
-          
           //bienesInmuebles
           var bienInmueble;
           var ningunoInmueble = false;

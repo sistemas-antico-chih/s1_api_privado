@@ -161,6 +161,14 @@ function ingresos(ingresos, tipoDeclaracion) {
     delete ingresos['ingresoMensualNetoDeclarante'];
     delete ingresos['totalIngresosMensualesNetos'];
   }
+  if( ingresos.enajenacion === undefined){
+    let bienesMuebles;
+    bienesMuebles={
+      remuneracionTotal: {valor:0, moneda:'MXN'},
+      bienes:[]
+    }
+    ingresos['enajenacionBienes']=bienesMuebles;
+  }
   return ingresos;
 }
 
