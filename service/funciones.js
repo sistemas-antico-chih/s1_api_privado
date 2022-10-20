@@ -258,8 +258,11 @@ function bienesInmuebles(bienInmueble) {
           }
           else {
             if (n.tercero[0]) {
+              console.log("1")
               if (n.tercero[0].tipoPersona) {
+                console.log("2")
                 if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
+                  console.log("3")
                   delete n.tercero[0];
                 }
                 else {
