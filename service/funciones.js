@@ -240,13 +240,13 @@ function bienesInmuebles(bienInmueble) {
           if (n.domicilioMexico === null) {
             delete n.domicilioMexico;
           }
-          if (n.tercero[0].tipoPersona === "FISICA") {
-            delete n.tercero;
-          }
-          if (n.tercero[0].tipoPersona === null) {
-            delete n.tercero;
-          }
-          else {
+          if (n.tercero){
+            if (n.tercero[0].tipoPersona === "FISICA") {
+              delete n.tercero;
+            }
+            if (n.tercero[0].tipoPersona === null) {
+              delete n.tercero;
+            }
             if (n.tercero[0].nombreRazonSocial === null) {
               n.tercero[0].nombreRazonSocial = "";
             }
@@ -254,13 +254,13 @@ function bienesInmuebles(bienInmueble) {
               n.tercero[0].rfc = "";
             }
           }
-          if (n.transmisor[0].tipoPersona === "FISICA") {
-            delete n.transmisor;
-          }
-          if (n.transmisor[0].tipoPersona === null) {
-            delete n.transmisor;
-          }
-          else {
+          if (n.transmisor){
+            if (n.transmisor[0].tipoPersona === "FISICA") {
+              delete n.transmisor;
+            }
+            if (n.transmisor[0].tipoPersona === null) {
+              delete n.transmisor;
+            }
             if (n.transmisor[0].nombreRazonSocial === null) {
               n.transmisor[0].nombreRazonSocial = "";
             }
