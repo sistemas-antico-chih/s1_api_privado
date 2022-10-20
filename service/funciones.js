@@ -335,8 +335,10 @@ function vehiculos(vehiculo) {
       }
       else {
         if (n.titular[0].clave === "DEC") {
-          if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
-            delete n.tercero;
+          if (n.tercero[0].tipoPersona){
+            if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
+              delete n.tercero;
+            }
           }
           else {
             if (n.tercero[0].nombreRazonSocial) {
@@ -410,8 +412,10 @@ function bienesMuebles(bienMueble) {
       }
       else {
         if (n.titular[0].clave === "DEC") {
-          if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
-            delete n.tercero;
+          if (n.tercero[0].tipoPersona){
+            if (n.tercero[0].tipoPersona === "FISICA" || n.tercero[0].tipoPersona === null) {
+              delete n.tercero;
+            }
           }
           else {
             if (n.tercero[0].nombreRazonSocial) {
@@ -473,8 +477,10 @@ function adeudosPasivos(adeudo) {
     }
     else {
       if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona === "FISICA") {
-          delete n.tercero[0];
+        if (n.tercero[0].tipoPersona){
+          if (n.tercero[0].tipoPersona === "FISICA") {
+            delete n.tercero[0];
+          }
         }
         else {
           if (n.tercero[0].nombreRazonSocial) {
@@ -541,8 +547,10 @@ function inversionesCuentasValores(inversion) {
       }
       else {
         if (n.titular[0].clave === "DEC") {
-          if (n.tercero[0].tipoPersona === "FISICA") {
-            delete n.tercero[0];
+          if (n.tercero[0].tipoPersona){
+            if (n.tercero[0].tipoPersona === "FISICA") {
+              delete n.tercero[0];
+            }
           }
           else {
             if (n.tercero[0].nombreRazonSocial === null) {
