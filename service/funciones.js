@@ -204,83 +204,94 @@ function datosPareja(datosPareja) {
 function bienesInmuebles(bienInmueble) {
   bienInmueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
-    if (n.titular[0].clave !== "DEC") {
-      delete n.tipoInmueble;
-      delete n.titular;
-      delete n.porcentajePropiedad;
-      delete n.superficieTerreno;
-      delete n.superficieConstruccion;
-      delete n.tercero;
-      delete n.transmisor;
-      delete n.formaAdquisicion;
-      delete n.formaPago;
-      delete n.valorAdquisicion;
-      delete n.fechaAdquisicion;
-      delete n.datoIdentificacion;
-      delete n.valorConformeA;
-      if (n.domicilioMexico) {
-        delete n.domicilioMexico;
+    if (n.titular){
+      if (n.titular[0].clave !== "DEC") {
+        delete n.tipoInmueble;
+        delete n.titular;
+        delete n.porcentajePropiedad;
+        delete n.superficieTerreno;
+        delete n.superficieConstruccion;
+        delete n.tercero;
+        delete n.transmisor;
+        delete n.formaAdquisicion;
+        delete n.formaPago;
+        delete n.valorAdquisicion;
+        delete n.fechaAdquisicion;
+        delete n.datoIdentificacion;
+        delete n.valorConformeA;
+        if (n.domicilioMexico) {
+          delete n.domicilioMexico;
+        }
+        if (n.domicilioExtranjero) {
+          delete n.domicilioExtranjero;
+        }
       }
-      if (n.domicilioExtranjero) {
-        delete n.domicilioExtranjero;
+      else{
+        if (n.titular[0].clave === "DEC") {
+          if (n.superficieConstruccion.unidad === null) {
+            n.superficieConstruccion.unidad = 'm2';
+          }
+          if (n.superficieTerreno.unidad === null) {
+            n.superficieTerreno.unidad = 'm2';
+          }
+          if (n.domicilioExtranjero === null) {
+            delete n.domicilioExtranjero;
+          }
+          if (n.domicilioMexico === null) {
+            delete n.domicilioMexico;
+          }
+          if (n.tercero[0].tipoPersona === "FISICA") {
+            delete n.tercero;
+          }
+          if (n.tercero[0].tipoPersona === null) {
+            delete n.tercero;
+          }
+          else {
+            if (n.tercero[0].nombreRazonSocial === null) {
+              n.tercero[0].nombreRazonSocial = "";
+            }
+            if (n.tercero[0].rfc === null) {
+              n.tercero[0].rfc = "";
+            }
+          }
+          if (n.transmisor[0].tipoPersona === "FISICA") {
+            delete n.transmisor;
+          }
+          if (n.transmisor[0].tipoPersona === null) {
+            delete n.transmisor;
+          }
+          else {
+            if (n.transmisor[0].nombreRazonSocial === null) {
+              n.transmisor[0].nombreRazonSocial = "";
+            }
+            if (n.transmisor[0].rfc === null) {
+              n.transmisor[0].rfc = "";
+            }
+          }
+          if (n.motivoBaja === null) {
+            delete n.motivoBaja;
+          }
+          if (n.formaPago === 'CREDITO') {
+            n.formaPago = 'CRÉDITO';
+          }
+          if (n.formaPago === 'NO_APLICA') {
+            n.formaPago = 'NO APLICA';
+          }
+          if (n.valorConformeA === 'ESCRITURA_PUBLICA') {
+            n.valorConformeA = 'ESCRITURA PÚBLICA';
+          }
+          n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
+          n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
+        }
       }
     }
-    if (n.titular[0].clave === "DEC") {
-      if (n.superficieConstruccion.unidad === null) {
-        n.superficieConstruccion.unidad = 'm2';
-      }
-      if (n.superficieTerreno.unidad === null) {
-        n.superficieTerreno.unidad = 'm2';
-      }
-      if (n.domicilioExtranjero === null) {
-        delete n.domicilioExtranjero;
-      }
-      if (n.domicilioMexico === null) {
-        delete n.domicilioMexico;
-      }
-      if (n.tercero[0].tipoPersona === "FISICA") {
-        delete n.tercero;
-      }
-      if (n.tercero[0].tipoPersona === null) {
-        delete n.tercero;
-      }
-      else {
-        if (n.tercero[0].nombreRazonSocial === null) {
-          n.tercero[0].nombreRazonSocial = "";
-        }
-        if (n.tercero[0].rfc === null) {
-          n.tercero[0].rfc = "";
-        }
-      }
-      if (n.transmisor[0].tipoPersona === "FISICA") {
-        delete n.transmisor;
-      }
-      if (n.transmisor[0].tipoPersona === null) {
-        delete n.transmisor;
-      }
-      else {
-        if (n.transmisor[0].nombreRazonSocial === null) {
-          n.transmisor[0].nombreRazonSocial = "";
-        }
-        if (n.transmisor[0].rfc === null) {
-          n.transmisor[0].rfc = "";
-        }
-      }
-      if (n.motivoBaja === null) {
-        delete n.motivoBaja;
-      }
-      if (n.formaPago === 'CREDITO') {
-        n.formaPago = 'CRÉDITO';
-      }
-      if (n.formaPago === 'NO_APLICA') {
-        n.formaPago = 'NO APLICA';
-      }
-      if (n.valorConformeA === 'ESCRITURA_PUBLICA') {
-        n.valorConformeA = 'ESCRITURA PÚBLICA';
-      }
-      n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
-      n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
-    }
+
+    // n.titular.forEach((x)=>{
+    //   if (x.clave === "DEC"){
+        
+    //   }
+    // })
+    
     return n;
   })
   return bienInmueble;
