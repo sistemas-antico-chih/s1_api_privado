@@ -145,7 +145,7 @@ function ingresos(ingresos, tipoDeclaracion) {
     delete ingresos['ingresoMensualNetoDeclarante'];
     delete ingresos['totalIngresosMensualesNetos'];
   }
-  if (tipoDeclaracion === "MODIFICACION") {
+  if (tipoDeclaracion === "CONCLUSION") {
     ingresos['remuneracionConclusionCargoPublico'] = ingresos['remuneracionMensualCargoPublico'];
     ingresos['ingresoConclusionNetoDeclarante'] = ingresos['ingresoMensualNetoDeclarante'];
     ingresos['totalIngresosConclusionNetos'] = ingresos['totalIngresosMensualesNetos'];
