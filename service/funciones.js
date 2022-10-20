@@ -336,23 +336,24 @@ function vehiculos(vehiculo) {
                 delete n.transmisor;
               }
             }
-            if (n.transmisor[0].nombreRazonSocial === null) {
-              n.transmisor[0].nombreRazonSocial = "";
+            if (n.transmisor[0].nombreRazonSocial){
+              if (n.transmisor[0].nombreRazonSocial === null) {
+                n.transmisor[0].nombreRazonSocial = "";
+              }
+              if (n.transmisor[0].rfc === null) {
+                n.transmisor[0].rfc = "";
+              }
             }
-            if (n.transmisor[0].rfc === null) {
-              n.transmisor[0].rfc = "";
-            }
-            if (n.motivoBaja === null) {
-              delete n.motivoBaja;
-            }
-            if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
-              n.lugarRegistro.pais = "MX";
-            }
-            if (n.lugarRegistro.entidadFederativa === null) {
-              n.lugarRegistro.entidadFederativa = "";
-            }
-            if (n.lugarRegistro.pais != 'MX') {
-              delete n.lugarRegistro.entidadFederativa;
+            if (n.lugarRegistro.pais){
+              if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
+                n.lugarRegistro.pais = "MX";
+              }
+              if (n.lugarRegistro.entidadFederativa === null) {
+                n.lugarRegistro.entidadFederativa = "";
+              }
+              if (n.lugarRegistro.pais != 'MX') {
+                delete n.lugarRegistro.entidadFederativa;
+              }
             }
             if (n.motivoBaja === null) {
               delete n.motivoBaja;
