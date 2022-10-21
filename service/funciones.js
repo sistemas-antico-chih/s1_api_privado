@@ -223,15 +223,6 @@ function bienesInmuebles(bienInmueble) {
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
         delete n;
-        if (n.motivoBaja){
-          delete n.motivoBaja;
-        }
-        if (n.domicilioMexico) {
-          delete n.domicilioMexico;
-        }
-        if (n.domicilioExtranjero) {
-          delete n.domicilioExtranjero;
-        }
       }
       else {
         if (n.titular[0].clave === "DEC") {
