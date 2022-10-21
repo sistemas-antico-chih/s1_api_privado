@@ -576,14 +576,16 @@ function inversionesCuentasValores(inversion) {
               delete n.tercero[0];
             }
           }
-          if (n.tercero[0].nombreRazonSocial === null) {
-            n.tercero[0].nombreRazonSocial = "";
+          if (n.tercero[0].tipoPersona === null) {
+            delete n.tercero;
           }
-          if (n.tercero[0].rfc === null) {
-            n.tercero[0].rfc = "";
-          }
-          if (n.motivoBaja === null) {
-            n.motivoBaja = "";
+          if (n.tercero[0]){
+            if (n.tercero[0].nombreRazonSocial === null) {
+              n.tercero[0].nombreRazonSocial = "";
+            }
+            if (n.tercero[0].rfc === null) {
+              n.tercero[0].rfc = "";
+            }
           }
           if (n.localizacionInversion) {
             if (!n.localizacionInversion.pais) {
@@ -593,22 +595,11 @@ function inversionesCuentasValores(inversion) {
             if (n.localizacionInversion.pais === null) {
               n.localizacionInversion.pais = "MX";
             }
-          }
-          if (n.localizacionInversion.institucionRazonSocial === null) {
-            n.localizacionAdeudo.institucionRazonSocial = "";
-          }
-          if (n.localizacionInversion.rfc === null) {
-            n.localizacionInversion.rfc = "";
-          }
-          if (n.tercero[0].tipoPersona === null) {
-            delete n.tercero;
-          }
-          else {
-            if (n.tercero[0].nombreRazonSocial === null) {
-              n.tercero[0].nombreRazonSocial = "";
+            if (n.localizacionInversion.institucionRazonSocial === null) {
+              n.localizacionAdeudo.institucionRazonSocial = "";
             }
-            if (n.tercero[0].rfc === null) {
-              n.tercero[0].rfc = "";
+            if (n.localizacionInversion.rfc === null) {
+              n.localizacionInversion.rfc = "";
             }
           }
           if (n.motivoBaja === null) {
