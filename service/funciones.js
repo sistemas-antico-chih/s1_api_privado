@@ -273,7 +273,7 @@ function bienesInmuebles(bienInmueble) {
                   n.tercero[0].rfc = "";
                 }
               }
-              if (n.tercero[0].tipoPersona === null){
+              if (n.tercero[0].tipoPersona === null) {
                 delete n.tercero;
               }
             }
@@ -294,7 +294,7 @@ function bienesInmuebles(bienInmueble) {
                   n.transmisor[0].rfc = "";
                 }
               }
-              if (n.transmisor[0].tipoPersona === null){
+              if (n.transmisor[0].tipoPersona === null) {
                 delete n.transmisor;
               }
             }
@@ -360,7 +360,7 @@ function vehiculos(vehiculo) {
                   n.tercero[0].rfc = "";
                 }
               }
-              if (n.tercero[0].tipoPersona === null){
+              if (n.tercero[0].tipoPersona === null) {
                 delete n.tercero;
               }
             }
@@ -445,7 +445,7 @@ function bienesMuebles(bienMueble) {
                   n.tercero[0].rfc = "";
                 }
               }
-              if (n.tercero[0].tipoPersona === null){
+              if (n.tercero[0].tipoPersona === null) {
                 delete n.tercero;
               }
             }
@@ -508,7 +508,7 @@ function adeudosPasivos(adeudo) {
           delete n.tercero;
         }
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === "FISICA") {
+          if (n.tercero[0].tipoPersona !== "MORAL") {
             delete n.tercero;
           }
           else {
@@ -519,9 +519,6 @@ function adeudosPasivos(adeudo) {
               if (n.tercero[0].rfc === null) {
                 n.tercero[0].rfc = "";
               }
-            }
-            if (n.tercero[0].tipoPersona === null){
-              delete n.tercero;
             }
           }
         }
@@ -599,7 +596,7 @@ function inversionesCuentasValores(inversion) {
                   n.tercero[0].rfc = "";
                 }
               }
-              if (n.tercero[0].tipoPersona === null){
+              if (n.tercero[0].tipoPersona === null) {
                 delete n.tercero;
               }
             }
