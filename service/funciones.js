@@ -587,12 +587,11 @@ function inversionesCuentasValores(inversion) {
               n.motivoBaja = "";
             }
             if (n.localizacionInversion) {
-              if (n.localizacionInversion.pais === null) {
-                console.log("llega aqui");
-                n.localizacionInversion.pais = "MX";
-              }
               if (!n.localizacionInversion.pais) {
                 console.log("llegando");
+                n.localizacionInversion.pais = "MX";
+              }
+              if (n.localizacionInversion.pais === null) {
                 n.localizacionInversion.pais = "MX";
               }
             }
