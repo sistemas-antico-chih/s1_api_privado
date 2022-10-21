@@ -273,6 +273,9 @@ function bienesInmuebles(bienInmueble) {
                   n.tercero[0].rfc = "";
                 }
               }
+              if (n.tercero[0].tipoPersona === null){
+                delete n.tercero;
+              }
             }
           }
           if (n.transmisor[0].tipoPersona === null) {
@@ -290,6 +293,9 @@ function bienesInmuebles(bienInmueble) {
                 if (n.transmisor[0].rfc === null) {
                   n.transmisor[0].rfc = "";
                 }
+              }
+              if (n.transmisor[0].tipoPersona === null){
+                delete n.transmisor;
               }
             }
           }
@@ -353,6 +359,9 @@ function vehiculos(vehiculo) {
                 if (n.tercero[0].rfc === null) {
                   n.tercero[0].rfc = "";
                 }
+              }
+              if (n.tercero[0].tipoPersona === null){
+                delete n.tercero;
               }
             }
           }
@@ -436,6 +445,9 @@ function bienesMuebles(bienMueble) {
                   n.tercero[0].rfc = "";
                 }
               }
+              if (n.tercero[0].tipoPersona === null){
+                delete n.tercero;
+              }
             }
           }
           if (n.transmisor[0].tipoPersona === null) {
@@ -507,6 +519,9 @@ function adeudosPasivos(adeudo) {
               if (n.tercero[0].rfc === null) {
                 n.tercero[0].rfc = "";
               }
+            }
+            if (n.tercero[0].tipoPersona === null){
+              delete n.tercero;
             }
           }
         }
