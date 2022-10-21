@@ -370,7 +370,7 @@ function bienesMuebles(bienMueble) {
         console.log(n);
         delete n;
       }
-      else {
+
         if (n.titular[0].clave === "DEC") {
           if (n.tercero[0].tipoPersona === null) {
             delete n.tercero;
@@ -414,7 +414,7 @@ function bienesMuebles(bienMueble) {
             n.formaPago = 'NO APLICA';
           }
         }
-      }
+      
     }
     return n;
   })
