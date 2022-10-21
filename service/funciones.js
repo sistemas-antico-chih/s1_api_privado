@@ -374,16 +374,14 @@ function vehiculos(vehiculo) {
               }
             }
           }
-          if (n.lugarRegistro.pais) {
-            if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
-              n.lugarRegistro.pais = "MX";
-            }
-            if (n.lugarRegistro.entidadFederativa === null) {
-              n.lugarRegistro.entidadFederativa = "";
-            }
-            if (n.lugarRegistro.pais != 'MX') {
-              delete n.lugarRegistro.entidadFederativa;
-            }
+          if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
+            n.lugarRegistro.pais = "MX";
+          }
+          if (n.lugarRegistro.entidadFederativa === null) {
+            n.lugarRegistro.entidadFederativa = "";
+          }
+          if (n.lugarRegistro.pais != 'MX') {
+            delete n.lugarRegistro.entidadFederativa;
           }
           if (n.motivoBaja === null) {
             delete n.motivoBaja;
