@@ -494,6 +494,7 @@ function adeudosPasivos(adeudo) {
       if (n.titular[0].clave === "DEC") {
         if (n.tercero[0].tipoPersona === null) {
           delete n.tercero;
+          console.log("1");
         }
         if (n.tercero) {
           if (n.tercero[0].tipoPersona === "FISICA") {
