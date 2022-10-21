@@ -489,68 +489,69 @@ function adeudosPasivos(adeudo) {
         delete n.otorganteCredito;
         delete n.localizacionAdeudo;
       }
-    }
-    else {
-      if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona === null) {
-          delete n.tercero;
-          console.log("1");
-        }
-        if (n.tercero) {
-          if (n.tercero[0].tipoPersona === "FISICA") {
+
+      else {
+        if (n.titular[0].clave === "DEC") {
+          if (n.tercero[0].tipoPersona === null) {
             delete n.tercero;
+            console.log("1");
           }
-          else {
-            if (n.tercero[0].nombreRazonSocial) {
-              if (n.tercero[0].nombreRazonSocial === null) {
-                n.tercero[0].nombreRazonSocial = "";
+          if (n.tercero) {
+            if (n.tercero[0].tipoPersona === "FISICA") {
+              delete n.tercero;
+            }
+            else {
+              if (n.tercero[0].nombreRazonSocial) {
+                if (n.tercero[0].nombreRazonSocial === null) {
+                  n.tercero[0].nombreRazonSocial = "";
+                }
+                if (n.tercero[0].rfc === null) {
+                  n.tercero[0].rfc = "";
+                }
               }
-              if (n.tercero[0].rfc === null) {
-                n.tercero[0].rfc = "";
+            }
+          }
+          if (n.montoOriginal) {
+            if (n.montoOriginal.moneda === null) {
+              n.montoOriginal.moneda = "MXN";
+            }
+          }
+          if (n.otorganteCredito.tipoPersona) {
+            if (n.otorganteCredito.tipoPersona === "FISICA") {
+              delete n.otorganteCredito;
+            }
+            else {
+              if (n.otorganteCredito.tipoPersona === null) {
+                n.otorganteCredito.tipoPersona = "";
+              }
+              if (n.otorganteCredito.nombreInstitucion === null) {
+                n.otorganteCredito.nombreInstitucion = "";
+              }
+              if (n.otorganteCredito.rfc === null) {
+                n.otorganteCredito.rfc = "";
               }
             }
           }
-        }
-        if (n.montoOriginal) {
-          if (n.montoOriginal.moneda === null) {
-            n.montoOriginal.moneda = "MXN";
-          }
-        }
-        if (n.otorganteCredito.tipoPersona) {
-          if (n.otorganteCredito.tipoPersona === "FISICA") {
-            delete n.otorganteCredito;
-          }
-          else {
-            if (n.otorganteCredito.tipoPersona === null) {
-              n.otorganteCredito.tipoPersona = "";
-            }
-            if (n.otorganteCredito.nombreInstitucion === null) {
-              n.otorganteCredito.nombreInstitucion = "";
-            }
-            if (n.otorganteCredito.rfc === null) {
-              n.otorganteCredito.rfc = "";
+          if (n.montoOriginal) {
+            if (n.montoOriginal.moneda === null) {
+              n.montoOriginal.moneda = "MXN";
             }
           }
-        }
-        if (n.montoOriginal) {
-          if (n.montoOriginal.moneda === null) {
-            n.montoOriginal.moneda = "MXN";
+          if (n.saldoInsolutoSituacionActual) {
+            if (n.saldoInsolutoSituacionActual.moneda === null) {
+              n.saldoInsolutoSituacionActual.moneda = "MXN";
+            }
           }
-        }
-        if (n.saldoInsolutoSituacionActual) {
-          if (n.saldoInsolutoSituacionActual.moneda === null) {
-            n.saldoInsolutoSituacionActual.moneda = "MXN";
+          if (n.localizacionAdeudo) {
+            if (n.localizacionAdeudo.pais === null) {
+              n.localizacionAdeudo.pais = "MX";
+            }
           }
-        }
-        if (n.localizacionAdeudo) {
-          if (n.localizacionAdeudo.pais === null) {
-            n.localizacionAdeudo.pais = "MX";
+          if (n.motivoBaja === null) {
+            delete n.motivoBaja;
           }
+          delete n.numeroCuentaContrato;
         }
-        if (n.motivoBaja === null) {
-          delete n.motivoBaja;
-        }
-        delete n.numeroCuentaContrato;
       }
     }
     return n;
