@@ -576,15 +576,15 @@ function inversionesCuentasValores(inversion) {
               delete n.tercero[0];
             }
           }
-          if (n.tercero[0].tipoPersona === null) {
-            delete n.tercero;
-          }
           if (n.tercero){
             if (n.tercero[0].nombreRazonSocial === null) {
               n.tercero[0].nombreRazonSocial = "";
             }
             if (n.tercero[0].rfc === null) {
               n.tercero[0].rfc = "";
+            }
+            if (n.tercero[0].tipoPersona === null) {
+              delete n.tercero;
             }
           }
           if (n.localizacionInversion) {
