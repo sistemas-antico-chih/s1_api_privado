@@ -576,9 +576,11 @@ function inversionesCuentasValores(inversion) {
               delete n.tercero[0];
             }
           }
-          if (n.tercero){
-            if (n.tercero[0].nombreRazonSocial === null) {
-              n.tercero[0].nombreRazonSocial = "";
+          if (n.tercero) {
+            if (n.tercero[0].nombreRazonSocial) {
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
             }
             if (n.tercero[0].rfc === null) {
               n.tercero[0].rfc = "";
