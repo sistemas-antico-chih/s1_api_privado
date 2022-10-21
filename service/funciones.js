@@ -222,19 +222,7 @@ function bienesInmuebles(bienInmueble) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
-        delete n.tipoInmueble;
-        delete n.titular;
-        delete n.porcentajePropiedad;
-        delete n.superficieTerreno;
-        delete n.superficieConstruccion;
-        delete n.tercero;
-        delete n.transmisor;
-        delete n.formaAdquisicion;
-        delete n.formaPago;
-        delete n.valorAdquisicion;
-        delete n.fechaAdquisicion;
-        delete n.datoIdentificacion;
-        delete n.valorConformeA;
+        delete n;
         if (n.motivoBaja){
           delete n.motivoBaja;
         }
@@ -321,20 +309,6 @@ function vehiculos(vehiculo) {
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
         delete n;
-        // delete n.tipoVehiculo;
-        // delete n.titular;
-        // delete n.transmisor;
-        // delete n.marca;
-        // delete n.modelo;
-        // delete n.anio;
-        // delete n.numeroSerieRegistro;
-        // delete n.tercero;
-        // delete n.lugarRegistro;
-        // delete n.formaAdquisicion;
-        // delete n.formaPago;
-        // delete n.valorAdquisicion;
-        // delete n.fechaAdquisicion;
-        // delete n.motivoBaja;
       }
       else {
         if (n.titular[0].clave === "DEC") {
@@ -402,17 +376,7 @@ function bienesMuebles(bienMueble) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
-        delete n.tipoBien;
-        delete n.titular;
-        delete n.tercero;
-        delete n.transmisor;
-        delete n.formaAdquisicion;
-        delete n.formaPago;
-        delete n.valorAdquisicion;
-        delete n.fechaAdquisicion;
-        delete n.descripcionGeneralBien;
-        delete n.datoIdentificacion;
-        delete n.motivoBaja;
+        delete n;
       }
       else {
         if (n.titular[0].clave === "DEC") {
@@ -472,17 +436,8 @@ function adeudosPasivos(adeudo) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
-        delete n.tipoAdeudo;
-        delete n.titular;
-        delete n.numeroCuentaContrato;
-        delete n.fechaAdquisicion;
-        delete n.montoOriginal;
-        delete n.saldoInsolutoSituacionActual;
-        delete n.tercero;
-        delete n.otorganteCredito;
-        delete n.localizacionAdeudo;
+        delete n;
       }
-
       else {
         if (n.titular[0].clave === "DEC") {
           if (n.tercero[0].tipoPersona === null) {
@@ -553,13 +508,7 @@ function inversionesCuentasValores(inversion) {
   inversion.forEach((n) => {
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
-        delete n.tipoInversion;
-        delete n.titular;
-        delete n.subTipoInversion;
-        delete n.tercero;
-        delete n.numeroCuentaContrato;
-        delete n.localizacionInversion;
-        delete n.saldoSituacionActual;
+        delete n;
       }
       else {
         if (n.titular[0].clave === "DEC") {
@@ -660,14 +609,7 @@ function participacion(participacion) {
   participacion.forEach((n) => {
     if (n.tipoRelacion) {
       if (n.tipoRelacion != "DECLARANTE") {
-        delete n.tipoRelacion;
-        delete n.nombreEmpresaSociedadAsociacion;
-        delete n.rfc;
-        delete n.porcentajeParticipacion;
-        delete n.recibeRemuneracion;
-        delete n.montoMensual;
-        delete n.ubicacion;
-        delete n.sector;
+        delete n;
       }
       else {
         if (n.tipoRelacion === "DECLARANTE") {
@@ -702,15 +644,7 @@ function tomaDeciciones(tomaDecision) {
   tomaDecision.forEach((n) => {
     if (n.tipoRelacion) {
       if (n.tipoRelacion != "DECLARANTE") {
-        delete n.tipoRelacion;
-        delete n.tipoInstitucion;
-        delete n.nombreInstitucion;
-        delete n.rfc;
-        delete n.puestoRol;
-        delete n.fechaInicioParticipacion;
-        delete n.recibeRemuneracion;
-        delete n.montoMensual;
-        delete n.ubicacion;
+        delete n;
       }
       else {
         n.fechaInicioParticipacion = convertirFechaCorta(n.fechaInicioParticipacion);
@@ -743,15 +677,7 @@ function apoyos(apoyo) {
   apoyo.forEach((n) => {
     if (n.beneficiarioPrograma) {
       if (n.beneficiarioPrograma.clave != "DC") {
-        delete n.tipoPersona;
-        delete n.benefiarioPrograma;
-        delete n.nombrePrograma;
-        delete n.institucionOtorgante;
-        delete n.nivelOrdenGobierno;
-        delete n.tipoApoyo;
-        delete n.formaRecepcion;
-        delete n.montoApoyoMensual;
-        delete n.especifiqueApoyo;
+        delete n;
       }
       else {
         if (n.beneficiarioPrograma.clave === "DC") {
@@ -773,17 +699,7 @@ function representaciones(representacion) {
     n.fechaInicioRepresentacion = convertirFechaCorta(n.fechaInicioRepresentacion);
     if (n.tipoRelacion) {
       if (n.tipoRelacion != "DECLARANTE") {
-        delete n.tipoOperacion;
-        delete n.tipoRelacion;
-        delete n.tipoRepresentacion;
-        delete n.tipoPersona;
-        delete n.nombreRazonSocial;
-        delete n.rfc;
-        delete n.recibeRemuneracion;
-        delete n.montoMensual;
-        delete n.fechaInicioRepresentacion;
-        delete n.ubicacion;
-        delete n.sector;
+        delete n;
       }
       else {
         if (n.tipoRelacion === "DECLARANTE") {
@@ -824,13 +740,7 @@ function clientesPrincipales(cliente) {
   cliente.forEach((n) => {
     if (n.tipoRelacion) {
       if (n.tipoRelacion != "DECLARANTE") {
-        delete n.realizaActividadLucrativa;
-        delete n.tipoRelacion;
-        delete n.empresa;
-        delete n.clientePrincipal;
-        delete n.sector;
-        delete n.montoAproximadoGanancia;
-        delete n.ubicacion;
+        delete n;
       }
       else {
         if (n.tipoRelacion === "DECLARANTE") {
@@ -869,12 +779,7 @@ function beneficiosPrivados(beneficio) {
   beneficio.forEach((n) => {
     if (n.beneficiario) {
       if (n.beneficiario[0].clave != "DC") {
-        delete n.tipoOperacion;
-        delete n.beneficiario;
-        delete n.otorgante;
-        delete n.formaRecepcion;
-        delete n.montoMensualAproximado;
-        delete n.sector;
+        delete n;
       }
       else {
         if (n.beneficiario[0].clave === "DC") {
@@ -910,16 +815,7 @@ function fideicomisos(fideicomiso) {
   fideicomiso.forEach((n) => {
     if (n.tipoRelacion) {
       if (n.tipoRelacion != "DECLARANTE") {
-        delete n.tipoOperacion;
-        delete n.tipoRelacion;
-        delete n.tipoFideicomiso;
-        delete n.tipoParticipacion;
-        delete n.rfcFideicomiso;
-        delete n.sector;
-        delete n.extranjero;
-        delete n.fideicomitente;
-        delete n.fiduciario;
-        delete n.fideicomisario;
+        delete n;
       }
       else {
         if (n.tipoRelacion === "DECLARANTE") {
