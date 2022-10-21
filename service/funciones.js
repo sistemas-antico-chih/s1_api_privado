@@ -261,20 +261,21 @@ function bienesInmuebles(bienInmueble) {
             console.log("llega")
             delete n.tercero;
           }
-          if (n.tercero[0].tipoPersona === "FISICA") {
-            delete n.tercero
-          }
-          else {
-            if (n.tercero[0].nombreRazonSocial) {
-              if (n.tercero[0].nombreRazonSocial === null) {
-                n.tercero[0].nombreRazonSocial = "";
-              }
-              if (n.tercero[0].rfc === null) {
-                n.tercero[0].rfc = "";
+          if (n.tercero){
+            if (n.tercero[0].tipoPersona === "FISICA") {
+              delete n.tercero
+            }
+            else {
+              if (n.tercero[0].nombreRazonSocial) {
+                if (n.tercero[0].nombreRazonSocial === null) {
+                  n.tercero[0].nombreRazonSocial = "";
+                }
+                if (n.tercero[0].rfc === null) {
+                  n.tercero[0].rfc = "";
+                }
               }
             }
           }
-
           if (n.transmisor[0]) {
             if (n.transmisor[0].tipoPersona) {
               if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
