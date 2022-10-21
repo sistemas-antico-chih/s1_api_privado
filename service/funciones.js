@@ -584,11 +584,13 @@ function inversionesCuentasValores(inversion) {
                   n.tercero[0].rfc = "";
                 }
               }
+              if (n.tercero[0].tipoPersona === null){
+                delete n.tercero;
+              }
             }
           }
           if (n.localizacionInversion) {
             if (!n.localizacionInversion.pais) {
-              console.log(n.numeroCuentaContrato);
               n.localizacionInversion.pais = "MX";
             }
             if (n.localizacionInversion.pais === null) {
