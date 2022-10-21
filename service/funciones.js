@@ -411,6 +411,7 @@ function bienesMuebles(bienMueble) {
       }
     }
     else{
+      console.log(n);
       delete n;
     }
     return n;
