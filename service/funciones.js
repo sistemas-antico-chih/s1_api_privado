@@ -264,6 +264,7 @@ function bienesInmuebles(bienInmueble) {
                 }*/
                 if (n.tercero[0].tipoPersona === null){
                   delete n.tercero;
+                  console.log ("llega");
                 }
                 else {
                   if (n.tercero[0].nombreRazonSocial) {
