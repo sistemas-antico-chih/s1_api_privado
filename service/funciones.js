@@ -501,14 +501,14 @@ function adeudosPasivos(adeudo) {
               delete n.tercero;
             }
             else {
-              if (n.tercero[0].nombreRazonSocial) {
+             
                 if (n.tercero[0].nombreRazonSocial === null) {
                   n.tercero[0].nombreRazonSocial = "";
                 }
                 if (n.tercero[0].rfc === null) {
                   n.tercero[0].rfc = "";
                 }
-              }
+              
             }
           }
           if (n.montoOriginal) {
@@ -581,14 +581,14 @@ function inversionesCuentasValores(inversion) {
               delete n.tercero;
             }
             else {
-              if (n.tercero[0].nombreRazonSocial) {
+              
                 if (n.tercero[0].nombreRazonSocial === null) {
                   n.tercero[0].nombreRazonSocial = "";
                 }
                 if (n.tercero[0].rfc === null) {
                   n.tercero[0].rfc = "";
                 }
-              }
+              
             }
           }
           if (n.localizacionInversion) {
