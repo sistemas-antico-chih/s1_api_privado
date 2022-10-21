@@ -265,13 +265,11 @@ function bienesInmuebles(bienInmueble) {
               delete n.tercero;
             }
             else {
-              if (n.tercero[0].nombreRazonSocial) {
-                if (n.tercero[0].nombreRazonSocial === null) {
-                  n.tercero[0].nombreRazonSocial = "";
-                }
-                if (n.tercero[0].rfc === null) {
-                  n.tercero[0].rfc = "";
-                }
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
+              if (n.tercero[0].rfc === null) {
+                n.tercero[0].rfc = "";
               }
             }
           }
@@ -283,13 +281,11 @@ function bienesInmuebles(bienInmueble) {
               delete n.transmisor;
             }
             else {
-              if (n.transmisor[0].nombreRazonSocial) {
-                if (n.transmisor[0].nombreRazonSocial === null) {
-                  n.transmisor[0].nombreRazonSocial = "";
-                }
-                if (n.transmisor[0].rfc === null) {
-                  n.transmisor[0].rfc = "";
-                }
+              if (n.transmisor[0].nombreRazonSocial === null) {
+                n.transmisor[0].nombreRazonSocial = "";
+              }
+              if (n.transmisor[0].rfc === null) {
+                n.transmisor[0].rfc = "";
               }
             }
           }
@@ -346,13 +342,11 @@ function vehiculos(vehiculo) {
               delete n.tercero;
             }
             else {
-              if (n.tercero[0].nombreRazonSocial) {
-                if (n.tercero[0].nombreRazonSocial === null) {
-                  n.tercero[0].nombreRazonSocial = "";
-                }
-                if (n.tercero[0].rfc === null) {
-                  n.tercero[0].rfc = "";
-                }
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
+              if (n.tercero[0].rfc === null) {
+                n.tercero[0].rfc = "";
               }
             }
           }
@@ -364,13 +358,11 @@ function vehiculos(vehiculo) {
               delete n.transmisor;
             }
             else {
-              if (n.transmisor[0].nombreRazonSocial) {
-                if (n.transmisor[0].nombreRazonSocial === null) {
-                  n.transmisor[0].nombreRazonSocial = "";
-                }
-                if (n.transmisor[0].rfc === null) {
-                  n.transmisor[0].rfc = "";
-                }
+              if (n.transmisor[0].nombreRazonSocial === null) {
+                n.transmisor[0].nombreRazonSocial = "";
+              }
+              if (n.transmisor[0].rfc === null) {
+                n.transmisor[0].rfc = "";
               }
             }
           }
@@ -428,13 +420,11 @@ function bienesMuebles(bienMueble) {
               delete n.tercero;
             }
             else {
-              if (n.tercero[0].nombreRazonSocial) {
-                if (n.tercero[0].nombreRazonSocial === null) {
-                  n.tercero[0].nombreRazonSocial = "";
-                }
-                if (n.tercero[0].rfc === null) {
-                  n.tercero[0].rfc = "";
-                }
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
+              if (n.tercero[0].rfc === null) {
+                n.tercero[0].rfc = "";
               }
             }
           }
@@ -446,13 +436,12 @@ function bienesMuebles(bienMueble) {
               delete n.transmisor;
             }
             else {
-              if (n.transmisor[0].nombreRazonSocial) {
-                if (n.transmisor[0].nombreRazonSocial === null) {
-                  n.transmisor[0].nombreRazonSocial = "";
-                }
-                if (n.transmisor[0].rfc === null) {
-                  n.transmisor[0].rfc = "";
-                }
+
+              if (n.transmisor[0].nombreRazonSocial === null) {
+                n.transmisor[0].nombreRazonSocial = "";
+              }
+              if (n.transmisor[0].rfc === null) {
+                n.transmisor[0].rfc = "";
               }
             }
           }
@@ -501,14 +490,12 @@ function adeudosPasivos(adeudo) {
               delete n.tercero;
             }
             else {
-             
-                if (n.tercero[0].nombreRazonSocial === null) {
-                  n.tercero[0].nombreRazonSocial = "";
-                }
-                if (n.tercero[0].rfc === null) {
-                  n.tercero[0].rfc = "";
-                }
-              
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
+              if (n.tercero[0].rfc === null) {
+                n.tercero[0].rfc = "";
+              }
             }
           }
           if (n.montoOriginal) {
@@ -581,14 +568,12 @@ function inversionesCuentasValores(inversion) {
               delete n.tercero;
             }
             else {
-              
-                if (n.tercero[0].nombreRazonSocial === null) {
-                  n.tercero[0].nombreRazonSocial = "";
-                }
-                if (n.tercero[0].rfc === null) {
-                  n.tercero[0].rfc = "";
-                }
-              
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
+              if (n.tercero[0].rfc === null) {
+                n.tercero[0].rfc = "";
+              }
             }
           }
           if (n.localizacionInversion) {
