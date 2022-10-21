@@ -754,7 +754,7 @@ function tomaDeciciones(tomaDecision) {
 function apoyos(apoyo) {
   apoyo.forEach((n) => {
     if (n.benefiarioPrograma) {
-      if (n.benefiarioPrograma.clave === "DC") {
+      if (n.benefiarioPrograma.clave != "DC") {
         delete n.tipoPersona;
         delete n.benefiarioPrograma;
         delete n.nombrePrograma;
@@ -766,7 +766,7 @@ function apoyos(apoyo) {
         delete n.especifiqueApoyo;
       }
       else {
-        if (n.benefiarioPrograma.clave != "DC") {
+        if (n.benefiarioPrograma.clave === "DC") {
           if (n.montoApoyoMensual) {
             if (n.montoApoyoMensual.moneda === null) {
               n.montoApoyoMensual.moneda = 'MXN';
