@@ -375,7 +375,7 @@ function bienesMuebles(bienMueble) {
             delete n.tercero;
           }
           if (n.tercero) {
-            if (n.tercero[0].tipoPersona === "FISICA") {
+            if (n.tercero[0].tipoPersona != "MORAL") {
               delete n.tercero;
             }
             else {
@@ -391,7 +391,7 @@ function bienesMuebles(bienMueble) {
             delete n.transmisor;
           }
           if (n.transmisor) {
-            if (n.transmisor[0].tipoPersona === "FISICA") {
+            if (n.transmisor[0].tipoPersona != "MORAL") {
               delete n.transmisor;
             }
             else {
