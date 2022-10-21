@@ -368,6 +368,7 @@ function bienesMuebles(bienMueble) {
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
         delete n;
+        console.log("llega "+n._id);
       }
       else {
         if (n.titular[0].clave === "DEC") {
@@ -375,7 +376,7 @@ function bienesMuebles(bienMueble) {
             delete n.tercero;
           }
           if (n.tercero) {
-            if (n.tercero[0].tipoPersona != "MORAL") {
+            if (n.tercero[0].tipoPersona === "FISICA") {
               delete n.tercero;
             }
             else {
@@ -391,7 +392,7 @@ function bienesMuebles(bienMueble) {
             delete n.transmisor;
           }
           if (n.transmisor) {
-            if (n.transmisor[0].tipoPersona != "MORAL") {
+            if (n.transmisor[0].tipoPersona === "FISICA") {
               delete n.transmisor;
             }
             else {
