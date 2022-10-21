@@ -235,6 +235,9 @@ function bienesInmuebles(bienInmueble) {
         delete n.fechaAdquisicion;
         delete n.datoIdentificacion;
         delete n.valorConformeA;
+        if (n.motivoBaja){
+          delete n.motivoBaja;
+        }
         if (n.domicilioMexico) {
           delete n.domicilioMexico;
         }
@@ -289,9 +292,6 @@ function bienesInmuebles(bienInmueble) {
               }
             }
           }
-          if (n.motivoBaja === null) {
-            delete n.motivoBaja;
-          }
           if (n.formaPago === 'CREDITO') {
             n.formaPago = 'CRÉDITO';
           }
@@ -300,6 +300,9 @@ function bienesInmuebles(bienInmueble) {
           }
           if (n.valorConformeA === 'ESCRITURA_PUBLICA') {
             n.valorConformeA = 'ESCRITURA PÚBLICA';
+          }
+          if (n.motivoBaja === null) {
+            delete n.motivoBaja;
           }
           delete n.datoIdentificacion;
           n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
@@ -317,20 +320,21 @@ function vehiculos(vehiculo) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
-        delete n.tipoVehiculo;
-        delete n.titular;
-        delete n.transmisor;
-        delete n.marca;
-        delete n.modelo;
-        delete n.anio;
-        delete n.numeroSerieRegistro;
-        delete n.tercero;
-        delete n.lugarRegistro;
-        delete n.formaAdquisicion;
-        delete n.formaPago;
-        delete n.valorAdquisicion;
-        delete n.fechaAdquisicion;
-        delete n.motivoBaja;
+        delete n;
+        // delete n.tipoVehiculo;
+        // delete n.titular;
+        // delete n.transmisor;
+        // delete n.marca;
+        // delete n.modelo;
+        // delete n.anio;
+        // delete n.numeroSerieRegistro;
+        // delete n.tercero;
+        // delete n.lugarRegistro;
+        // delete n.formaAdquisicion;
+        // delete n.formaPago;
+        // delete n.valorAdquisicion;
+        // delete n.fechaAdquisicion;
+        // delete n.motivoBaja;
       }
       else {
         if (n.titular[0].clave === "DEC") {
@@ -483,7 +487,6 @@ function adeudosPasivos(adeudo) {
         if (n.titular[0].clave === "DEC") {
           if (n.tercero[0].tipoPersona === null) {
             delete n.tercero;
-            console.log("1");
           }
           if (n.tercero) {
             if (n.tercero[0].tipoPersona === "FISICA") {
