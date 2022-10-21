@@ -571,11 +571,6 @@ function inversionesCuentasValores(inversion) {
       }
       else {
         if (n.titular[0].clave === "DEC") {
-          if (n.tercero[0].tipoPersona) {
-            if (n.tercero[0].tipoPersona === "FISICA") {
-              delete n.tercero[0];
-            }
-          }
           if (n.tercero) {
             if (n.tercero[0].tipoPersona === "FISICA") {
               delete n.tercero;
