@@ -392,6 +392,7 @@ function vehiculos(vehiculo) {
           if (n.formaPago === 'NO_APLICA') {
             n.formaPago = 'NO APLICA';
           }
+          delete n.numeroSerieRegistro
         }
       }
     }
@@ -548,6 +549,7 @@ function adeudosPasivos(adeudo) {
         if (n.motivoBaja === null) {
           delete n.motivoBaja;
         }
+        delete n.numeroCuentaContrato;
       }
     }
     return n;
@@ -615,6 +617,7 @@ function inversionesCuentasValores(inversion) {
               }
             }
           }
+          delete n.numeroCuentaContrato;
         }
       }
     }
@@ -653,6 +656,7 @@ function prestamoComodato(prestamo) {
             if (n.tipoBien.vehiculo.lugarRegistro.pais != 'MX') {
               delete n.tipoBien.vehiculo.lugarRegistro.entidadFederativa;
             }
+            delete n.tipoBien.vehiculo.numeroSerieRegistro;
           }
         }
       }
@@ -820,6 +824,10 @@ function representaciones(representacion) {
           if (n.rfc === null) {
             n.rfc = "";
           }
+          if (n.tipoPersona === "FISICA") {
+            delete n.rfc;
+            delete n.nombreRazonSocial;
+          }
         }
       }
     }
@@ -842,6 +850,9 @@ function clientesPrincipales(cliente) {
       }
       else {
         if (n.tipoRelacion === "DECLARANTE") {
+          if (n.clientePrincipal.tipoPersona === "FISICA") {
+            delete n.clientePrincipal;
+          }
           if (n.empresa.rfc === null) {
             n.empresa.rfc = "";
           }
@@ -883,18 +894,20 @@ function beneficiosPrivados(beneficio) {
       }
       else {
         if (n.beneficiario[0].clave === "DC") {
+
+          if (n.otorgante.tipoPersona === null) {
+            delete n.otorgante;
+          }
           if (n.otorgante) {
-            if (n.otorgante.tipoPersona === null) {
+            if (n.otorgante.tipoPersona === "FISICA") {
               delete n.otorgante;
             }
-            else {
-              if (n.otorgante.nombreRazonSocial === null) {
-                n.otorgante.nombreRazonSocial = "";
-              }
-              if (n.otorgante.rfc === null) {
-                n.otorgante.rfc = "";
-              }
-            }
+          }
+          if (n.otorgante.nombreRazonSocial === null) {
+            n.otorgante.nombreRazonSocial = "";
+          }
+          if (n.otorgante.rfc === null) {
+            n.otorgante.rfc = "";
           }
           if (n.montoMensualAproximado) {
             if (n.montoMensualAproximado.moneda === null) {
