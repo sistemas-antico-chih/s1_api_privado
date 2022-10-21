@@ -256,68 +256,63 @@ function bienesInmuebles(bienInmueble) {
           if (n.domicilioMexico === null) {
             delete n.domicilioMexico;
           }
-          else {
-            if (n.tercero[0]) {
-              if (n.tercero[0].tipoPersona) {
-                console.log("llega aqui");
-               /*if (n.tercero[0].tipoPersona === "FISICA") {
-                  delete n.tercero;
-                }*/
-                if (n.tercero[0].tipoPersona === null){
-                  delete n.tercero;
-                  console.log ("llega a null");
-                }
-                else {
-                  if (n.tercero[0].nombreRazonSocial) {
-                    if (n.tercero[0].nombreRazonSocial === null) {
-                      n.tercero[0].nombreRazonSocial = "";
-                    }
-                  }
 
-                  if (n.tercero[0].rfc === null) {
-                    n.tercero[0].rfc = "";
-                  }
-                }
-              }
-            }
-            if (n.transmisor[0]) {
-              if (n.transmisor[0].tipoPersona) {
-                if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
-                  delete n.transmisor;
-                }
-                else {
-                  if (n.transmisor[0].nombreRazonSocial) {
-                    if (n.transmisor[0].nombreRazonSocial === null) {
-                      n.transmisor[0].nombreRazonSocial = "";
-                    }
-                  }
-                  if (n.transmisor[0].rfc === null) {
-                    n.transmisor[0].rfc = "";
-                  }
-                }
-              }
-            }
-            if (n.motivoBaja === null) {
-              delete n.motivoBaja;
-            }
-            if (n.formaPago === 'CREDITO') {
-              n.formaPago = 'CRÉDITO';
-            }
-            if (n.formaPago === 'NO_APLICA') {
-              n.formaPago = 'NO APLICA';
-            }
-            if (n.valorConformeA === 'ESCRITURA_PUBLICA') {
-              n.valorConformeA = 'ESCRITURA PÚBLICA';
-            }
-            n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
-            n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
+          if (n.tercero[0].tipoPersona === null) {
+            console.log("llega")
+            delete n.tercero;
           }
+          if (n.tercero[0].tipoPersona === "FISICA") {
+            delete n.tercero
+          }
+          else {
+            if (n.tercero[0].nombreRazonSocial) {
+              if (n.tercero[0].nombreRazonSocial === null) {
+                n.tercero[0].nombreRazonSocial = "";
+              }
+              if (n.tercero[0].rfc === null) {
+                n.tercero[0].rfc = "";
+              }
+            }
+          }
+
+          if (n.transmisor[0]) {
+            if (n.transmisor[0].tipoPersona) {
+              if (n.transmisor[0].tipoPersona === "FISICA" || n.transmisor[0].tipoPersona === null) {
+                delete n.transmisor;
+              }
+              else {
+                if (n.transmisor[0].nombreRazonSocial) {
+                  if (n.transmisor[0].nombreRazonSocial === null) {
+                    n.transmisor[0].nombreRazonSocial = "";
+                  }
+                }
+                if (n.transmisor[0].rfc === null) {
+                  n.transmisor[0].rfc = "";
+                }
+              }
+            }
+          }
+          if (n.motivoBaja === null) {
+            delete n.motivoBaja;
+          }
+          if (n.formaPago === 'CREDITO') {
+            n.formaPago = 'CRÉDITO';
+          }
+          if (n.formaPago === 'NO_APLICA') {
+            n.formaPago = 'NO APLICA';
+          }
+          if (n.valorConformeA === 'ESCRITURA_PUBLICA') {
+            n.valorConformeA = 'ESCRITURA PÚBLICA';
+          }
+          n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
+          n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
         }
       }
     }
+  }
     return n;
-  })
-  return bienInmueble;
+})
+return bienInmueble;
 }
 
 function vehiculos(vehiculo) {
