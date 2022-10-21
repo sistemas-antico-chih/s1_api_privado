@@ -577,23 +577,25 @@ function inversionesCuentasValores(inversion) {
             }
           }
           if (n.tercero) {
-            if (n.tercero[0].nombreRazonSocial) {
-              if (n.tercero[0].nombreRazonSocial === null) {
-                n.tercero[0].nombreRazonSocial = "";
-              }
-            }
-            if (n.tercero[0].rfc === null) {
-              n.tercero[0].rfc = "";
-            }
-            if (n.tercero[0].tipoPersona === null) {
+            if (n.tercero[0].tipoPersona === "FISICA") {
               delete n.tercero;
+            }
+            else {
+              if (n.tercero[0].nombreRazonSocial) {
+                if (n.tercero[0].nombreRazonSocial === null) {
+                  n.tercero[0].nombreRazonSocial = "";
+                }
+                if (n.tercero[0].rfc === null) {
+                  n.tercero[0].rfc = "";
+                }
+              }
             }
           }
           if (n.localizacionInversion) {
-            // if (!n.localizacionInversion.pais) {
-            //   console.log(n.numeroCuentaContrato);
-            //   n.localizacionInversion.pais = "MX";
-            // }
+            if (!n.localizacionInversion.pais) {
+              console.log(n.numeroCuentaContrato);
+              n.localizacionInversion.pais = "MX";
+            }
             if (n.localizacionInversion.pais === null) {
               n.localizacionInversion.pais = "MX";
             }
