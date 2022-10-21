@@ -593,7 +593,8 @@ function inversionesCuentasValores(inversion) {
               if (n.localizacionInversion.rfc === null) {
                 n.localizacionInversion.rfc = "";
               }
-              if (n.localizacionInversion.pais === null) {
+              if (n.localizacionInversion.pais === null || n.localizacionInversion === undefined || !n.localizacionInversion) {
+                console.log("llega");
                 n.localizacionInversion.pais = "MX";
               }
             }
