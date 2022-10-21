@@ -262,7 +262,7 @@ function bienesInmuebles(bienInmueble) {
                /*if (n.tercero[0].tipoPersona === "FISICA") {
                   delete n.tercero;
                 }*/
-                if (n.tercero[0].tipoPersona === null){
+                if (n.tercero[0].tipoPersona === "null"){
                   delete n.tercero;
                   console.log ("llega");
                 }
