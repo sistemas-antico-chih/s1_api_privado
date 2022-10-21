@@ -395,7 +395,6 @@ function bienesMuebles(bienMueble) {
               delete n.transmisor;
             }
             else {
-
               if (n.transmisor[0].nombreRazonSocial === null) {
                 n.transmisor[0].nombreRazonSocial = "";
               }
@@ -413,7 +412,6 @@ function bienesMuebles(bienMueble) {
           if (n.formaPago === 'NO_APLICA') {
             n.formaPago = 'NO APLICA';
           }
-
         }
       }
     }
