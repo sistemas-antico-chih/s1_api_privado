@@ -571,6 +571,9 @@ function inversionesCuentasValores(inversion) {
       }
       else {
         if (n.titular[0].clave === "DEC") {
+          if (n.tercero[0].tipoPersona === null) {
+            delete n.tercero;
+          }
           if (n.tercero) {
             if (n.tercero[0].tipoPersona === "FISICA") {
               delete n.tercero;
@@ -583,9 +586,6 @@ function inversionesCuentasValores(inversion) {
                 if (n.tercero[0].rfc === null) {
                   n.tercero[0].rfc = "";
                 }
-              }
-              if (n.tercero[0].tipoPersona === null) {
-                delete n.tercero;
               }
             }
           }
