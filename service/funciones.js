@@ -309,7 +309,6 @@ function bienesInmuebles(bienInmueble) {
         }
       }
     }
-  }
     return n;
 })
 return bienInmueble;
