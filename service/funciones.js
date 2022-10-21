@@ -410,7 +410,8 @@ function bienesMuebles(bienMueble) {
         }
       }
     }
-    else{
+    else {
+      console.log("llega");
       console.log(n);
       delete n;
     }
