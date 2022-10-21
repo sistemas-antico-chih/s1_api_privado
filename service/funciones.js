@@ -579,7 +579,7 @@ function inversionesCuentasValores(inversion) {
           if (n.tercero[0].tipoPersona === null) {
             delete n.tercero;
           }
-          if (n.tercero[0]){
+          if (n.tercero){
             if (n.tercero[0].nombreRazonSocial === null) {
               n.tercero[0].nombreRazonSocial = "";
             }
@@ -588,10 +588,10 @@ function inversionesCuentasValores(inversion) {
             }
           }
           if (n.localizacionInversion) {
-            if (!n.localizacionInversion.pais) {
-              console.log(n.numeroCuentaContrato);
-              n.localizacionInversion.pais = "MX";
-            }
+            // if (!n.localizacionInversion.pais) {
+            //   console.log(n.numeroCuentaContrato);
+            //   n.localizacionInversion.pais = "MX";
+            // }
             if (n.localizacionInversion.pais === null) {
               n.localizacionInversion.pais = "MX";
             }
