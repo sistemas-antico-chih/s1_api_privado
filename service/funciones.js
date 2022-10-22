@@ -371,12 +371,13 @@ function bienesMuebles(bienMueble) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular){
       if (n.titular[0].clave != "DEC"){
-        console(n.titular[0].clave)
+        console.log(n.titular[0].clave);
         delete n;
       }
       if (n.titular[0].clave === "DEC"){
         console.log("llega "+n.titular[0].clave);
       }
+      return n;
     }
     
     /*if (n.titular) {
