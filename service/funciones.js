@@ -372,15 +372,18 @@ function bienesMuebles(bienMueble) {
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
         console.log(n);
+        delete n;
         delete n.tipoBien;
         delete n.transmisor;
         delete n.descripcionGeneralBien;
         delete n.formaAdquisicion;
+        delete n.formaPago;
         delete n.valorAdquisicion;
         delete n.fechaAdquisicion;
         delete n.motivoBaja;
         delete n.titular;
-        delete n;
+        delete n.tercero;
+        console.log("");
         console.log("");
         console.log("");
         console.log(n);
