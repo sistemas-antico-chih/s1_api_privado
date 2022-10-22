@@ -369,8 +369,8 @@ function vehiculos(vehiculo) {
 function bienesMuebles(bienMueble) {
   bienMueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
-    if (n.titular){
-      if (n.titular[0].clave != "DEC"){
+    if (n.titular) {
+      if (n.titular[0].clave != "DEC") {
         console.log(n);
         delete n.tipoBien;
         delete n.transmisor;
@@ -382,14 +382,17 @@ function bienesMuebles(bienMueble) {
         delete n.titular;
         delete n;
         console.log("");
+        console.log("");
         console.log(n);
       }
-      if (n.titular[0].clave === "DEC"){
-        console.log("llega");
+      if (n.titular) {
+        if (n.titular[0].clave === "DEC") {
+          console.log("llega");
+        }
       }
       return n;
     }
-    
+
     /*if (n.titular) {
       if (n.titular[0].clave != "DEC") {
         console.log(n);
