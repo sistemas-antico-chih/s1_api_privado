@@ -652,7 +652,7 @@ async function post_declaraciones(body) {
           if(rowExtend.bienesMuebles){
             if(rowExtend.bienesMuebles.bienMueble.length >= 1){
               ningunoMueble = false;
-              bienMueble = bienesMuebles(rowExtend.bienesMuebles);
+              bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
             } else {
               ningunoMueble = true;
               bienMueble = [];
