@@ -421,13 +421,6 @@ function bienesMuebles(bienMueble) {
       }
     }  
   })
-
-  var bienMueble=_.map(objresults, function (row) {
-    
-    return _.omit(rowExtend,
-    
-      );
-  });
   return bienMueble;
 }
 
