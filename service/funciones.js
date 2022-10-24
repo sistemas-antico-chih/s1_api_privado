@@ -373,7 +373,7 @@ function bienesMuebles(bienMueble) {
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
         console.log("llega");
-        break;
+        return;
       }
       if (n.titular[0].clave === "DEC") {
         console.log("aqui");
