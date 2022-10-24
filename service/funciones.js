@@ -373,7 +373,8 @@ function bienesMuebles(bienMueble) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {  
       if (n.titular[0].clave !== "DEC") {
-        return _.omit(bienMueble,n);
+        return _.omit(bienMueble,
+          n);
       }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero[0].tipoPersona === null) {
@@ -425,9 +426,9 @@ function bienesMuebles(bienMueble) {
     id: row.toObject()._id
   }, row.toObject());
  */
-  return _.omit(bienMueble,
+  /*return _.omit(bienMueble,
     'n.tercero');
-  
+  */
   //return bienMueble;
 }
 
