@@ -374,7 +374,7 @@ function bienesMuebles(bienMueble) {
       if (n.titular[0].clave !== "DEC") {
         num ++;
         console.log(num);
-        delete n;
+        delete n.tercero;
       }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero[0].tipoPersona === null) {
