@@ -368,8 +368,9 @@ function vehiculos(vehiculo) {
   return ;
 }*/
 
-function bienesMuebles(bienMueble) {
-  bienMueble.map((n) => {
+function bienesMuebles(bienesMuebles) {
+  bienesMuebles.map((n) => {
+    
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave === "DEC") {
@@ -416,15 +417,16 @@ function bienesMuebles(bienMueble) {
         }
       }
       if (n.titular[0].clave !== "DEC") {
-        console.log ("hi");
+        
         delete n;
         delete n.tercero;
+        console.log (n);
         return;
       }
     }
   });
   
-  return bienMueble;
+  return bienesMuebles;
 }
 
 function adeudosPasivos(adeudo) {
