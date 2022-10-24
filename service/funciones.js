@@ -373,7 +373,7 @@ function bienesMuebles(bienMueble) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave !== "DEC") {
-        n.pop();
+        bienMueble.n.pop;
       }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero[0].tipoPersona === null) {
@@ -421,17 +421,8 @@ function bienesMuebles(bienMueble) {
     }
   });
   
-  // return bienMueble;
-  /*let paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
-  let objresults = paginationResult.docs;
-  var strippedRows = _.map(objresults, function (row) {
-    let rowExtend = _.extend({
-      id: row.toObject()._id
-    }, row.toObject());
-    return _.omit(rowExtend,
-      '_id',
-    );
-  });*/
+  return bienMueble;
+
 }
 
 function adeudosPasivos(adeudo) {
