@@ -391,7 +391,7 @@ if(found > -1) {
   bienMueble.forEach((n) => {
     
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
-    if(titular){
+    if(n.titular){
       console.log(bienMueble);
     }
     /*if (n.titular) {
