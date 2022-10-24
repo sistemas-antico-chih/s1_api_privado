@@ -417,9 +417,8 @@ function bienesMuebles(bienMueble) {
           n.formaPago = 'NO APLICA';
         }
       }
-      return bienMueble;
-
     }  
+    return bienMueble;
   })
   //return bienMueble;
 }
