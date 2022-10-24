@@ -652,7 +652,9 @@ async function post_declaraciones(body) {
           if(rowExtend.bienesMuebles){
             if(rowExtend.bienesMuebles.bienMueble.length >= 1){
               ningunoMueble = false;
-              bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
+              if(bienesMuebles(rowExtend.bienesMuebles.bienMueble.titular[0].clave==="DEC")){
+                bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
+              }
             } else {
               ningunoMueble = true;
               bienMueble = [];

@@ -369,34 +369,15 @@ function vehiculos(vehiculo) {
 }*/
 
 function bienesMuebles(bienMueble) {
-  /*// Variable para saber si se encontró el elemento
-let found = -1;
-// Recorrer items por su posición en el arreglo
-for(let i in obj[0].products[0].items) {
-    // Comparar nombre
-    if(obj[0].products[0].items[i].name == item.name) {
-        // Se encontró, guardar posición y salir del ciclo
-        found = i;
-        break;
-    }
-}
-// Si el elemento existe, found será igual o mayor que cero
-if(found > -1) {
-    // Eliminar elemento del arreglo
-    obj[0].products[0].items.splice(found, 1);
-}
-// Comprobar resultado
-  */
-  
   bienMueble.forEach((n) => {
     
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
-    if(n.titular){
+    /*if(n.titular){
       console.log(n.titular[0].clave);
       bienMueble.n.splice(0,1);
       console.log(n.titular[0].clave);
-    }
-    /*if (n.titular) {
+    }*/
+    if (n.titular) {
       if (n.titular[0].clave === "DEC") {
         if (n.tercero[0].tipoPersona === null) {
           delete n.tercero;
@@ -441,10 +422,9 @@ if(found > -1) {
         }
       }
       if (n.titular[0].clave !== "DEC") {
-        
         delete bienMueble[n];
       }
-    }*/
+    }
   });
   
   return bienMueble;
