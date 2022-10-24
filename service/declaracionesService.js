@@ -657,6 +657,7 @@ async function post_declaraciones(body) {
               if (rowExtend.bienesMuebles.bienMueble[0].titular[0]) {
                 if (rowExtend.bienesMuebles.bienMueble[0].titular[0].clave === "DEC") {
                   bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
+                  console.log(bienMueble);
                 }
               }
             }

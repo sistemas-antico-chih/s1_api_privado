@@ -370,13 +370,7 @@ function vehiculos(vehiculo) {
 
 function bienesMuebles(bienMueble) {
   bienMueble.forEach((n) => {
-    
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
-    /*if(n.titular){
-      console.log(n.titular[0].clave);
-      bienMueble.n.splice(0,1);
-      console.log(n.titular[0].clave);
-    }*/
     if (n.titular) {
       if (n.titular[0].clave === "DEC") {
         if (n.tercero[0].tipoPersona === null) {
@@ -422,7 +416,7 @@ function bienesMuebles(bienMueble) {
         }
       }
       if (n.titular[0].clave !== "DEC") {
-        delete bienMueble[n];
+        //delete bienMueble[n];
       }
     }
   });
