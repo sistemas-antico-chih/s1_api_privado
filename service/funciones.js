@@ -369,9 +369,14 @@ function vehiculos(vehiculo) {
 function bienesMuebles(bienMueble) {
   bienMueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
-    if (n.titular) {
+    if (n.titular) {  
+      var num=0;
+      if (n.titular[0].clave !== "DEC") {
+        num ++;
+        console.log(num);
+        delete n;
+      }
       if (n.titular[0].clave === "DEC") {
-        console.log(n);
         if (n.tercero[0].tipoPersona === null) {
           delete n.tercero;
         }
