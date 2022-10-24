@@ -371,8 +371,8 @@ function bienesMuebles(bienMueble) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
-        console.log(n);
-        return "";
+        console.log("llega");
+        return {};
       }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero[0].tipoPersona === null) {
@@ -416,12 +416,12 @@ function bienesMuebles(bienMueble) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
-        return n;
+        return bienMueble;
       } 
     }
     //return n;
   })
-  return bienMueble;
+  //return bienMueble;
 }
 
 function adeudosPasivos(adeudo) {
