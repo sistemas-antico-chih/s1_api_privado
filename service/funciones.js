@@ -421,7 +421,7 @@ function bienesMuebles(bienMueble) {
     }
   });
   
-  return bienMueble;
+  return "algo";
 
 }
 
