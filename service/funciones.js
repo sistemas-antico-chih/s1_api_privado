@@ -416,8 +416,9 @@ function bienesMuebles(bienMueble) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
-        return bienMueble;
       }
+      return bienMueble;
+
     }  
   })
   //return bienMueble;
