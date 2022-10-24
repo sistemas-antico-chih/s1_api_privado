@@ -653,11 +653,13 @@ async function post_declaraciones(body) {
             if (rowExtend.bienesMuebles.bienMueble.length >= 1) {
               ningunoMueble = false;
             }
-            if (rowExtend.bienesMuebles.bienMueble[0].titular[0]) {
-              if (rowExtend.bienesMuebles.bienMueble[0].titular[0].clave === "DEC") {
-                bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
+            if (rowExtend.bienesMuebles.bienMueble[0]) {
+              if (rowExtend.bienesMuebles.bienMueble[0].titular[0]) {
+                if (rowExtend.bienesMuebles.bienMueble[0].titular[0].clave === "DEC") {
+                  bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
+                }
               }
-            } 
+            }
             else {
               ningunoMueble = true;
               bienMueble = [];
