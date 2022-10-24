@@ -421,9 +421,13 @@ function bienesMuebles(bienMueble) {
       }
     }  
   })
-
+  
+  /*let rowExtend = _.extend({
+    id: row.toObject()._id
+  }, row.toObject());
+ */
   return _.omit(n,
-    n.tercero);
+    'n.tercero');
   
   //return bienMueble;
 }
