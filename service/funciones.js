@@ -369,8 +369,8 @@ function vehiculos(vehiculo) {
 }*/
 
 function bienesMuebles(bienesMuebles) {
-  bienesMuebles.map((n) => {
-    
+  bienesMuebles.forEach((n) => {
+
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave === "DEC") {
