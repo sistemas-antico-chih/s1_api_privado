@@ -369,7 +369,7 @@ function vehiculos(vehiculo) {
 }*/
 
 function bienesMuebles(bienMueble) {
-  bienMueble.forEach((n) => {
+  bienMueble.map((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {  
       if (n.titular[0].clave !== "DEC") {
@@ -421,7 +421,11 @@ function bienesMuebles(bienMueble) {
       }
     }  
   })
-  return bienMueble;
+
+  return _.omit(n,
+    n.tercero);
+  
+  //return bienMueble;
 }
 
 function adeudosPasivos(adeudo) {
