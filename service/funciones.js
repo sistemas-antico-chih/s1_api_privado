@@ -371,11 +371,7 @@ function bienesMuebles(bienMueble) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     var num=0;
     if (n.titular) {
-      if (n.titular[0].clave != "DEC") {
-        console.log("llega");
-        return;
-      }
-      if (n.titular[0].clave === "DEC") {
+    if (n.titular[0].clave === "DEC") {
         console.log("aqui");
         if (n.tercero[0].tipoPersona === null) {
           delete n.tercero;
@@ -418,9 +414,13 @@ function bienesMuebles(bienMueble) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
-        num++;
-        return n;
       } 
+      num++;
+      return n;    
+    }
+    if (n.titular[0].clave != "DEC") {
+      console.log("llega");
+      return;
     }
     console.log (num);
     //return n;
