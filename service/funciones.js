@@ -1,3 +1,5 @@
+var _ = require('underscore');
+
 function convertirFechaLarga(fecha) {
   let year = fecha.getFullYear();
   let month = fecha.getMonth() + 1 < 10 ? '0' + (fecha.getMonth() + 1) : fecha.getMonth() + 1;
@@ -419,7 +421,7 @@ function bienesMuebles(bienMueble) {
       }
     }  
   })
-  
+
   var bienMueble=_.map(objresults, function (row) {
     
     return _.omit(rowExtend,
