@@ -426,9 +426,10 @@ function bienesMuebles(bienMueble) {
     id: row.toObject()._id
   }, row.toObject());
  */
-  /*return _.omit(bienMueble,
-    'n.tercero');
-  */
+  return _.omit(bienMueble,
+    '_id',
+    'tercero');
+  
   //return bienMueble;
 }
 
