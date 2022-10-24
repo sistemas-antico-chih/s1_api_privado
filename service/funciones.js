@@ -393,6 +393,7 @@ if(found > -1) {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if(n.titular){
       console.log(bienMueble);
+      delete bienMueble.n;
     }
     /*if (n.titular) {
       if (n.titular[0].clave === "DEC") {
