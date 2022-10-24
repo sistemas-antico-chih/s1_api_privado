@@ -420,17 +420,8 @@ function bienesMuebles(bienMueble) {
         }
       }
     }  
-  })
-  
-  /*let rowExtend = _.extend({
-    id: row.toObject()._id
-  }, row.toObject());
- */
-  return _.omit(bienMueble,
-    '_id',
-    'tercero');
-  
-  //return bienMueble;
+  });
+  return bienMueble;
 }
 
 function adeudosPasivos(adeudo) {
