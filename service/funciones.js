@@ -373,9 +373,10 @@ function bienesMuebles(bienMueble) {
     if (n.titular) {
       if (n.titular[0].clave != "DEC") {
         console.log("llega");
-        return ;
+        break;
       }
       if (n.titular[0].clave === "DEC") {
+        console.log("aqui");
         if (n.tercero[0].tipoPersona === null) {
           delete n.tercero;
         }
