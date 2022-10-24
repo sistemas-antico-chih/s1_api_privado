@@ -421,8 +421,7 @@ function bienesMuebles(bienMueble) {
     }
   });
   
-  return "algo";
-
+  return n;
 }
 
 function adeudosPasivos(adeudo) {
