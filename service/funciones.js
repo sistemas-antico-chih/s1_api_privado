@@ -369,7 +369,6 @@ function vehiculos(vehiculo) {
 function bienesMuebles(bienMueble) {
   bienMueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
-    var num = 0;
     if (n.titular) {
       if (n.titular[0].clave === "DEC") {
         console.log("aqui");
@@ -415,9 +414,11 @@ function bienesMuebles(bienMueble) {
           n.formaPago = 'NO APLICA';
         }
       }
+      return bienMueble;
     }
+
   })
-  return bienMueble;
+  //return bienMueble;
 }
 
 function adeudosPasivos(adeudo) {
