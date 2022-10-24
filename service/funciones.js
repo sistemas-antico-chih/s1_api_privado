@@ -391,7 +391,10 @@ if(found > -1) {
   bienMueble.forEach((n) => {
     
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
-    if (n.titular) {
+    if(titular){
+      console.log(bienMueble);
+    }
+    /*if (n.titular) {
       if (n.titular[0].clave === "DEC") {
         if (n.tercero[0].tipoPersona === null) {
           delete n.tercero;
@@ -439,7 +442,7 @@ if(found > -1) {
         
         delete bienMueble[n];
       }
-    }
+    }*/
   });
   
   return bienMueble;
