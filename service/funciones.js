@@ -420,7 +420,7 @@ function bienesMuebles(bienMueble) {
       }
     }  
   })
-  return bienMueble;
+  //return bienMueble;
 }
 
 function adeudosPasivos(adeudo) {
