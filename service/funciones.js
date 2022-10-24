@@ -370,11 +370,8 @@ function bienesMuebles(bienMueble) {
   bienMueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {  
-      var num=0;
       if (n.titular[0].clave !== "DEC") {
-        num ++;
-        console.log(num);
-        delete n.tercero;
+        continue;
       }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero[0].tipoPersona === null) {
@@ -418,8 +415,8 @@ function bienesMuebles(bienMueble) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
+        return n;
       }
-      return n;
     }  
   })
   return bienMueble;
