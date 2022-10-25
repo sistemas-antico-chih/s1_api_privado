@@ -431,6 +431,7 @@ function bienesMuebles(bienMueble) {
         delete n.descripcionGeneralBien;
         delete n.motivoBaja;
         delete n.titular;
+        delete bienMueble.n;
         console.log("llega2");
         console.log(n);
       }
