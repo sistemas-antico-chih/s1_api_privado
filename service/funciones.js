@@ -416,7 +416,7 @@ function bienesMuebles(bienMueble) {
         }
       }
       if (n.titular[0].clave !== "DEC") {
-        //delete bienMueble[n];
+        delete bienMueble[n].tercero;
       }
     }
   });
