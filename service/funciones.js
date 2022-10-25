@@ -431,14 +431,19 @@ function bienesMuebles(bienMueble) {
         console.log(n);
       }
     }
-    if(n === null){
+    if(n){
       console.log("llega3");
       delete n;
     }
-    console.log(n);
+    console.log("algo "+n);
   });
-  
-  return bienMueble;
+  if (bienMueble.n){
+    return bienMueble;
+  }
+  else {
+    return;
+  }
+  //return bienMueble;
 }
 
 function adeudosPasivos(adeudo) {
