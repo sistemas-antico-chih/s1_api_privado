@@ -416,7 +416,16 @@ function bienesMuebles(bienMueble) {
         }
       }
       if (n.titular[0].clave !== "DEC") {
+        console.log("");
+        console.log(n);
+        console.log("");
         delete n.tercero;
+        console.log("");
+        console.log(n);
+        console.log("");
+        delete n;
+        console.log("");
+        console.log(n);
       }
     }
   });
