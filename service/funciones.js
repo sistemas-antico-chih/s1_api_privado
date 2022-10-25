@@ -370,6 +370,7 @@ function vehiculos(vehiculo) {
 
 function bienesMuebles(bienMueble) {
   bienMueble.forEach((n) => {
+    console.log("principio "+ n.length);
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave === "DEC") {
@@ -431,19 +432,23 @@ function bienesMuebles(bienMueble) {
         console.log(n);
       }
     }
-    if(n){
+    console.log("principio 2 "+ n.length);
+
+    if(!n.titular){
       console.log("llega3");
       delete n;
     }
     console.log("algo "+n);
+    console.log("principio 3"+ n.length);
+
   });
-  if (bienMueble.n){
+  /*if (bienMueble.n){
     return bienMueble;
   }
   else {
     return;
-  }
-  //return bienMueble;
+  }*/
+  return bienMueble;
 }
 
 function adeudosPasivos(adeudo) {
