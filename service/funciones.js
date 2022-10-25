@@ -372,7 +372,7 @@ function vehiculos(vehiculo) {
 function bienesMuebles(bienMueble) {
   var values=[];
   for (var i=0; i < bienMueble.length; i++){
-    bienMueble[i].fechaAdquisicion = convertirFechaCorta(fechaAdquisicion[i]);
+    bienMueble[i].fechaAdquisicion = convertirFechaCorta(bienMueble[i].fechaAdquisicion);
     if (bienMueble[i].titular){
       if (bienMueble[i].titular[0].clave === "DEC"){
         values.push(bienMueble[i]);
