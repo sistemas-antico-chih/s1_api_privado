@@ -416,10 +416,6 @@ function bienesMuebles(bienMueble) {
         }
       }
       if (n.titular[0].clave !== "DEC") {
-        //console.log
-        console.log("original");
-        console.log(n);
-        console.log("/********/");
         delete n.tercero;
         delete n.transmisor;
         delete n.tipoBien;
@@ -428,11 +424,8 @@ function bienesMuebles(bienMueble) {
         delete n.fechaAdquisicion;
         delete n.valorAdquisicion;
         delete n.descripcionGeneralBien;
-        console.log("borrando tercero");
-        console.log(n);
-        console.log("/*********/");
-        delete n;
-        console.log("borrando todo N");
+        delete n.motivoBaja;
+        delete n.titular;
         console.log(n);
       }
     }
