@@ -416,10 +416,18 @@ function bienesMuebles(bienMueble) {
         }
       }
       if (n.titular[0].clave !== "DEC") {
+        //console.log
         console.log("original");
         console.log(n);
         console.log("/********/");
         delete n.tercero;
+        delete n.transmisor;
+        delete n.tipoBien;
+        delete n.formaPago;
+        delete n.formaAdquisicion;
+        delete n.fechaAdquisicion;
+        delete n.valorAdquisicion;
+        delete n.descripcionGeneralBien;
         console.log("borrando tercero");
         console.log(n);
         console.log("/*********/");
