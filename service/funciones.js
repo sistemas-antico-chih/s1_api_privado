@@ -369,8 +369,11 @@ function vehiculos(vehiculo) {
 }*/
 
 function bienesMuebles(bienMueble) {
+  console.log("**************");
+  console.log(bienMueble.length);
+  console.log("**************");
   bienMueble.forEach((n) => {
-    console.log("principio "+ n.length);
+    console.log("principio "+ bienMueble.length);
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
       if (n.titular[0].clave === "DEC") {
@@ -432,14 +435,14 @@ function bienesMuebles(bienMueble) {
         console.log(n);
       }
     }
-    console.log("principio 2 "+ n.length);
+    console.log("principio 2 "+ bienMueble.length);
 
     if(!n.titular){
       console.log("llega3");
       delete n;
     }
     console.log("algo "+n);
-    console.log("principio 3"+ n.length);
+    console.log("principio 3 "+ bienMueble.length);
 
   });
   /*if (bienMueble.n){
