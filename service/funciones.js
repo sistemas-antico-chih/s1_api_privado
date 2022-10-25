@@ -221,82 +221,79 @@ function datosPareja(datosPareja) {
 }
 
 function bienesInmuebles(bienInmueble) {
-  var bienesInmuebles=[];
+  let bienesInmuebles = [];
   bienInmueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
-
-        if (n.titular[0].clave === "DEC") {
-          if (n.superficieConstruccion.unidad === null) {
-            n.superficieConstruccion.unidad = 'm2';
-          }
-          if (n.superficieTerreno.unidad === null) {
-            n.superficieTerreno.unidad = 'm2';
-          }
-          if (n.domicilioExtranjero === null) {
-            delete n.domicilioExtranjero;
-          }
-          if (n.domicilioMexico === null) {
-            delete n.domicilioMexico;
-          }
-
-          if (n.tercero[0].tipoPersona === null) {
+      if (n.titular[0].clave === "DEC") {
+        if (n.superficieConstruccion.unidad === null) {
+          n.superficieConstruccion.unidad = 'm2';
+        }
+        if (n.superficieTerreno.unidad === null) {
+          n.superficieTerreno.unidad = 'm2';
+        }
+        if (n.domicilioExtranjero === null) {
+          delete n.domicilioExtranjero;
+        }
+        if (n.domicilioMexico === null) {
+          delete n.domicilioMexico;
+        }
+        if (n.tercero[0].tipoPersona === null) {
+          delete n.tercero;
+        }
+        if (n.tercero) {
+          if (n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
-          if (n.tercero) {
-            if (n.tercero[0].tipoPersona === "FISICA") {
-              delete n.tercero;
+          else {
+            if (n.tercero[0].nombreRazonSocial === null) {
+              n.tercero[0].nombreRazonSocial = "";
             }
-            else {
-              if (n.tercero[0].nombreRazonSocial === null) {
-                n.tercero[0].nombreRazonSocial = "";
-              }
-              if (n.tercero[0].rfc === null) {
-                n.tercero[0].rfc = "";
-              }
+            if (n.tercero[0].rfc === null) {
+              n.tercero[0].rfc = "";
             }
           }
-          if (n.transmisor[0].tipoPersona === null) {
+        }
+        if (n.transmisor[0].tipoPersona === null) {
+          delete n.transmisor;
+        }
+        if (n.transmisor) {
+          if (n.transmisor[0].tipoPersona === "FISICA") {
             delete n.transmisor;
           }
-          if (n.transmisor) {
-            if (n.transmisor[0].tipoPersona === "FISICA") {
-              delete n.transmisor;
+          else {
+            if (n.transmisor[0].nombreRazonSocial === null) {
+              n.transmisor[0].nombreRazonSocial = "";
             }
-            else {
-              if (n.transmisor[0].nombreRazonSocial === null) {
-                n.transmisor[0].nombreRazonSocial = "";
-              }
-              if (n.transmisor[0].rfc === null) {
-                n.transmisor[0].rfc = "";
-              }
+            if (n.transmisor[0].rfc === null) {
+              n.transmisor[0].rfc = "";
             }
           }
-          if (n.formaPago === 'CREDITO') {
-            n.formaPago = 'CRÉDITO';
-          }
-          if (n.formaPago === 'NO_APLICA') {
-            n.formaPago = 'NO APLICA';
-          }
-          if (n.valorConformeA === 'ESCRITURA_PUBLICA') {
-            n.valorConformeA = 'ESCRITURA PÚBLICA';
-          }
-          if (n.motivoBaja === null) {
-            delete n.motivoBaja;
-          }
-          delete n.datoIdentificacion;
-          n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
-          n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
-          bienesInmuebles = n;
         }
-      
+        if (n.formaPago === 'CREDITO') {
+          n.formaPago = 'CRÉDITO';
+        }
+        if (n.formaPago === 'NO_APLICA') {
+          n.formaPago = 'NO APLICA';
+        }
+        if (n.valorConformeA === 'ESCRITURA_PUBLICA') {
+          n.valorConformeA = 'ESCRITURA PÚBLICA';
+        }
+        if (n.motivoBaja === null) {
+          delete n.motivoBaja;
+        }
+        delete n.datoIdentificacion;
+        n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
+        n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
+        bienesInmuebles = n;
+      }
     }
   })
   return bienesInmuebles;
 }
 
 function vehiculos(vehiculo) {
-  var vehiculos = [];
+  let vehiculos = [];
   vehiculo.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
@@ -360,7 +357,7 @@ function vehiculos(vehiculo) {
 }
 
 function bienesMuebles(bienMueble) {
-  var bienesMuebles = [];
+  let bienesMuebles = [];
   bienMueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
@@ -416,131 +413,123 @@ function bienesMuebles(bienMueble) {
 }
 
 function adeudosPasivos(adeudo) {
+  let adeudos = []
   adeudo.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
-      if (n.titular[0].clave != "DEC") {
-        delete n;
-      }
-      else {
-        if (n.titular[0].clave === "DEC") {
-          if (n.tercero[0].tipoPersona === null) {
+      if (n.titular[0].clave === "DEC") {
+        if (n.tercero[0].tipoPersona === null) {
+          delete n.tercero;
+        }
+        if (n.tercero) {
+          if (n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
-          if (n.tercero) {
-            if (n.tercero[0].tipoPersona === "FISICA") {
-              delete n.tercero;
+          else {
+            if (n.tercero[0].nombreRazonSocial === null) {
+              n.tercero[0].nombreRazonSocial = "";
             }
-            else {
-              if (n.tercero[0].nombreRazonSocial === null) {
-                n.tercero[0].nombreRazonSocial = "";
-              }
-              if (n.tercero[0].rfc === null) {
-                n.tercero[0].rfc = "";
-              }
+            if (n.tercero[0].rfc === null) {
+              n.tercero[0].rfc = "";
             }
           }
-          if (n.montoOriginal) {
-            if (n.montoOriginal.moneda === null) {
-              n.montoOriginal.moneda = "MXN";
-            }
-          }
-          if (n.otorganteCredito.tipoPersona) {
-            if (n.otorganteCredito.tipoPersona === "FISICA") {
-              delete n.otorganteCredito;
-            }
-            else {
-              if (n.otorganteCredito.tipoPersona === null) {
-                n.otorganteCredito.tipoPersona = "";
-              }
-              if (n.otorganteCredito.nombreInstitucion === null) {
-                n.otorganteCredito.nombreInstitucion = "";
-              }
-              if (n.otorganteCredito.rfc === null) {
-                n.otorganteCredito.rfc = "";
-              }
-            }
-          }
-          if (n.montoOriginal) {
-            if (n.montoOriginal.moneda === null) {
-              n.montoOriginal.moneda = "MXN";
-            }
-          }
-          if (n.saldoInsolutoSituacionActual) {
-            if (n.saldoInsolutoSituacionActual.moneda === null) {
-              n.saldoInsolutoSituacionActual.moneda = "MXN";
-            }
-          }
-          if (n.localizacionAdeudo) {
-            if (n.localizacionAdeudo.pais === null) {
-              n.localizacionAdeudo.pais = "MX";
-            }
-          }
-          if (n.motivoBaja === null) {
-            delete n.motivoBaja;
-          }
-          delete n.numeroCuentaContrato;
         }
+        if (n.montoOriginal) {
+          if (n.montoOriginal.moneda === null) {
+            n.montoOriginal.moneda = "MXN";
+          }
+        }
+        if (n.otorganteCredito.tipoPersona) {
+          if (n.otorganteCredito.tipoPersona === "FISICA") {
+            delete n.otorganteCredito;
+          }
+          else {
+            if (n.otorganteCredito.tipoPersona === null) {
+              n.otorganteCredito.tipoPersona = "";
+            }
+            if (n.otorganteCredito.nombreInstitucion === null) {
+              n.otorganteCredito.nombreInstitucion = "";
+            }
+            if (n.otorganteCredito.rfc === null) {
+              n.otorganteCredito.rfc = "";
+            }
+          }
+        }
+        if (n.montoOriginal) {
+          if (n.montoOriginal.moneda === null) {
+            n.montoOriginal.moneda = "MXN";
+          }
+        }
+        if (n.saldoInsolutoSituacionActual) {
+          if (n.saldoInsolutoSituacionActual.moneda === null) {
+            n.saldoInsolutoSituacionActual.moneda = "MXN";
+          }
+        }
+        if (n.localizacionAdeudo) {
+          if (n.localizacionAdeudo.pais === null) {
+            n.localizacionAdeudo.pais = "MX";
+          }
+        }
+        if (n.motivoBaja === null) {
+          delete n.motivoBaja;
+        }
+        delete n.numeroCuentaContrato;
+        adeudos = n;
       }
     }
-    return n;
   })
-  return adeudo;
+  return adeudos;
 }
 
 function inversionesCuentasValores(inversion) {
+  let inversiones = [];
   inversion.forEach((n) => {
     if (n.titular) {
-      if (n.titular[0].clave != "DEC") {
-        delete n;
-      }
-      else {
-        if (n.titular[0].clave === "DEC") {
-          if (n.tercero[0].tipoPersona === null) {
+      if (n.titular[0].clave === "DEC") {
+        if (n.tercero[0].tipoPersona === null) {
+          delete n.tercero;
+        }
+        if (n.tercero) {
+          if (n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
-          if (n.tercero) {
-            if (n.tercero[0].tipoPersona === "FISICA") {
-              delete n.tercero;
+          else {
+            if (n.tercero[0].nombreRazonSocial === null) {
+              n.tercero[0].nombreRazonSocial = "";
             }
-            else {
-              if (n.tercero[0].nombreRazonSocial === null) {
-                n.tercero[0].nombreRazonSocial = "";
-              }
-              if (n.tercero[0].rfc === null) {
-                n.tercero[0].rfc = "";
-              }
+            if (n.tercero[0].rfc === null) {
+              n.tercero[0].rfc = "";
             }
           }
-          if (n.localizacionInversion) {
-            if (!n.localizacionInversion.pais) {
-              n.localizacionInversion.pais = "MX";
-            }
-            if (n.localizacionInversion.pais === null) {
-              n.localizacionInversion.pais = "MX";
-            }
-            if (n.localizacionInversion.institucionRazonSocial === null) {
-              n.localizacionAdeudo.institucionRazonSocial = "";
-            }
-            if (n.localizacionInversion.rfc === null) {
-              n.localizacionInversion.rfc = "";
-            }
-          }
-          if (n.motivoBaja === null) {
-            delete n.motivoBaja;
-          }
-          if (n.saldoSituacionActual) {
-            if (n.saldoSituacionActual.moneda === null) {
-              n.saldoSituacionActual = "MXN";
-            }
-          }
-          delete n.numeroCuentaContrato;
         }
+        if (n.localizacionInversion) {
+          if (!n.localizacionInversion.pais) {
+            n.localizacionInversion.pais = "MX";
+          }
+          if (n.localizacionInversion.pais === null) {
+            n.localizacionInversion.pais = "MX";
+          }
+          if (n.localizacionInversion.institucionRazonSocial === null) {
+            n.localizacionAdeudo.institucionRazonSocial = "";
+          }
+          if (n.localizacionInversion.rfc === null) {
+            n.localizacionInversion.rfc = "";
+          }
+        }
+        if (n.motivoBaja === null) {
+          delete n.motivoBaja;
+        }
+        if (n.saldoSituacionActual) {
+          if (n.saldoSituacionActual.moneda === null) {
+            n.saldoSituacionActual = "MXN";
+          }
+        }
+        delete n.numeroCuentaContrato;
+        inversiones = n;
       }
     }
-    return n;
   })
-  return inversion;
+  return inversiones;
 }
 
 function prestamoComodato(prestamo) {
@@ -584,249 +573,220 @@ function prestamoComodato(prestamo) {
         }
       }
     }
-    return n;
   })
   return prestamo;
 }
 
 function participacion(participacion) {
+  let participaciones = [];
   participacion.forEach((n) => {
     if (n.tipoRelacion) {
-      if (n.tipoRelacion != "DECLARANTE") {
-        delete n;
-      }
-      else {
-        if (n.tipoRelacion === "DECLARANTE") {
-          if (n.tipoOperacion === null) {
-            delete n.tipoOperacion;
-          }
-          if (n.recibeRemuneracion === false) {
-            delete n.montoMensual;
-          }
-          if (n.montoMensual) {
-            if (n.montoMensual.moneda === null) {
-              n.montoMensual.moneda = "MXN";
-            }
-          }
-          if (n.ubicacion) {
-            if (n.ubicacion.pais === null) {
-              n.ubicacion.pais = "MX";
-            }
-          }
-          if (n.porcentajeParticipacion === 0) {
-            n.porcentajeParticipacion = 1;
+      if (n.tipoRelacion === "DECLARANTE") {
+        if (n.tipoOperacion === null) {
+          delete n.tipoOperacion;
+        }
+        if (n.recibeRemuneracion === false) {
+          delete n.montoMensual;
+        }
+        if (n.montoMensual) {
+          if (n.montoMensual.moneda === null) {
+            n.montoMensual.moneda = "MXN";
           }
         }
+        if (n.ubicacion) {
+          if (n.ubicacion.pais === null) {
+            n.ubicacion.pais = "MX";
+          }
+        }
+        if (n.porcentajeParticipacion === 0) {
+          n.porcentajeParticipacion = 1;
+        }
+        participaciones = n;
       }
     }
-    return n;
   })
-  return participacion;
+  return participaciones;
 }
 
-function tomaDeciciones(tomaDecision) {
+function tomaDecisiones(tomaDecision) {
+  let tomaDecisiones = [];
   tomaDecision.forEach((n) => {
     if (n.tipoRelacion) {
-      if (n.tipoRelacion != "DECLARANTE") {
-        delete n;
-      }
-      else {
-        n.fechaInicioParticipacion = convertirFechaCorta(n.fechaInicioParticipacion);
-        if (n.tipoRelacion === "DECLARANTE") {
-          if (n.tipoOperacion === null) {
-            n.tipoOperacion = "AGREGAR";
-          }
-          if (n.recibeRemuneracion === false) {
-            delete n.montoMensual;
-          }
-          if (n.montoMensual) {
-            if (n.montoMensual.moneda === null) {
-              n.montoMensual.moneda = "MXN";
-            }
-          }
-          if (n.ubicacion) {
-            if (n.ubicacion.pais === null) {
-              n.ubicacion.pais = "MX";
-            }
+      n.fechaInicioParticipacion = convertirFechaCorta(n.fechaInicioParticipacion);
+      if (n.tipoRelacion === "DECLARANTE") {
+        if (n.tipoOperacion === null) {
+          n.tipoOperacion = "AGREGAR";
+        }
+        if (n.recibeRemuneracion === false) {
+          delete n.montoMensual;
+        }
+        if (n.montoMensual) {
+          if (n.montoMensual.moneda === null) {
+            n.montoMensual.moneda = "MXN";
           }
         }
+        if (n.ubicacion) {
+          if (n.ubicacion.pais === null) {
+            n.ubicacion.pais = "MX";
+          }
+        }
+        tomaDecisiones = n;
       }
     }
-    return n;
   });
-  return tomaDecision;
+  return tomaDecisiones;
 }
 
 function apoyos(apoyo) {
+  let apoyos = [];
   apoyo.forEach((n) => {
     if (n.beneficiarioPrograma) {
-      if (n.beneficiarioPrograma.clave != "DC") {
-        delete n;
-      }
-      else {
-        if (n.beneficiarioPrograma.clave === "DC") {
-          if (n.montoApoyoMensual) {
-            if (n.montoApoyoMensual.moneda === null) {
-              n.montoApoyoMensual.moneda = 'MXN';
-            }
+      if (n.beneficiarioPrograma.clave === "DC") {
+        if (n.montoApoyoMensual) {
+          if (n.montoApoyoMensual.moneda === null) {
+            n.montoApoyoMensual.moneda = 'MXN';
           }
         }
+        apoyos = n;
       }
     }
-    return n;
   });
-  return apoyo;
+  return apoyos;
 }
 
 function representaciones(representacion) {
+  let representaciones = [];
   representacion.forEach((n) => {
     n.fechaInicioRepresentacion = convertirFechaCorta(n.fechaInicioRepresentacion);
     if (n.tipoRelacion) {
-      if (n.tipoRelacion != "DECLARANTE") {
-        delete n;
-      }
-      else {
-        if (n.tipoRelacion === "DECLARANTE") {
-          if (n.tipoOperacion === null) {
-            n.tipoOperacion = "AGREGAR";
-          }
-          if (n.recibeRemuneracion === false) {
-            if (n.montoMensual === null) {
-              delete n.montoMensual;
-            }
-          }
-          if (n.montoMensual) {
-            if (n.montoMensual.moneda === null) {
-              n.montoMensual.moneda = "MXN"
-            }
-          }
-          if (n.ubicacion) {
-            if (n.ubicacion.pais === null) {
-              n.ubicacion.pais = "MX";
-            }
-          }
-          if (n.rfc === null) {
-            n.rfc = "";
-          }
-          if (n.tipoPersona === "FISICA") {
-            delete n.rfc;
-            delete n.nombreRazonSocial;
+      if (n.tipoRelacion === "DECLARANTE") {
+        if (n.tipoOperacion === null) {
+          n.tipoOperacion = "AGREGAR";
+        }
+        if (n.recibeRemuneracion === false) {
+          if (n.montoMensual === null) {
+            delete n.montoMensual;
           }
         }
+        if (n.montoMensual) {
+          if (n.montoMensual.moneda === null) {
+            n.montoMensual.moneda = "MXN"
+          }
+        }
+        if (n.ubicacion) {
+          if (n.ubicacion.pais === null) {
+            n.ubicacion.pais = "MX";
+          }
+        }
+        if (n.rfc === null) {
+          n.rfc = "";
+        }
+        if (n.tipoPersona === "FISICA") {
+          delete n.rfc;
+          delete n.nombreRazonSocial;
+        }
+        representaciones = n;
       }
     }
-    return n;
   });
-  return representacion;
+  return representaciones;
 }
 
 function clientesPrincipales(cliente) {
+  let clientes = [];
   cliente.forEach((n) => {
     if (n.tipoRelacion) {
-      if (n.tipoRelacion != "DECLARANTE") {
-        delete n;
-      }
-      else {
-        if (n.tipoRelacion === "DECLARANTE") {
-          if (n.clientePrincipal.tipoPersona === "FISICA") {
-            delete n.clientePrincipal;
+      if (n.tipoRelacion === "DECLARANTE") {
+        if (n.clientePrincipal.tipoPersona === "FISICA") {
+          delete n.clientePrincipal;
+        }
+        if (n.empresa.rfc === null) {
+          n.empresa.rfc = "";
+        }
+        if (n.ubicacion) {
+          if (n.ubicacion.pais === null) {
+            n.ubicacion.pais = "MX";
           }
-          if (n.empresa.rfc === null) {
-            n.empresa.rfc = "";
+          if (n.ubicacion.entidadFederativa === null) {
+            n.ubicacion.entidadFederativa = "";
           }
-          if (n.ubicacion) {
-            if (n.ubicacion.pais === null) {
-              n.ubicacion.pais = "MX";
-            }
-            if (n.ubicacion.entidadFederativa === null) {
-              n.ubicacion.entidadFederativa = "";
-            }
-            if (n.ubicacion.pais !== 'MX') {
-              delete n.ubicacion.entidadFederativa;
-            }
-          }
-          if (n.clientePrincipal === null) {
-            n.clientePrincipal = "";
-          }
-          if (n.montoAproximadoGanancia.moneda === null) {
-            n.montoAproximadoGanancia.moneda = "MXN";
+          if (n.ubicacion.pais !== 'MX') {
+            delete n.ubicacion.entidadFederativa;
           }
         }
+        if (n.clientePrincipal === null) {
+          n.clientePrincipal = "";
+        }
+        if (n.montoAproximadoGanancia.moneda === null) {
+          n.montoAproximadoGanancia.moneda = "MXN";
+        }
+        clientes = n;
       }
     }
-    return n;
   });
-  return cliente;
+  return clientes;
 }
 
 function beneficiosPrivados(beneficio) {
+  let beneficios = [];
   beneficio.forEach((n) => {
     if (n.beneficiario) {
-      if (n.beneficiario[0].clave != "DC") {
-        delete n;
-      }
-      else {
-        if (n.beneficiario[0].clave === "DC") {
+      if (n.beneficiario[0].clave === "DC") {
 
-          if (n.otorgante.tipoPersona === null) {
+        if (n.otorgante.tipoPersona === null) {
+          delete n.otorgante;
+        }
+        if (n.otorgante) {
+          if (n.otorgante.tipoPersona === "FISICA") {
             delete n.otorgante;
           }
-          if (n.otorgante) {
-            if (n.otorgante.tipoPersona === "FISICA") {
-              delete n.otorgante;
-            }
-          }
-          if (n.otorgante.nombreRazonSocial === null) {
-            n.otorgante.nombreRazonSocial = "";
-          }
-          if (n.otorgante.rfc === null) {
-            n.otorgante.rfc = "";
-          }
-          if (n.montoMensualAproximado) {
-            if (n.montoMensualAproximado.moneda === null) {
-              n.montoMensualAproximado.moneda = "MXN";
-            }
+        }
+        if (n.otorgante.nombreRazonSocial === null) {
+          n.otorgante.nombreRazonSocial = "";
+        }
+        if (n.otorgante.rfc === null) {
+          n.otorgante.rfc = "";
+        }
+        if (n.montoMensualAproximado) {
+          if (n.montoMensualAproximado.moneda === null) {
+            n.montoMensualAproximado.moneda = "MXN";
           }
         }
+        beneficios = n;
       }
     }
-    return n;
   });
-  return beneficio;
+  return beneficios;
 }
 
 function fideicomisos(fideicomiso) {
+  let fideicomisos = [];
   fideicomiso.forEach((n) => {
     if (n.tipoRelacion) {
-      if (n.tipoRelacion != "DECLARANTE") {
-        delete n;
-      }
-      else {
-        if (n.tipoRelacion === "DECLARANTE") {
-          if (n.rfcFideicomiso === null) {
-            n.rfcFideicomiso = "";
-          }
-          if (n.fideicomitente.rfc === null) {
-            n.fideicomitente.rfc = "";
-          }
-          if (n.extranjero === null) {
-            n.extranjero = "MX";
-          }
-          if (n.fideicomitente === null) {
-            n.fideicomitente = "";
-          }
-          if (n.fiduciario === null) {
-            n.fiduciario = "";
-          }
-          if (n.fideicomisario === null) {
-            n.fideicomisario = "";
-          }
+      if (n.tipoRelacion === "DECLARANTE") {
+        if (n.rfcFideicomiso === null) {
+          n.rfcFideicomiso = "";
         }
+        if (n.fideicomitente.rfc === null) {
+          n.fideicomitente.rfc = "";
+        }
+        if (n.extranjero === null) {
+          n.extranjero = "MX";
+        }
+        if (n.fideicomitente === null) {
+          n.fideicomitente = "";
+        }
+        if (n.fiduciario === null) {
+          n.fiduciario = "";
+        }
+        if (n.fideicomisario === null) {
+          n.fideicomisario = "";
+        }
+        fideicomisos = n;
       }
     }
-    return n;
   });
-  return fideicomiso;
+  return fideicomisos;
 }
 
 module.exports = {
@@ -847,7 +807,7 @@ module.exports = {
   inversionesCuentasValores,
   prestamoComodato,
   participacion,
-  tomaDeciciones,
+  tomaDecisiones,
   apoyos,
   representaciones,
   clientesPrincipales,

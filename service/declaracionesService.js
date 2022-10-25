@@ -21,7 +21,7 @@ var {
   inversionesCuentasValores,
   prestamoComodato,
   participacion,
-  tomaDeciciones,
+  tomaDecisiones,
   apoyos,
   representaciones,
   clientesPrincipales,
@@ -635,7 +635,10 @@ async function post_declaraciones(body) {
           if(rowExtend.vehiculos){
             if(rowExtend.vehiculos.vehiculo.length >= 1){
               ningunoVehiculo = false;
+              console.log(vehiculos(rowExtend.vehiculos.vehiculo));
               vehiculo = vehiculos(rowExtend.vehiculos.vehiculo);
+              console.log(vehiculo);
+
             } else {
               ningunoVehiculo = true;
               vehiculo = [];
@@ -737,7 +740,7 @@ async function post_declaraciones(body) {
           if(rowExtend.participacionTomaDecisiones){
             if(rowExtend.participacionTomaDecisiones.participacion.length >= 1){
               ningunoParticipacionTomaDecisiones = false;
-              participacionTomaDecisiones = tomaDeciciones(rowExtend.participacionTomaDecisiones.participacion);
+              participacionTomaDecisiones = tomaDecisiones(rowExtend.participacionTomaDecisiones.participacion);
             } else {
               ningunoParticipacionTomaDecisiones = true;
               participacionTomaDecisiones = [];
