@@ -639,7 +639,7 @@ async function post_declaraciones(body) {
               if (vehiculo.length >= 1){
                 ningunoVehiculo = false;
                 vehiculo = vehiculo;
-                console.log(vehiculo.length)
+                console.log(vehiculo.length);
               }
             } else {
               ningunoVehiculo = true;
