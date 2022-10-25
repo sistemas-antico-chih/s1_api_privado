@@ -454,7 +454,7 @@ function bienesMuebles(bienMueble) {
   }*/
   delete bienMueble[0];
   console.log(bienMueble);
-  return bienMueble;
+  return bienMueble[1];
 }
 
 function adeudosPasivos(adeudo) {
