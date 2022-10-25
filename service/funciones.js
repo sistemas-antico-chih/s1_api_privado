@@ -452,6 +452,8 @@ function bienesMuebles(bienMueble) {
   else {
     return;
   }*/
+  delete bienMueble[0];
+  console.log(bienMueble);
   return bienMueble;
 }
 
