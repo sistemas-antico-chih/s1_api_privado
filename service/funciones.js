@@ -371,20 +371,18 @@ function vehiculos(vehiculo) {
 
 function bienesMuebles(bienMueble) {
   var values=[];
-  for (var i=0; i < bienMueble.length; i++){
+ /* for (var i=0; i < bienMueble.length; i++){
     bienMueble[i].fechaAdquisicion = convertirFechaCorta(bienMueble[i].fechaAdquisicion);
     if (bienMueble[i].titular){
       if (bienMueble[i].titular[0].clave === "DEC"){
         values.push(bienMueble[i]);
+        if(values[i])
       }
     }
   }
   return values;
-  
+  */
 
-  /*console.log("**************");
-  console.log(bienMueble.length);
-  console.log("**************");
   bienMueble.forEach((n) => {
     console.log("principio "+ bienMueble.length);
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
@@ -432,6 +430,7 @@ function bienesMuebles(bienMueble) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
+        values=n;
       }
       if (n.titular[0].clave !== "DEC") {
         delete n.tercero;
@@ -445,31 +444,14 @@ function bienesMuebles(bienMueble) {
         delete n.motivoBaja;
         delete n.titular;
         delete bienMueble.n;
-        console.log("llega2");
-        console.log(n);
+
       }
     }
-    console.log("principio 2 "+ bienMueble.length);
-
-    if(!n.titular){
-      console.log("llega3");
-      delete n;
-    }
-    console.log("algo "+n);
-    console.log("principio 3 "+ bienMueble.length);
+    
 
   });
-  /*if (bienMueble.n){
-    return bienMueble;
-  }
-  else {
-    return;
-  }*/
-  /*delete bienMueble[0];
-  console.log(bienMueble);
-  //var x=[0,1];
-  return bienMueble[0,1];
-  */
+  return values;
+  
 }
 
 function adeudosPasivos(adeudo) {
