@@ -429,6 +429,10 @@ function bienesMuebles(bienMueble) {
         console.log(n);
       }
     }
+    if(n ==="{}"){
+      delete n;
+    }
+    console.log(n);
   });
   
   return bienMueble;
