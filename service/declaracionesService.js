@@ -617,8 +617,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.bienesInmuebles){
             if(rowExtend.bienesInmuebles.bienInmueble.length >= 1){
-              ningunoInmueble = false;
+              //ningunoInmueble = false;
               bienInmueble = bienesInmuebles(rowExtend.bienesInmuebles.bienInmueble);
+              if (bienInmueble.length >= 1){
+                ningunoInmueble = false;
+                bienInmueble = bienInmueble;
+              }
             } else {
               ningunoInmueble = true;
               bienInmueble = [];
@@ -639,7 +643,6 @@ async function post_declaraciones(body) {
               if (vehiculo.length >= 1){
                 ningunoVehiculo = false;
                 vehiculo = vehiculo;
-                console.log(vehiculo.length);
               }
             } else {
               ningunoVehiculo = true;
@@ -656,8 +659,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.bienesMuebles){
             if(rowExtend.bienesMuebles.bienMueble.length >= 1){
-              ningunoMueble = false;
+              //ningunoMueble = false;
               bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
+              if (bienMueble.length >= 1){
+                ningunoMueble = false;
+                bienMueble = bienMueble;
+              }
             } else {
               ningunoMueble = true;
               bienMueble = [];
@@ -673,8 +680,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.adeudosPasivos){
             if(rowExtend.adeudosPasivos.adeudo.length >= 1){
-              ningunoAdeudo = false;
+              //ningunoAdeudo = false;
               adeudo = adeudosPasivos(rowExtend.adeudosPasivos.adeudo);
+              if (adeudo.length >= 1){
+                ningunoAdeudo = false;
+                adeudo = adeudo;
+              }
             } else {
               ningunoAdeudo = true;
               adeudo = [];
@@ -690,8 +701,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.inversionesCuentasValores){
             if(rowExtend.inversionesCuentasValores.inversion.length >= 1){
-              ningunoInversion = false;
+              //ningunoInversion = false;
               inversion = inversionesCuentasValores(rowExtend.inversionesCuentasValores.inversion);
+              if (inversion.length >= 1){
+                ningunoInversion = false;
+                inversion = inversion;
+              }
             } else {
               ningunoInversion = true;
               inversion = [];
@@ -724,8 +739,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.participacion){
             if(rowExtend.participacion.participacion.length >= 1){
-              ningunoParticipacion = false;
+              //ningunoParticipacion = false;
               participacion1 = participacion(rowExtend.participacion.participacion);
+              if (participacion1.length >= 1){
+                ningunoParticipacion = false;
+                participacion1 = participacion1;
+              }
             } else {
               ningunoParticipacion = true;
               participacion1 = [];
@@ -741,8 +760,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.participacionTomaDecisiones){
             if(rowExtend.participacionTomaDecisiones.participacion.length >= 1){
-              ningunoParticipacionTomaDecisiones = false;
+              //ningunoParticipacionTomaDecisiones = false;
               participacionTomaDecisiones = tomaDecisiones(rowExtend.participacionTomaDecisiones.participacion);
+              if (participacionTomaDecisiones.length >= 1){
+                ningunoParticipacionTomaDecisiones = false;
+                participacionTomaDecisiones = participacionTomaDecisiones;
+              }
             } else {
               ningunoParticipacionTomaDecisiones = true;
               participacionTomaDecisiones = [];
@@ -758,8 +781,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.apoyos){
             if(rowExtend.apoyos.apoyo.length >= 1){
-              ningunoApoyo = false;
+              //ningunoApoyo = false;
               apoyo = apoyos(rowExtend.apoyos.apoyo);
+              if (apoyo.length >= 1){
+                ningunoApoyo = false;
+                apoyo = apoyo;
+              }
             } else {
               ningunoApoyo = true;
               apoyo = [];
@@ -775,8 +802,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.representaciones){
             if(rowExtend.representaciones.representacion.length >= 1){
-              ningunoRepresentacion = false;
+              //ningunoRepresentacion = false;
               representacion = representaciones(rowExtend.representaciones.representacion);
+              if (representacion.length >= 1){
+                ningunoRepresentacion = false;
+                representacion = representacion;
+              }
             } else {
               ningunoRepresentacion = true;
               representacion = [];
@@ -792,8 +823,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.clientesPrincipales){
             if(rowExtend.clientesPrincipales.cliente.length >= 1){
-              ningunoClientes = false;
+              //ningunoClientes = false;
               cliente = clientesPrincipales(rowExtend.clientesPrincipales.cliente);
+              if (cliente.length >= 1){
+                ningunoClientes = false;
+                cliente = cliente;
+              }
             } else {
               ningunoClientes = true;
               cliente = [];
@@ -809,8 +844,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.beneficiosPrivados){
             if(rowExtend.beneficiosPrivados.beneficio.length >= 1){
-              ningunoBeneficios = false;
+              //ningunoBeneficios = false;
               beneficio = beneficiosPrivados(rowExtend.beneficiosPrivados.beneficio);
+              if (beneficio.length >= 1){
+                ningunoBeneficios = false;
+                beneficio = beneficio;
+              }
             } else {
               ningunoBeneficios = true;
               beneficio = [];
@@ -826,8 +865,12 @@ async function post_declaraciones(body) {
           }
           if(rowExtend.fideicomisos){
             if(rowExtend.fideicomisos.fideicomiso.length >= 1){
-              ningunoFideicomisos = false;
+              //ningunoFideicomisos = false;
               fideicomiso = fideicomisos(rowExtend.fideicomisos.fideicomiso);
+              if (fideicomiso.length >= 1){
+                ningunoFideicomisos = false;
+                fideicomiso = fideicomiso;
+              }
             } else {
               ningunoFideicomisos = true;
               fideicomiso = [];
