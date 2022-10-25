@@ -369,6 +369,20 @@ function vehiculos(vehiculo) {
 }*/
 
 function bienesMuebles(bienMueble) {
+  /*for (var i=0; i < bienMueble.length; i++){
+    bienMueble[i].fechaAdquisicion = convertirFechaCorta(fechaAdquisicion[i]);
+    if (bienMueble[i].titular){
+      if (bienMueble[i].titular[0].clave !== "DEC"){
+
+      }
+      else{
+
+      }
+    }
+  }
+  //return bienMueble
+  */
+
   console.log("**************");
   console.log(bienMueble.length);
   console.log("**************");
@@ -454,7 +468,8 @@ function bienesMuebles(bienMueble) {
   }*/
   delete bienMueble[0];
   console.log(bienMueble);
-  return bienMueble[1];
+  var x=[0,1];
+  return bienMueble[x];
 }
 
 function adeudosPasivos(adeudo) {
