@@ -736,15 +736,15 @@ function beneficiosPrivados(beneficio) {
           delete n.otorgante;
         }
         if (n.otorgante) {
+          if (n.otorgante.nombreRazonSocial === null) {
+            n.otorgante.nombreRazonSocial = "";
+          }
+          if (n.otorgante.rfc === null) {
+            n.otorgante.rfc = "";
+          }
           if (n.otorgante.tipoPersona === "FISICA") {
             delete n.otorgante;
           }
-        }
-        if (n.otorgante.nombreRazonSocial === null) {
-          n.otorgante.nombreRazonSocial = "";
-        }
-        if (n.otorgante.rfc === null) {
-          n.otorgante.rfc = "";
         }
         if (n.montoMensualAproximado) {
           if (n.montoMensualAproximado.moneda === null) {
