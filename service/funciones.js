@@ -1,3 +1,4 @@
+const { values } = require('underscore');
 var _ = require('underscore');
 
 function convertirFechaLarga(fecha) {
@@ -369,21 +370,19 @@ function vehiculos(vehiculo) {
 }*/
 
 function bienesMuebles(bienMueble) {
-  /*for (var i=0; i < bienMueble.length; i++){
+  var values=[];
+  for (var i=0; i < bienMueble.length; i++){
     bienMueble[i].fechaAdquisicion = convertirFechaCorta(fechaAdquisicion[i]);
     if (bienMueble[i].titular){
-      if (bienMueble[i].titular[0].clave !== "DEC"){
-
-      }
-      else{
-
+      if (bienMueble[i].titular[0].clave === "DEC"){
+        values.push(bienMueble[i]);
       }
     }
   }
-  //return bienMueble
-  */
+  return values;
+  
 
-  console.log("**************");
+  /*console.log("**************");
   console.log(bienMueble.length);
   console.log("**************");
   bienMueble.forEach((n) => {
@@ -466,10 +465,11 @@ function bienesMuebles(bienMueble) {
   else {
     return;
   }*/
-  delete bienMueble[0];
+  /*delete bienMueble[0];
   console.log(bienMueble);
   //var x=[0,1];
   return bienMueble[0,1];
+  */
 }
 
 function adeudosPasivos(adeudo) {
