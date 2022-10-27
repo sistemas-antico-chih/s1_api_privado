@@ -644,7 +644,8 @@ async function post_declaraciones(body) {
             if (rowExtend.vehiculos.vehiculo.length >= 1) {
               //ningunoVehiculo = false;
               vehiculo = vehiculos(rowExtend.vehiculos.vehiculo);
-              if (vehiculo[0]) {
+              console.log(vehiculo.length);
+              if (vehiculo) {
                 ningunoVehiculo = false;
                 vehiculo = vehiculo;
               }
