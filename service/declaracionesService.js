@@ -619,7 +619,7 @@ async function post_declaraciones(body) {
             if (rowExtend.bienesInmuebles.bienInmueble.length >= 1) {
               //ningunoInmueble = false;
               bienInmueble = bienesInmuebles(rowExtend.bienesInmuebles.bienInmueble);
-              if (bienInmueble.length >= 1) {
+              if (bienInmueble) {
                 ningunoInmueble = false;
                 bienInmueble = bienInmueble;
               }
@@ -644,14 +644,6 @@ async function post_declaraciones(body) {
             if (rowExtend.vehiculos.vehiculo.length >= 1) {
               //ningunoVehiculo = false;
               vehiculo = vehiculos(rowExtend.vehiculos.vehiculo);
-              
-              console.log("*************");
-              console.log(vehiculo);
-              /*
-              console.log(vehiculo[0]);
-              console.log(vehiculo.length);
-              console.log(vehiculo)
-              */
               if (vehiculo) {
                 ningunoVehiculo = false;
                 vehiculo = vehiculo;
@@ -677,7 +669,7 @@ async function post_declaraciones(body) {
             if (rowExtend.bienesMuebles.bienMueble.length >= 1) {
               //ningunoMueble = false;
               bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
-              if (bienMueble.length >= 1) {
+              if (bienMueble) {
                 ningunoMueble = false;
                 bienMueble = bienMueble;
               }
@@ -702,7 +694,7 @@ async function post_declaraciones(body) {
             if (rowExtend.adeudosPasivos.adeudo.length >= 1) {
               //ningunoAdeudo = false;
               adeudo = adeudosPasivos(rowExtend.adeudosPasivos.adeudo);
-              if (adeudo.length >= 1) {
+              if (adeudo) {
                 ningunoAdeudo = false;
                 adeudo = adeudo;
               }
@@ -727,7 +719,7 @@ async function post_declaraciones(body) {
             if (rowExtend.inversionesCuentasValores.inversion.length >= 1) {
               //ningunoInversion = false;
               inversion = inversionesCuentasValores(rowExtend.inversionesCuentasValores.inversion);
-              if (inversion.length >= 1) {
+              if (inversion) {
                 ningunoInversion = false;
                 inversion = inversion;
               }
@@ -770,7 +762,7 @@ async function post_declaraciones(body) {
             if (rowExtend.participacion.participacion.length >= 1) {
               //ningunoParticipacion = false;
               participacion1 = participacion(rowExtend.participacion.participacion);
-              if (participacion1.length >= 1) {
+              if (participacion1) {
                 ningunoParticipacion = false;
                 participacion1 = participacion1;
               }
@@ -795,7 +787,7 @@ async function post_declaraciones(body) {
             if (rowExtend.participacionTomaDecisiones.participacion.length >= 1) {
               //ningunoParticipacionTomaDecisiones = false;
               participacionTomaDecisiones = tomaDecisiones(rowExtend.participacionTomaDecisiones.participacion);
-              if (participacionTomaDecisiones.length >= 1) {
+              if (participacionTomaDecisiones) {
                 ningunoParticipacionTomaDecisiones = false;
                 participacionTomaDecisiones = participacionTomaDecisiones;
               }
@@ -820,7 +812,7 @@ async function post_declaraciones(body) {
             if (rowExtend.apoyos.apoyo.length >= 1) {
               //ningunoApoyo = false;
               apoyo = apoyos(rowExtend.apoyos.apoyo);
-              if (apoyo.length >= 1) {
+              if (apoyo.length) {
                 ningunoApoyo = false;
                 apoyo = apoyo;
               }
@@ -845,7 +837,7 @@ async function post_declaraciones(body) {
             if (rowExtend.representaciones.representacion.length >= 1) {
               //ningunoRepresentacion = false;
               representacion = representaciones(rowExtend.representaciones.representacion);
-              if (representacion.length >= 1) {
+              if (representacion) {
                 ningunoRepresentacion = false;
                 representacion = representacion;
               }
@@ -870,7 +862,7 @@ async function post_declaraciones(body) {
             if (rowExtend.clientesPrincipales.cliente.length >= 1) {
               //ningunoClientes = false;
               cliente = clientesPrincipales(rowExtend.clientesPrincipales.cliente);
-              if (cliente.length >= 1) {
+              if (cliente) {
                 ningunoClientes = false;
                 cliente = cliente;
               }
@@ -895,7 +887,7 @@ async function post_declaraciones(body) {
             if (rowExtend.beneficiosPrivados.beneficio.length >= 1) {
               //ningunoBeneficios = false;
               beneficio = beneficiosPrivados(rowExtend.beneficiosPrivados.beneficio);
-              if (beneficio.length >= 1) {
+              if (beneficio) {
                 ningunoBeneficios = false;
                 beneficio = beneficio;
               }
@@ -920,7 +912,7 @@ async function post_declaraciones(body) {
             if (rowExtend.fideicomisos.fideicomiso.length >= 1) {
               //ningunoFideicomisos = false;
               fideicomiso = fideicomisos(rowExtend.fideicomisos.fideicomiso);
-              if (fideicomiso.length >= 1) {
+              if (fideicomiso) {
                 ningunoFideicomisos = false;
                 fideicomiso = fideicomiso;
               }

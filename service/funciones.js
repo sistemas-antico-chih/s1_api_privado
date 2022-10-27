@@ -285,7 +285,7 @@ function bienesInmuebles(bienInmueble) {
         delete n.datoIdentificacion;
         n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
         n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
-        bienesInmuebles = n;
+        bienesInmuebles.push(n);
       }
     }
   })
@@ -353,9 +353,6 @@ function vehiculos(vehiculo) {
       }
     }
   })
-  console.log("############")
-  console.log(vehiculos)
-  console.log("############")
   return vehiculos;
 }
 
@@ -406,7 +403,7 @@ function bienesMuebles(bienMueble) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
-        bienesMuebles = n;
+        bienesMuebles.push(n);
       }
     }
   });
@@ -476,7 +473,7 @@ function adeudosPasivos(adeudo) {
           delete n.motivoBaja;
         }
         delete n.numeroCuentaContrato;
-        adeudos = n;
+        adeudos.push(n);
       }
     }
   })
@@ -527,7 +524,7 @@ function inversionesCuentasValores(inversion) {
           }
         }
         delete n.numeroCuentaContrato;
-        inversiones = n;
+        inversiones.push(n);
       }
     }
   })
@@ -603,7 +600,7 @@ function participacion(participacion) {
         if (n.porcentajeParticipacion === 0) {
           n.porcentajeParticipacion = 1;
         }
-        participaciones = n;
+        participaciones.push(n);
       }
     }
   })
@@ -632,7 +629,7 @@ function tomaDecisiones(tomaDecision) {
             n.ubicacion.pais = "MX";
           }
         }
-        tomaDecisiones = n;
+        tomaDecisiones.push(n);
       }
     }
   });
@@ -649,7 +646,7 @@ function apoyos(apoyo) {
             n.montoApoyoMensual.moneda = 'MXN';
           }
         }
-        apoyos = n;
+        apoyos.push(n);
       }
     }
   });
@@ -687,7 +684,7 @@ function representaciones(representacion) {
           delete n.rfc;
           delete n.nombreRazonSocial;
         }
-        representaciones = n;
+        representaciones.push(n);
       }
     }
   });
@@ -722,7 +719,7 @@ function clientesPrincipales(cliente) {
         if (n.montoAproximadoGanancia.moneda === null) {
           n.montoAproximadoGanancia.moneda = "MXN";
         }
-        clientes = n;
+        clientes.push(n);
       }
     }
   });
@@ -754,7 +751,7 @@ function beneficiosPrivados(beneficio) {
             n.montoMensualAproximado.moneda = "MXN";
           }
         }
-        beneficios = n;
+        beneficios.push(n);
       }
     }
   });
@@ -784,7 +781,7 @@ function fideicomisos(fideicomiso) {
         if (n.fideicomisario === null) {
           n.fideicomisario = "";
         }
-        fideicomisos = n;
+        fideicomisos.push(n);
       }
     }
   });
