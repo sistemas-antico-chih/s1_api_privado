@@ -3,7 +3,7 @@
 var _ = require('underscore');
 var { Declaraciones } = require('../utils/declaraciones_models');
 var ObjectId = require('mongoose').Types.ObjectId;
-var { 
+var {
   convertirFechaLarga,
   datosGenerales,
   datosCurricularesDeclarante,
@@ -27,7 +27,7 @@ var {
   clientesPrincipales,
   beneficiosPrivados,
   fideicomisos
- } = require ('../service/funciones');
+} = require('../service/funciones');
 
 function diacriticSensitiveRegex(string = '') {
   string = string.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -58,16 +58,16 @@ async function post_declaraciones(body) {
     '__v': 0,
     'createdAt': 0,
     'datosGenerales._id': 0,
-    'datosGenerales.rfc':0,
-    'datosGenerales.curp':0,
+    'datosGenerales.rfc': 0,
+    'datosGenerales.curp': 0,
     'datosGenerales.correoElectronico._id': 0,
     'datosGenerales.correoElectronico.personal': 0,
     'datosGenerales.telefono': 0,
     'datosGenerales.situacionPersonalEstadoCivil': 0,
     'datosGenerales.regimenMatrimonial': 0,
     'datosGenerales.paisNacimiento': 0,
-    'datosGenerales.nacionalidad':0,
-    'domicilioDeclarante':0,
+    'datosGenerales.nacionalidad': 0,
+    'domicilioDeclarante': 0,
     'datosCurricularesDeclarante._id': 0,
     'datosCurricularesDeclarante.escolaridad._id': 0,
     'datosCurricularesDeclarante.escolaridad.nivel._id': 0,
@@ -264,8 +264,8 @@ async function post_declaraciones(body) {
         newSort["datosGenerales.primerApellido"] = value
       }
       if (key === "segundoApellido") {
-        newSort={"datosGenerales.segundoApellido":value}      
-    }
+        newSort = { "datosGenerales.segundoApellido": value }
+      }
       if (key === "escolaridadNivel") {
         newSort["datosCurricularesDeclarante.escolaridad.nivel.clave"] = value
       }
@@ -396,18 +396,18 @@ async function post_declaraciones(body) {
 
       } else if (key === "bienesInmuebles") {
         if (value.superficieConstruccion) {
-          if (value.superficieConstruccion.min===0 && value.superficieConstruccion.max===0) {
-            newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $eq:0 }
+          if (value.superficieConstruccion.min === 0 && value.superficieConstruccion.max === 0) {
+            newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $eq: 0 }
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
             newQuery = {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $gte: (value.superficieConstruccion.min) } },
-                { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $lte: (value.superficieConstruccion.max) } }              ]
+                { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $lte: (value.superficieConstruccion.max) } }]
             };
           }
-          else if (value.superficieConstruccion.min===0 && !value.superficieConstruccion.max) {
+          else if (value.superficieConstruccion.min === 0 && !value.superficieConstruccion.max) {
             newQuery = {
               firmada: true,
               $and: [
@@ -419,7 +419,7 @@ async function post_declaraciones(body) {
           else if (value.superficieConstruccion.min) {
             newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $gte: (value.superficieConstruccion.min) }
           }
-          else if (value.superficieConstruccion.max===0 && !value.superficieConstruccion.min) {
+          else if (value.superficieConstruccion.max === 0 && !value.superficieConstruccion.min) {
             newQuery = {
               firmada: true,
               $and: [
@@ -433,19 +433,19 @@ async function post_declaraciones(body) {
           }
         }
         else if (value.superficieTerreno) {
-          if (value.superficieTerreno.min===0 && value.superficieTerreno.max===0) {
-            newQuery["bienesInmuebles.bienInmueble.superficieTerreno.valor"] = { $eq:0 }
+          if (value.superficieTerreno.min === 0 && value.superficieTerreno.max === 0) {
+            newQuery["bienesInmuebles.bienInmueble.superficieTerreno.valor"] = { $eq: 0 }
           }
           else if (value.superficieTerreno.min && value.superficieTerreno.max) {
             newQuery = {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $gte: (value.superficieTerreno.min) } },
-                { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $lte: (value.superficieTerreno.max) } } 
+                { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $lte: (value.superficieTerreno.max) } }
               ]
             };
           }
-          else if (value.superficieTerreno.min===0 && !value.superficieTerreno.max) {
+          else if (value.superficieTerreno.min === 0 && !value.superficieTerreno.max) {
             newQuery = {
               firmada: true,
               $and: [
@@ -457,7 +457,7 @@ async function post_declaraciones(body) {
           else if (value.superficieTerreno.min) {
             newQuery["bienesInmuebles.bienInmueble.superficieTerreno.valor"] = { $gte: (value.superficieTerreno.min) }
           }
-          else if (value.superficieTerreno.max===0 && !value.superficieTerreno.min) {
+          else if (value.superficieTerreno.max === 0 && !value.superficieTerreno.min) {
             newQuery = {
               firmada: true,
               $and: [
@@ -471,19 +471,19 @@ async function post_declaraciones(body) {
           }
         }
         else if (value.valorAdquisicion) {
-          if (value.valorAdquisicion.min===0 && value.valorAdquisicion.max===0) {
-            newQuery["bienesInmuebles.bienInmueble.valorAdquisicion.valor"] = { $eq:0 }
+          if (value.valorAdquisicion.min === 0 && value.valorAdquisicion.max === 0) {
+            newQuery["bienesInmuebles.bienInmueble.valorAdquisicion.valor"] = { $eq: 0 }
           }
           else if (value.valorAdquisicion.min && value.valorAdquisicion.max) {
             newQuery = {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $gte: (value.valorAdquisicion.min) } },
-                { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } } 
+                { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } }
               ]
             };
           }
-          else if (value.valorAdquisicion.min===0 && !value.valorAdquisicion.max) {
+          else if (value.valorAdquisicion.min === 0 && !value.valorAdquisicion.max) {
             newQuery = {
               firmada: true,
               $and: [
@@ -495,7 +495,7 @@ async function post_declaraciones(body) {
           else if (value.valorAdquisicion.min) {
             newQuery["bienesInmuebles.bienInmueble.valorAdquisicion.valor"] = { $gte: (value.valorAdquisicion.min) }
           }
-          else if (value.valorAdquisicion.max===0 && !value.valorAdquisicion.min) {
+          else if (value.valorAdquisicion.max === 0 && !value.valorAdquisicion.min) {
             newQuery = {
               firmada: true,
               $and: [
@@ -513,8 +513,8 @@ async function post_declaraciones(body) {
         }
       }
       else if (key === "totalIngresosNetos") {
-        if(value.min===0 && value.max===0){
-          newQuery["ingresos.ingresoMensualNetoDeclarante.valor"] = { $eq:0 }
+        if (value.min === 0 && value.max === 0) {
+          newQuery["ingresos.ingresoMensualNetoDeclarante.valor"] = { $eq: 0 }
         }
         if (value.min && value.max) {
           newQuery = {
@@ -531,7 +531,7 @@ async function post_declaraciones(body) {
         else if (value.max) {
           newQuery["ingresos.ingresoMensualNetoDeclarante.valor"] = { $lte: (value.max) }
         }
-        else if (value.max===0) {
+        else if (value.max === 0) {
           newQuery["ingresos.ingresoMensualNetoDeclarante.valor"] = { $lte: (value.max) }
         }
       } else if (key === "rfcSolicitante") {
@@ -574,15 +574,15 @@ async function post_declaraciones(body) {
           //LLAMADO A FUNCIONES
           //datosGenerales
           datosGenerales(rowExtend.datosGenerales);
-          
+
           //datosCurricularesDeclarante
           datosCurricularesDeclarante(rowExtend.datosCurricularesDeclarante);
-          
+
           //datosEmpleoCargocomision
           datosEmpleoCargoComision(rowExtend.datosEmpleoCargoComision);
-          
+
           //experienciaLaboral
-          var experiencia=experienciaLaboral(rowExtend.experienciaLaboral);
+          var experiencia = experienciaLaboral(rowExtend.experienciaLaboral);
           var ningunoExperienciaLaboral = false
           if (!rowExtend.experienciaLaboral || rowExtend.experienciaLaboral.ninguno === true) {
             ningunoExperienciaLaboral = true;
@@ -593,10 +593,10 @@ async function post_declaraciones(body) {
 
           //ingresos
           ingresos(rowExtend.ingresos, rowExtend.tipoDeclaracion);
-          
+
           //actividadAnualAnterior
-          if(rowExtend.actividadAnualAnterior){
-            if (rowExtend.actividadAnualAnterior.servidorPublicoAnioAnterior === true){
+          if (rowExtend.actividadAnualAnterior) {
+            if (rowExtend.actividadAnualAnterior.servidorPublicoAnioAnterior === true) {
               actividadAnualAnterior(rowExtend.actividadAnualAnterior);
             }
           }
@@ -604,24 +604,28 @@ async function post_declaraciones(body) {
           //datosPareja
           if (rowExtend.datosPareja) {
             if (!rowExtend.datosPareja.ninguno) {
-                datosPareja(rowExtend.datosPareja);
+              datosPareja(rowExtend.datosPareja);
             }
           }
 
           //bienesInmuebles
           var bienInmueble;
           var ningunoInmueble = false;
-          if(rowExtend.bienesInmuebles === undefined){
+          if (rowExtend.bienesInmuebles === undefined) {
             ningunoInmueble = true;
             bienInmueble = [];
           }
-          if(rowExtend.bienesInmuebles){
-            if(rowExtend.bienesInmuebles.bienInmueble.length >= 1){
+          if (rowExtend.bienesInmuebles) {
+            if (rowExtend.bienesInmuebles.bienInmueble.length >= 1) {
               //ningunoInmueble = false;
               bienInmueble = bienesInmuebles(rowExtend.bienesInmuebles.bienInmueble);
-              if (bienInmueble.length >= 1){
+              if (bienInmueble.length >= 1) {
                 ningunoInmueble = false;
                 bienInmueble = bienInmueble;
+              }
+              else {
+                ningunoInmueble = true;
+                bienInmueble = [];
               }
             } else {
               ningunoInmueble = true;
@@ -632,17 +636,21 @@ async function post_declaraciones(body) {
           //vehiculos
           var vehiculo;
           var ningunoVehiculo = false;
-          if(rowExtend.vehiculos === undefined){
+          if (rowExtend.vehiculos === undefined) {
             ningunoVehiculo = true;
             vehiculo = [];
           }
-          if(rowExtend.vehiculos){
-            if(rowExtend.vehiculos.vehiculo.length >= 1){
+          if (rowExtend.vehiculos) {
+            if (rowExtend.vehiculos.vehiculo.length >= 1) {
               //ningunoVehiculo = false;
               vehiculo = vehiculos(rowExtend.vehiculos.vehiculo);
-              if (vehiculo.length >= 1){
+              if (vehiculo.length >= 1) {
                 ningunoVehiculo = false;
                 vehiculo = vehiculo;
+              }
+              else {
+                ningunoVehiculo = true;
+                vehiculo = [];
               }
             } else {
               ningunoVehiculo = true;
@@ -653,17 +661,21 @@ async function post_declaraciones(body) {
           //bienesMuebles
           var bienMueble;
           var ningunoMueble = false;
-          if(rowExtend.bienesMuebles === undefined){
+          if (rowExtend.bienesMuebles === undefined) {
             ningunoMueble = true;
             bienMueble = [];
           }
-          if(rowExtend.bienesMuebles){
-            if(rowExtend.bienesMuebles.bienMueble.length >= 1){
+          if (rowExtend.bienesMuebles) {
+            if (rowExtend.bienesMuebles.bienMueble.length >= 1) {
               //ningunoMueble = false;
               bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
-              if (bienMueble.length >= 1){
+              if (bienMueble.length >= 1) {
                 ningunoMueble = false;
                 bienMueble = bienMueble;
+              }
+              else {
+                ningunoMueble = true;
+                bienMueble = [];
               }
             } else {
               ningunoMueble = true;
@@ -674,38 +686,46 @@ async function post_declaraciones(body) {
           //adeudosPasivos
           var adeudo;
           var ningunoAdeudo = false;
-          if(rowExtend.adeudosPasivos === undefined){
+          if (rowExtend.adeudosPasivos === undefined) {
             ningunoAdeudo = true;
             adeudo = [];
           }
-          if(rowExtend.adeudosPasivos){
-            if(rowExtend.adeudosPasivos.adeudo.length >= 1){
+          if (rowExtend.adeudosPasivos) {
+            if (rowExtend.adeudosPasivos.adeudo.length >= 1) {
               //ningunoAdeudo = false;
               adeudo = adeudosPasivos(rowExtend.adeudosPasivos.adeudo);
-              if (adeudo.length >= 1){
+              if (adeudo.length >= 1) {
                 ningunoAdeudo = false;
                 adeudo = adeudo;
+              }
+              else {
+                ningunoAdeudo = true;
+                adeudo = [];
               }
             } else {
               ningunoAdeudo = true;
               adeudo = [];
             }
           }
-          
+
           //inversionesCuentasValores
           var inversion;
           var ningunoInversion = false;
-          if(rowExtend.inversionesCuentasValores === undefined){
+          if (rowExtend.inversionesCuentasValores === undefined) {
             ningunoInversion = true;
             inversion = [];
           }
-          if(rowExtend.inversionesCuentasValores){
-            if(rowExtend.inversionesCuentasValores.inversion.length >= 1){
+          if (rowExtend.inversionesCuentasValores) {
+            if (rowExtend.inversionesCuentasValores.inversion.length >= 1) {
               //ningunoInversion = false;
               inversion = inversionesCuentasValores(rowExtend.inversionesCuentasValores.inversion);
-              if (inversion.length >= 1){
+              if (inversion.length >= 1) {
                 ningunoInversion = false;
                 inversion = inversion;
+              }
+              else {
+                ningunoInversion = true;
+                inversion = [];
               }
             } else {
               ningunoInversion = true;
@@ -716,15 +736,16 @@ async function post_declaraciones(body) {
           //prestamoComodato
           var prestamo;
           var ningunoPrestamo = false;
-          if(rowExtend.prestamoComodato === undefined){
+          if (rowExtend.prestamoComodato === undefined) {
             ningunoPrestamo = true;
             prestamo = [];
           }
-          if(rowExtend.prestamoComodato){
-            if(rowExtend.prestamoComodato.prestamo.length >= 1){
+          if (rowExtend.prestamoComodato) {
+            if (rowExtend.prestamoComodato.prestamo.length >= 1) {
               ningunoPrestamo = false;
               prestamo = prestamoComodato(rowExtend.prestamoComodato.prestamo);
-            } else {
+            } 
+            else {
               ningunoPrestamo = true;
               prestamo = [];
             }
@@ -733,17 +754,21 @@ async function post_declaraciones(body) {
           //participacion
           var participacion1;
           var ningunoParticipacion = false;
-          if(rowExtend.participacion === undefined){
+          if (rowExtend.participacion === undefined) {
             ningunoParticipacion = true;
             prestamo = [];
           }
-          if(rowExtend.participacion){
-            if(rowExtend.participacion.participacion.length >= 1){
+          if (rowExtend.participacion) {
+            if (rowExtend.participacion.participacion.length >= 1) {
               //ningunoParticipacion = false;
               participacion1 = participacion(rowExtend.participacion.participacion);
-              if (participacion1.length >= 1){
+              if (participacion1.length >= 1) {
                 ningunoParticipacion = false;
                 participacion1 = participacion1;
+              }
+              else {
+                ningunoParticipacion = true;
+                participacion1 = [];
               }
             } else {
               ningunoParticipacion = true;
@@ -751,83 +776,99 @@ async function post_declaraciones(body) {
             }
           }
 
-           //participacionTomaDecisiones
+          //participacionTomaDecisiones
           var participacionTomaDecisiones;
           var ningunoParticipacionTomaDecisiones = false;
-          if(rowExtend.participacionTomaDecisiones === undefined){
+          if (rowExtend.participacionTomaDecisiones === undefined) {
             ningunoParticipacionTomaDecisiones = true;
             participacionTomaDecisiones = [];
           }
-          if(rowExtend.participacionTomaDecisiones){
-            if(rowExtend.participacionTomaDecisiones.participacion.length >= 1){
+          if (rowExtend.participacionTomaDecisiones) {
+            if (rowExtend.participacionTomaDecisiones.participacion.length >= 1) {
               //ningunoParticipacionTomaDecisiones = false;
               participacionTomaDecisiones = tomaDecisiones(rowExtend.participacionTomaDecisiones.participacion);
-              if (participacionTomaDecisiones.length >= 1){
+              if (participacionTomaDecisiones.length >= 1) {
                 ningunoParticipacionTomaDecisiones = false;
                 participacionTomaDecisiones = participacionTomaDecisiones;
+              }
+              else {
+                ningunoParticipacionTomaDecisiones = true;
+                participacionTomaDecisiones = [];
               }
             } else {
               ningunoParticipacionTomaDecisiones = true;
               participacionTomaDecisiones = [];
             }
           }
-                     
+
           //apoyos
           var apoyo;
           var ningunoApoyo = false;
-          if(rowExtend.apoyos === undefined){
+          if (rowExtend.apoyos === undefined) {
             ningunoApoyo = true;
             apoyo = [];
           }
-          if(rowExtend.apoyos){
-            if(rowExtend.apoyos.apoyo.length >= 1){
+          if (rowExtend.apoyos) {
+            if (rowExtend.apoyos.apoyo.length >= 1) {
               //ningunoApoyo = false;
               apoyo = apoyos(rowExtend.apoyos.apoyo);
-              if (apoyo.length >= 1){
+              if (apoyo.length >= 1) {
                 ningunoApoyo = false;
                 apoyo = apoyo;
+              }
+              else {
+                ningunoApoyo = true;
+                apoyo = [];
               }
             } else {
               ningunoApoyo = true;
               apoyo = [];
             }
           }
-          
+
           //representaciones
           var representacion;
           var ningunoRepresentacion = false;
-          if(rowExtend.representaciones === undefined){
+          if (rowExtend.representaciones === undefined) {
             ningunoRepresentacion = true;
             representacion = [];
           }
-          if(rowExtend.representaciones){
-            if(rowExtend.representaciones.representacion.length >= 1){
+          if (rowExtend.representaciones) {
+            if (rowExtend.representaciones.representacion.length >= 1) {
               //ningunoRepresentacion = false;
               representacion = representaciones(rowExtend.representaciones.representacion);
-              if (representacion.length >= 1){
+              if (representacion.length >= 1) {
                 ningunoRepresentacion = false;
                 representacion = representacion;
+              }
+              else {
+                ningunoRepresentacion = true;
+                representacion = [];
               }
             } else {
               ningunoRepresentacion = true;
               representacion = [];
             }
           }
-          
+
           //clientesPrincipales
           var cliente;
           var ningunoClientes = false;
-          if(rowExtend.clientesPrincipales === undefined){
+          if (rowExtend.clientesPrincipales === undefined) {
             ningunoClientes = true;
             cliente = [];
           }
-          if(rowExtend.clientesPrincipales){
-            if(rowExtend.clientesPrincipales.cliente.length >= 1){
+          if (rowExtend.clientesPrincipales) {
+            if (rowExtend.clientesPrincipales.cliente.length >= 1) {
               //ningunoClientes = false;
               cliente = clientesPrincipales(rowExtend.clientesPrincipales.cliente);
-              if (cliente.length >= 1){
+              if (cliente.length >= 1) {
                 ningunoClientes = false;
                 cliente = cliente;
+              }
+              else {
+                ningunoClientes = true;
+                cliente = [];
               }
             } else {
               ningunoClientes = true;
@@ -838,17 +879,21 @@ async function post_declaraciones(body) {
           //beneficiosPrivados
           var beneficio;
           var ningunoBeneficios = false;
-          if(rowExtend.beneficiosPrivados === undefined){
+          if (rowExtend.beneficiosPrivados === undefined) {
             ningunoBeneficios = true;
             beneficio = [];
           }
-          if(rowExtend.beneficiosPrivados){
-            if(rowExtend.beneficiosPrivados.beneficio.length >= 1){
+          if (rowExtend.beneficiosPrivados) {
+            if (rowExtend.beneficiosPrivados.beneficio.length >= 1) {
               //ningunoBeneficios = false;
               beneficio = beneficiosPrivados(rowExtend.beneficiosPrivados.beneficio);
-              if (beneficio.length >= 1){
+              if (beneficio.length >= 1) {
                 ningunoBeneficios = false;
                 beneficio = beneficio;
+              }
+              else {
+                ningunoBeneficios = true;
+                beneficio = [];
               }
             } else {
               ningunoBeneficios = true;
@@ -859,29 +904,33 @@ async function post_declaraciones(body) {
           //fideicomisos
           var fideicomiso;
           var ningunoFideicomisos = false;
-          if(rowExtend.fideicomisos === undefined){
+          if (rowExtend.fideicomisos === undefined) {
             ningunoFideicomisos = true;
             fideicomiso = [];
           }
-          if(rowExtend.fideicomisos){
-            if(rowExtend.fideicomisos.fideicomiso.length >= 1){
+          if (rowExtend.fideicomisos) {
+            if (rowExtend.fideicomisos.fideicomiso.length >= 1) {
               //ningunoFideicomisos = false;
               fideicomiso = fideicomisos(rowExtend.fideicomisos.fideicomiso);
-              if (fideicomiso.length >= 1){
+              if (fideicomiso.length >= 1) {
                 ningunoFideicomisos = false;
                 fideicomiso = fideicomiso;
+              }
+              else {
+                ningunoFideicomisos = true;
+                fideicomiso = [];
               }
             } else {
               ningunoFideicomisos = true;
               fideicomiso = [];
             }
           }
-              
+
           rowExtend["declaracion"] = ({
             "situacionPatrimonial": {
               datosGenerales: rowExtend.datosGenerales,
               domicilioDeclarante: rowExtend.domicilioDeclarante,
-              datosCurricularesDeclarante:rowExtend.datosCurricularesDeclarante,
+              datosCurricularesDeclarante: rowExtend.datosCurricularesDeclarante,
               datosEmpleoCargoComision: rowExtend.datosEmpleoCargoComision,
               experienciaLaboral: {
                 ninguno: ningunoExperienciaLaboral,
