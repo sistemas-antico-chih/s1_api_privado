@@ -349,7 +349,7 @@ function vehiculos(vehiculo) {
           n.formaPago = 'NO APLICA';
         }
         delete n.numeroSerieRegistro
-        vehiculos = n;
+        vehiculos.push(n);
       }
     }
   })
