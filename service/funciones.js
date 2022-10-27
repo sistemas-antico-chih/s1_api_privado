@@ -359,7 +359,6 @@ function vehiculos(vehiculo) {
   console.log("############")
   console.log(vehiculos)
   console.log("############")
-  vehiculos = n;
   return vehiculos;
 }
 
