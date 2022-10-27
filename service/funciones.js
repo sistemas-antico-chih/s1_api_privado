@@ -349,9 +349,6 @@ function vehiculos(vehiculo) {
           n.formaPago = 'NO APLICA';
         }
         delete n.numeroSerieRegistro
-        console.log("*********")
-        console.log(n)
-        console.log("*********")
         vehiculos = n;
       }
     }
