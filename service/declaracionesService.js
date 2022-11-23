@@ -396,8 +396,8 @@ async function post_declaraciones(body) {
 
       } else if (key === "bienesInmuebles") {
         if (value.superficieConstruccion) {
-          if (value.superficieConstruccion.min === 0 && value.superficieConstruccion.max === 0) {
-            newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $eq: 0 }
+          if (value.superficieConstruccion.min === value.superficieConstruccion.max) {
+            newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $eq:(value.superficieConstruccion.min) }
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
             newQuery = {
@@ -433,8 +433,8 @@ async function post_declaraciones(body) {
           }
         }
         else if (value.superficieTerreno) {
-          if (value.superficieTerreno.min === 0 && value.superficieTerreno.max === 0) {
-            newQuery["bienesInmuebles.bienInmueble.superficieTerreno.valor"] = { $eq: 0 }
+          if (value.superficieTerreno.min === value.superficieTerreno.max) {
+            newQuery["bienesInmuebles.bienInmueble.superficieTerreno.valor"] = { $eq:(value.superficieTerreno.min) }
           }
           else if (value.superficieTerreno.min && value.superficieTerreno.max) {
             newQuery = {
@@ -471,8 +471,8 @@ async function post_declaraciones(body) {
           }
         }
         else if (value.valorAdquisicion) {
-          if (value.valorAdquisicion.min === 0 && value.valorAdquisicion.max === 0) {
-            newQuery["bienesInmuebles.bienInmueble.valorAdquisicion.valor"] = { $eq: 0 }
+          if (value.valorAdquisicion.min === value.valorAdquisicion.max) {
+            newQuery["bienesInmuebles.bienInmueble.valorAdquisicion.valor"] = { $eq: (value.valorAdquisicion.min)  }
           }
           else if (value.valorAdquisicion.min && value.valorAdquisicion.max) {
             newQuery = {
