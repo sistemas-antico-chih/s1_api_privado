@@ -763,23 +763,61 @@ function fideicomisos(fideicomiso) {
   fideicomiso.forEach((n) => {
     if (n.tipoRelacion) {
       if (n.tipoRelacion === "DECLARANTE") {
+
+        /* if(n.tipoOperacion === "FIDEICOMITENTE"){
+ 
+         }
+         if(n.tipoOperacion === "FIDUCIARIO"){
+ 
+         }
+         if(n.tipoOperacion === "FIDEICOMISARIO"){
+ 
+         }
+         if(n.tipoOperacion === "COMITE_TECNICO"){
+ 
+         }
+         */
         if (n.rfcFideicomiso === null) {
-          n.rfcFideicomiso = "";
+          delete n.rfcFideicomiso;
         }
-        if (n.fideicomitente.rfc === null) {
-          n.fideicomitente.rfc = "";
+
+        if (n.fideicomitente) {
+          if (n.fideicomitente.rfc === null) {
+            n.fideicomitente.rfc = "";
+          }
+          if (n.fiduciario) {
+            delete n.fiduciario;
+          }
+          if (n.fideicomisario) {
+            delete n.fideicomisario;
+          }
+        }
+
+        if (n.fiduciario) {
+          if (n.fiduciario.rfc === null) {
+            n.fiduciario.rfc = "";
+          }
+          if (n.fideicomitente === null) {
+            delete n.fideicomitente;
+          }
+          if (n.fideicomisario === null) {
+            delete n.fideicomisario;
+          }
+        }
+
+        if (n.fideicomisario) {
+          if (n.fideicomisario.rfc === null) {
+            n.fideicomisario.rfc = "";
+          }
+          if (n.fideicomitente === null) {
+            delete n.fideicomitente;
+          }
+          if (n.fiduciario === null) {
+            delete n.fiduciario;
+          }
         }
         if (n.extranjero === null) {
           n.extranjero = "MX";
-        }
-        if (n.fideicomitente === null) {
-          n.fideicomitente = "";
-        }
-        if (n.fiduciario === null) {
-          n.fiduciario = "";
-        }
-        if (n.fideicomisario === null) {
-          n.fideicomisario = "";
         }
         fideicomisos.push(n);
       }
