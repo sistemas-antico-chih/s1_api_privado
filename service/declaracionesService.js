@@ -411,7 +411,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $eq: (value.superficieConstruccion.min) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -421,7 +421,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $gte: (value.superficieConstruccion.min) } },
                 { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $lte: (value.superficieConstruccion.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -431,7 +431,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $gte: (value.superficieConstruccion.min) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -441,7 +441,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $gte: (value.superficieConstruccion.min) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -451,7 +451,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $lte: (value.superficieConstruccion.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -461,7 +461,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieConstruccion.valor": { $lte: (value.superficieConstruccion.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -474,7 +474,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $gte: (value.superficieTerreno.min) } },
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $lte: (value.superficieTerreno.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -484,7 +484,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $gte: (value.superficieTerreno.min) } },
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $lte: (value.superficieTerreno.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -494,7 +494,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $gte: (value.superficieTerreno.min) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -505,7 +505,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $gte: (value.superficieTerreno.min) } },
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $lte: (value.superficieTerreno.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -515,7 +515,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $lte: (value.superficieTerreno.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -526,7 +526,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $gte: (value.superficieTerreno.min) } },
                 { "bienesInmuebles.bienInmueble.superficieTerreno.valor": { $lte: (value.superficieTerreno.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -539,7 +539,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $gte: (value.valorAdquisicion.min) } },
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -549,7 +549,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $gte: (value.valorAdquisicion.min) } },
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -559,7 +559,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $gte: (value.valorAdquisicion.min) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -570,7 +570,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $gte: (value.valorAdquisicion.min) } },
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -580,7 +580,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
@@ -591,7 +591,7 @@ async function post_declaraciones(body) {
               $and: [
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $gte: (value.valorAdquisicion.min) } },
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } },
-                { "bienesInmuebles.bienInmueble.titular[0].clave":"DEC"}
+                { "bienesInmuebles.bienInmueble.titular.0.clave":"DEC"}
               ]
             };
           }
