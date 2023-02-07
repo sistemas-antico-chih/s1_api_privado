@@ -295,7 +295,7 @@ async function post_declaraciones(body) {
       if (key === "bienesInmuebles") {
         if (value.superficieConstruccion) {
           //newSort[key + ".bienInmueble.superficieConstruccion.valor"] = value.superficieConstruccion
-          newSort = { "bienesInmuebles.bienInmueble.titular.0.titularDec": value, 
+          newSort = { 
                       "bienesInmuebles.bienInmueble.superficieConstruccion.valor": value }
         }
         if (value.superficieTerreno) {
