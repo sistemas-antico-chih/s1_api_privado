@@ -283,7 +283,7 @@ function bienesInmuebles(bienInmueble) {
           delete n.motivoBaja;
         }
         delete n.datoIdentificacion;
-        delete n.titular.titularDec;
+        delete n.titular[0].titularDec;
         n.superficieTerreno.valor = Math.floor(n.superficieTerreno.valor);
         n.superficieConstruccion.valor = Math.floor(n.superficieConstruccion.valor);
         bienesInmuebles.push(n);
