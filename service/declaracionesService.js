@@ -300,8 +300,7 @@ async function post_declaraciones(body) {
         }
         if (value.superficieTerreno) {
           //newSort[key + ".bienInmueble.superficieTerreno.valor"] = value.superficieTerreno
-          newSort = { "bienesInmuebles.bienInmueble.titular.0.titularDec": value, 
-                      "bienesInmuebles.bienInmueble.superficieTerreno.valor": value }
+          newSort = { "bienesInmuebles.bienInmueble.titular.0.titularDec": value }
         }
         if (value.formaAdquisicion) {
           newSort[key + ".bienInmueble.formaAdquisicion.clave"] = value.formaAdquisicion
