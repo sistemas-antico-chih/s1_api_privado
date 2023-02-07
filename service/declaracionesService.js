@@ -294,16 +294,22 @@ async function post_declaraciones(body) {
       }
       if (key === "bienesInmuebles") {
         if (value.superficieConstruccion) {
-          newSort[key + ".bienInmueble.superficieConstruccion.valor"] = value.superficieConstruccion
+          //newSort[key + ".bienInmueble.superficieConstruccion.valor"] = value.superficieConstruccion
+          newSort = { "bienesInmuebles.bienInmueble.titular.0.titularDec": value, 
+                      "bienesInmuebles.bienInmueble.superficieConstruccion.valor": value }
         }
         if (value.superficieTerreno) {
-          newSort[key + ".bienInmueble.superficieTerreno.valor"] = value.superficieTerreno
+          //newSort[key + ".bienInmueble.superficieTerreno.valor"] = value.superficieTerreno
+          newSort = { "bienesInmuebles.bienInmueble.titular.0.titularDec": value, 
+                      "bienesInmuebles.bienInmueble.superficieTerreno.valor": value }
         }
         if (value.formaAdquisicion) {
           newSort[key + ".bienInmueble.formaAdquisicion.clave"] = value.formaAdquisicion
         }
         if (value.valorAdquisicion) {
-          newSort[key + ".bienInmueble.valorAdquisicion.valor"] = value.valorAdquisicion
+          //newSort[key + ".bienInmueble.valorAdquisicion.valor"] = value.valorAdquisicion
+          newSort = { "bienesInmuebles.bienInmueble.titular.0.titularDec": value, 
+                      "bienesInmuebles.bienInmueble.valorAdquisicion.valor": value }
         }
       }
     }
@@ -917,7 +923,8 @@ async function post_declaraciones(body) {
               fideicomiso = fideicomisos(rowExtend.fideicomisos.fideicomiso);
               if (fideicomiso) {
                 ningunoFideicomisos = false;
-                fideicomiso = fideicomiso;
+                fideicomiso = fideicomiso;  //se quita campo fideicomiso
+                //fideicomiso = [];
               }
               else {
                 ningunoFideicomisos = true;

@@ -763,20 +763,6 @@ function fideicomisos(fideicomiso) {
   fideicomiso.forEach((n) => {
     if (n.tipoRelacion) {
       if (n.tipoRelacion === "DECLARANTE") {
-
-        /* if(n.tipoOperacion === "FIDEICOMITENTE"){
- 
-         }
-         if(n.tipoOperacion === "FIDUCIARIO"){
- 
-         }
-         if(n.tipoOperacion === "FIDEICOMISARIO"){
- 
-         }
-         if(n.tipoOperacion === "COMITE_TECNICO"){
- 
-         }
-         */
         if (n.rfcFideicomiso === null) {
           delete n.rfcFideicomiso;
         }
