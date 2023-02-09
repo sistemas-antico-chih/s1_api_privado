@@ -294,25 +294,28 @@ async function post_declaraciones(body) {
       }
       if (key === "bienesInmuebles") {
         if (value.superficieConstruccion) {
-          newSort[key + ".bienInmueble.superficieConstruccion.valor"] = value.superficieConstruccion
-          /*newSort = { 
+          //newSort[key + ".bienInmueble.superficieConstruccion.valor"] = value.superficieConstruccion
+          newSort = { 
+            "bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
             "bienesInmuebles.bienInmueble.superficieConstruccion.valor": value.superficieConstruccion 
-          }*/
+          }
         }
         if (value.superficieTerreno) {
-          newSort[key + ".bienInmueble.superficieTerreno.valor"] = value.superficieTerreno
-          /*newSort = {
+          //newSort[key + ".bienInmueble.superficieTerreno.valor"] = value.superficieTerreno
+          newSort = {
+            "bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
             "bienesInmuebles.bienInmueble.superficieTerreno.valor": value.superficieTerreno 
-          }*/
+          }
         }
         if (value.formaAdquisicion) {
           newSort[key + ".bienInmueble.formaAdquisicion.clave"] = value.formaAdquisicion
         }
         if (value.valorAdquisicion) {
-          newSort[key + ".bienInmueble.valorAdquisicion.valor"] = value.valorAdquisicion
-          /*newSort = {
+          //newSort[key + ".bienInmueble.valorAdquisicion.valor"] = value.valorAdquisicion
+          newSort = {
+            "bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
             "bienesInmuebles.bienInmueble.valorAdquisicion.valor": value.valorAdquisicion 
-          }*/
+          }
         }
       }
     }
