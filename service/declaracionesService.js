@@ -527,7 +527,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                {'bienesInmuebles.bienInmueble.0':{$exists:true}}
+                {'bienesInmuebles.bienInmueble.0':{$exists:true}},
                 { "bienesInmuebles.bienInmueble.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } },
               ]
             };
