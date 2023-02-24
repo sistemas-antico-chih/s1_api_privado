@@ -297,14 +297,14 @@ async function post_declaraciones(body) {
           //newSort[key + ".bienInmueble.superficieConstruccion.valor"] = value.superficieConstruccion
           newSort = { 
            //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.superficieConstruccion.valor": value.superficieConstruccion 
+            "bienesInmuebles.valores.superficieConstruccion": value.superficieConstruccion 
           }
         }
         if (value.superficieTerreno) {
           //newSort[key + ".bienInmueble.superficieTerreno.valor"] = value.superficieTerreno
           newSort = {
             //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.superficieTerreno.valor": value.superficieTerreno 
+            "bienesInmuebles.valores.superficieTerreno": value.superficieTerreno 
           }
         }
         if (value.formaAdquisicion) {
@@ -314,7 +314,7 @@ async function post_declaraciones(body) {
           //newSort[key + ".bienInmueble.valorAdquisicion.valor"] = value.valorAdquisicion
           newSort = {
             //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.valorAdquisicion.valor": value.valorAdquisicion 
+            "bienesInmuebles.valores.valorAdquisicion": value.valorAdquisicion 
           }
         }
       }
@@ -414,7 +414,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.superficieConstruccion.valor": { $eq: (value.superficieConstruccion.min) } },
+                { "bienesInmuebles.valores.superficieConstruccion": { $eq: (value.superficieConstruccion.min) } },
               ]
             };
           }
@@ -423,8 +423,8 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.superficieConstruccion.valor": { $gte: (value.superficieConstruccion.min) } },
-                { "bienesInmuebles.superficieConstruccion.valor": { $lte: (value.superficieConstruccion.max) } },
+                { "bienesInmuebles.valores.superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
+                { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
               ]
             };
           }
@@ -434,7 +434,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.superficieConstruccion.valor": { $gte: (value.superficieConstruccion.min) } },
+                { "bienesInmuebles.valores.superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
               ]
             };
           }
@@ -444,7 +444,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.superficieConstruccion.valor": { $lte: (value.superficieConstruccion.max) } },
+                { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
               ]
             };
           }
@@ -456,7 +456,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.superficieTerreno.valor": { $eq: (value.superficieTerreno.min) } },
+                { "bienesInmuebles.valores.superficieTerreno": { $eq: (value.superficieTerreno.min) } },
               ]
             };
           }
@@ -465,8 +465,8 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.superficieTerreno.valor": { $gte: (value.superficieTerreno.min) } },
-                { "bienesInmuebles.superficieTerreno.valor": { $lte: (value.superficieTerreno.max) } },
+                { "bienesInmuebles.valores.superficieTerreno": { $gte: (value.superficieTerreno.min) } },
+                { "bienesInmuebles.valores.superficieTerreno": { $lte: (value.superficieTerreno.max) } },
               ]
             };
           }
@@ -476,7 +476,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.superficieTerreno.valor": { $gte: (value.superficieTerreno.min) } },
+                { "bienesInmuebles.valores.superficieTerreno": { $gte: (value.superficieTerreno.min) } },
               ]
             };
           }
@@ -486,7 +486,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.superficieTerreno.valor": { $lte: (value.superficieTerreno.max) } },
+                { "bienesInmuebles.valores.superficieTerreno": { $lte: (value.superficieTerreno.max) } },
               ]
             };
           }
@@ -498,7 +498,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.valorAdquisicion.valor": { $eq: (value.valorAdquisicion.min) } },
+                { "bienesInmuebles.valores.valorAdquisicion": { $eq: (value.valorAdquisicion.min) } },
               ]
             };
           }
@@ -507,8 +507,8 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.valorAdquisicion.valor": { $gte: (value.valorAdquisicion.min) } },
-                { "bienesInmuebles.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } },
+                { "bienesInmuebles.valores.valorAdquisicion": { $gte: (value.valorAdquisicion.min) } },
+                { "bienesInmuebles.valores.valorAdquisicion": { $lte: (value.valorAdquisicion.max) } },
               ]
             };
           }
@@ -518,7 +518,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.valorAdquisicion.valor": { $gte: (value.valorAdquisicion.min) } },
+                { "bienesInmuebles.valores.valorAdquisicion": { $gte: (value.valorAdquisicion.min) } },
               ]
             };
           }
@@ -528,7 +528,7 @@ async function post_declaraciones(body) {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0":{$exists:true}},
-                { "bienesInmuebles.valorAdquisicion.valor": { $lte: (value.valorAdquisicion.max) } },
+                { "bienesInmuebles.valores.valorAdquisicion": { $lte: (value.valorAdquisicion.max) } },
               ]
             };
           }
