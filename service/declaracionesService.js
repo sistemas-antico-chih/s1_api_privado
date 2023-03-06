@@ -1,7 +1,7 @@
 'use strict';
 // MongoDB
 var _ = require('underscore');
-var { Declaraciones } = require('../utils/declaraciones_models');
+var { Declaraciones, declaracionesSchema } = require('../utils/declaraciones_models');
 var ObjectId = require('mongoose').Types.ObjectId;
 var {
   convertirFechaLarga,
@@ -295,16 +295,16 @@ async function post_declaraciones(body) {
       if (key === "bienesInmuebles") {
         if (value.superficieConstruccion) {
           //newSort[key + ".bienInmueble.superficieConstruccion.valor"] = value.superficieConstruccion
-          newSort = { 
-           //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.valores.superficieConstruccion": value.superficieConstruccion 
+          newSort = {
+            //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
+            "bienesInmuebles.valores.superficieConstruccion": value.superficieConstruccion
           }
         }
         if (value.superficieTerreno) {
           //newSort[key + ".bienInmueble.superficieTerreno.valor"] = value.superficieTerreno
           newSort = {
             //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.valores.superficieTerreno": value.superficieTerreno 
+            "bienesInmuebles.valores.superficieTerreno": value.superficieTerreno
           }
         }
         if (value.formaAdquisicion) {
@@ -314,7 +314,7 @@ async function post_declaraciones(body) {
           //newSort[key + ".bienInmueble.valorAdquisicion.valor"] = value.valorAdquisicion
           newSort = {
             //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.valores.valorAdquisicion": value.valorAdquisicion 
+            "bienesInmuebles.valores.valorAdquisicion": value.valorAdquisicion
           }
         }
       }
@@ -413,19 +413,30 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.superficieConstruccion": { $eq: (value.superficieConstruccion.min) } },
               ]
             };
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
             console.log("llega");
-            console.log(rowExtend.bienesInmuebles.valores.length);
-            //console.log(bienesInmuebles)
+            const arr = await Declaraciones.find({
+              $and: [
+                {firmada: true},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
+              ]
+            })
+              .then(function (doc) {
+                for(let i=0; i< doc.bienesInmuebles.valores.length; i++){
+                  if(doc.bienesInmuebles.valores[i].superficieTerreno >= min && doc.bienesInmuebles.valores[i].superficieTerreno <= max)
+                  print(doc)   
+              }
+              });
+            console.log(arr)
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
                 { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
               ]
@@ -436,7 +447,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
               ]
             };
@@ -446,7 +457,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
               ]
             };
@@ -458,7 +469,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.superficieTerreno": { $eq: (value.superficieTerreno.min) } },
               ]
             };
@@ -467,7 +478,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.superficieTerreno": { $gte: (value.superficieTerreno.min) } },
                 { "bienesInmuebles.valores.superficieTerreno": { $lte: (value.superficieTerreno.max) } },
               ]
@@ -478,7 +489,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.superficieTerreno": { $gte: (value.superficieTerreno.min) } },
               ]
             };
@@ -488,7 +499,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.superficieTerreno": { $lte: (value.superficieTerreno.max) } },
               ]
             };
@@ -500,7 +511,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.valorAdquisicion": { $eq: (value.valorAdquisicion.min) } },
               ]
             };
@@ -509,7 +520,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.valorAdquisicion": { $gte: (value.valorAdquisicion.min) } },
                 { "bienesInmuebles.valores.valorAdquisicion": { $lte: (value.valorAdquisicion.max) } },
               ]
@@ -520,7 +531,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.valorAdquisicion": { $gte: (value.valorAdquisicion.min) } },
               ]
             };
@@ -530,7 +541,7 @@ async function post_declaraciones(body) {
             newQuery = {
               firmada: true,
               $and: [
-                { "bienesInmuebles.bienInmueble.0":{$exists:true}},
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.valorAdquisicion": { $lte: (value.valorAdquisicion.max) } },
               ]
             };
@@ -775,7 +786,7 @@ async function post_declaraciones(body) {
             if (rowExtend.prestamoComodato.prestamo.length >= 1) {
               ningunoPrestamo = false;
               prestamo = prestamoComodato(rowExtend.prestamoComodato.prestamo);
-            } 
+            }
             else {
               ningunoPrestamo = true;
               prestamo = [];
