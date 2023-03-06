@@ -1,7 +1,7 @@
 const { values } = require('underscore');
 var _ = require('underscore');
 
-function valoresSuperficieConstruccion(){
+function valoresSuperficieConstruccion(min,max){
   let text="";
   for (let i=0; i<2; i++){
   text=
