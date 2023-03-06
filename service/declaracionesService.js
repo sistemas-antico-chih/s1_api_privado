@@ -4,7 +4,7 @@ var _ = require('underscore');
 var { Declaraciones, declaracionesSchema } = require('../utils/declaraciones_models');
 var ObjectId = require('mongoose').Types.ObjectId;
 var {
-  valoresSuperficieConstruccion
+  valoresSuperficieConstruccion,
   convertirFechaLarga,
   datosGenerales,
   datosCurricularesDeclarante,
@@ -428,7 +428,7 @@ async function post_declaraciones(body) {
             console.log(arr.length);
             console.log("sale");
             console.log("min: "+value.superficieConstruccion.min +" max: "+value.superficieConstruccion.max);
-            valoresSuperficieConstruccion();
+            valoresSuperficieConstruccion(value.superficieConstruccion.min,value.superficieConstruccion.max);
             newQuery = {
               firmada: true,
               $and: [
