@@ -4,6 +4,7 @@ var _ = require('underscore');
 var { Declaraciones, declaracionesSchema } = require('../utils/declaraciones_models');
 var ObjectId = require('mongoose').Types.ObjectId;
 var {
+  valoresSuperficieConstruccion
   convertirFechaLarga,
   datosGenerales,
   datosCurricularesDeclarante,
