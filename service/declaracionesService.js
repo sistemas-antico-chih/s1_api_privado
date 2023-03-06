@@ -419,6 +419,9 @@ async function post_declaraciones(body) {
             };
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
+            console.log("llega");
+            console.log(rowExtend.bienesInmuebles.valores.length);
+            //console.log(bienesInmuebles)
             newQuery = {
               firmada: true,
               $and: [
