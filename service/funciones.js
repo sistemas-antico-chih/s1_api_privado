@@ -8,7 +8,7 @@ function valoresSuperficieConstruccion(min, max){
       `{$and:[{bienesInmuebles.valores.[${i}].superficieConstruccion:{$gte:(${min}) } },
         {bienesInmuebles.valores.[${i}].superficieConstruccion:{ $lte:(${max}},]},`
   }*/
-  console.log("llega funcino");
+  console.log("llega funcion");
   return text;
 }
 
