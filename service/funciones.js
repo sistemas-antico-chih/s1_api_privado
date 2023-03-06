@@ -3,12 +3,12 @@ var _ = require('underscore');
 
 function valoresSuperficieConstruccion(min, max){
   let text="";
-  for (let i=0; i<2; i++){
+  /*for (let i=0; i<2; i++){
   text=
       `{$and:[{bienesInmuebles.valores.[${i}].superficieConstruccion:{$gte:(${min}) } },
         {bienesInmuebles.valores.[${i}].superficieConstruccion:{ $lte:(${max}},]},`
-  }
-  console.log(text);
+  }*/
+  console.log("llega funcino");
   return text;
 }
 
