@@ -407,6 +407,7 @@ async function post_declaraciones(body) {
         }
 
       } else if (key === "bienesInmuebles") {
+       
         console.log("llega");
         const arr = await Declaraciones.find({ "bienesInmuebles.bienInmueble.0": { $exists: true } });
 
@@ -419,23 +420,29 @@ async function post_declaraciones(body) {
                 { "bienesInmuebles.bienInmueble.0": { $exists: true } },
                 { "bienesInmuebles.valores.superficieConstruccion": { $eq: (value.superficieConstruccion.min) } },
               ]
-            };
+            }
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
 
             console.log(arr.length);
             console.log("sale");
 
-
-            valoresSuperficieConstruccion(min, max);
             console.log(valoresSuperficieConstruccion(min, max));
             newQuery = {
               firmada: true,
-              "bienesInmuebles.bienInmueble.0": { $exists: true },
-              $or: [
-                valoresSuperficieConstruccion(min, max)
+              $and: [
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
+                { "bienesInmuebles.valores.superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
+                { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
               ]
-            };
+            }
+            .then(function (doc){
+              for(let i=0; i<doc.bienesInmuebles.valores.length; i++){
+                if(doc.bienesInmuebles.valores[i].superficieConstruccion >= min && doc.bienesInmuebles.valores[i].superficieConstruccion <= max){
+                  console.log(doc);
+                }
+              }
+            });
           }
           else if (value.superficieConstruccion.min) {
             //newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $gte: (value.superficieConstruccion.min) }
