@@ -420,6 +420,20 @@ async function post_declaraciones(body) {
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
             console.log("llega");
+            const arr = await Declaraciones.find({ "bienesInmuebles.bienInmueble":{$exists:true}});
+            console.log(arr.length);
+            console.log("sale");
+
+            //let paginationResult = await Declaraciones.paginate(newQuery).then();
+            /*paginationResult.forEach(resultado=>{
+              resultado.bienesInmuebles=paginationResult.bienesInmuebles.filter(bienInmueble => bienInmueble.superficieConstruccion.valor === 60)
+            });*/
+            
+            /*let objresults = paginationResult.docs;
+              var strippedRows = _.map(objresults, function (row) {
+      
+              });
+      
             const arr = await Declaraciones.find({
               $and: [
                 {firmada: true},
@@ -429,15 +443,18 @@ async function post_declaraciones(body) {
               .then(function (doc) {
                 for(let i=0; i< doc.bienesInmuebles.valores.length; i++){
                   if(doc.bienesInmuebles.valores[i].superficieTerreno >= min && doc.bienesInmuebles.valores[i].superficieTerreno <= max)
-                  print(doc)   
+                  print(doc);
               }
               });
             console.log(arr)
-            newQuery = {
+            //let i=0;
+            */
+
+           newQuery = {
               firmada: true,
               $and: [
                 { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
+                { "bienesInmuebles.valores.[0].superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
                 { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
               ]
             };
@@ -588,10 +605,7 @@ async function post_declaraciones(body) {
       let objpagination = { hasNextPage: paginationResult.hasNextPage, page: paginationResult.page, pageSize: paginationResult.limit, totalRows: paginationResult.totalDocs }
       let objresults = paginationResult.docs;
 
-      var i = 1;
-
       try {
-
         var strippedRows = _.map(objresults, function (row) {
           let fechaLarga = convertirFechaLarga(row.toObject().updatedAt);
           let rowExtend = _.extend({
