@@ -426,7 +426,7 @@ async function post_declaraciones(body) {
 
             console.log(arr.length);
             console.log("sale");
-            console.log("min: "+value.superficieConstruccion.min +"max: "+value.superficieConstruccion.max);
+            console.log("min: "+value.superficieConstruccion.min +" max: "+value.superficieConstruccion.max);
             console.log(valoresSuperficieConstruccion(value.superficieConstruccion.min, value.superficieConstruccion.max));
             newQuery = {
               firmada: true,
