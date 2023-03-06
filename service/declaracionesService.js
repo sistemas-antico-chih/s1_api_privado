@@ -428,14 +428,13 @@ async function post_declaraciones(body) {
             console.log(arr.length);
             console.log("sale");
             console.log("min: "+value.superficieConstruccion.min +" max: "+value.superficieConstruccion.max);
-            //valoresSuperficieConstruccion(value.superficieConstruccion.min,value.superficieConstruccion.max);
-            valoresSuperficieConstruccion();
+            valoresSuperficieConstruccion(value.superficieConstruccion.min,value.superficieConstruccion.max);
+            //valoresSuperficieConstruccion();
             newQuery = {
               firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
-                { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
+              "bienesInmuebles.bienInmueble.0": { $exists: true },
+              $or: [
+                valoresSuperficieConstruccion(value.superficieConstruccion.min,value.superficieConstruccion.max);
               ]
             };
           }

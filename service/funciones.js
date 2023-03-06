@@ -9,6 +9,7 @@ function valoresSuperficieConstruccion(min,max){
         {bienesInmuebles.valores.[${i}].superficieConstruccion:{ $lte:(${max}},]},`
   }
   console.log("llega funcion");
+  console.log(text)
   return text;
 }
 
