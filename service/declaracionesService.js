@@ -407,6 +407,9 @@ async function post_declaraciones(body) {
         }
 
       } else if (key === "bienesInmuebles") {
+        console.log("llega");
+        const arr = await Declaraciones.find({ "bienesInmuebles.bienInmueble.0": { $exists: true } });
+
         if (value.superficieConstruccion) {
           if (value.superficieConstruccion.min === value.superficieConstruccion.max) {
             //newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $eq:(value.superficieConstruccion.min) }
@@ -419,43 +422,18 @@ async function post_declaraciones(body) {
             };
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
-            console.log("llega");
-            const arr = await Declaraciones.find({ "bienesInmuebles.bienInmueble":{$exists:true}});
+
             console.log(arr.length);
             console.log("sale");
 
-            //let paginationResult = await Declaraciones.paginate(newQuery).then();
-            /*paginationResult.forEach(resultado=>{
-              resultado.bienesInmuebles=paginationResult.bienesInmuebles.filter(bienInmueble => bienInmueble.superficieConstruccion.valor === 60)
-            });*/
-            
-            /*let objresults = paginationResult.docs;
-              var strippedRows = _.map(objresults, function (row) {
-      
-              });
-      
-            const arr = await Declaraciones.find({
-              $and: [
-                {firmada: true},
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-              ]
-            })
-              .then(function (doc) {
-                for(let i=0; i< doc.bienesInmuebles.valores.length; i++){
-                  if(doc.bienesInmuebles.valores[i].superficieTerreno >= min && doc.bienesInmuebles.valores[i].superficieTerreno <= max)
-                  print(doc);
-              }
-              });
-            console.log(arr)
-            //let i=0;
-            */
 
-           newQuery = {
+            valoresSuperficieConstruccion(min, max);
+            console.log(valoresSuperficieConstruccion(min, max));
+            newQuery = {
               firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.[0].superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
-                { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
+              "bienesInmuebles.bienInmueble.0": { $exists: true },
+              $or: [
+                valoresSuperficieConstruccion(min, max)
               ]
             };
           }
