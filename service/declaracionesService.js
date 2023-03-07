@@ -575,9 +575,9 @@ async function post_declaraciones(body) {
     }
 
     if (pageSize <= 200 && pageSize >= 1) {
-      console.log(key);
+      console.log("llega2");
       let paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
-      console.log(key);
+      console.log("llega3");
 
       /*paginationResult.forEach(resultado=>{
         resultado.bienesInmuebles=paginationResult.bienesInmuebles.filter(bienInmueble => bienInmueble.superficieConstruccion.valor === 60)
