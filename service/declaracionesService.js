@@ -579,7 +579,7 @@ async function post_declaraciones(body) {
           .then((doc) => {
             newItem=JSON.parse(JSON.stringify(doc));
             console.log("newItem");
-            console.log(newItem);
+            console.log(newItem.bienesInmuebles);
             console.log("pagination");
             console.log(paginationResult.docs);
           })
