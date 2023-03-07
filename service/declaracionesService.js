@@ -408,7 +408,7 @@ async function post_declaraciones(body) {
         }
 
       } else if (key === "bienesInmuebles") {
-       
+
         /*console.log("llega");
         const arr = await Declaraciones.find({ "bienesInmuebles.bienInmueble.0": { $exists: true } });
         console.log(arr.length);*/
@@ -573,18 +573,15 @@ async function post_declaraciones(body) {
     }
 
     if (pageSize <= 200 && pageSize >= 1) {
-      if (key === "bienesInmuebles"){
+      if (key === "bienesInmuebles") {
         console.log("llega");
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select })
-        .then(function (doc){
-          for(let i=0; i< doc.bienesInmuebles.valores.length; i++){
-            if(doc.bienesInmuebles.valores[i].superficieTerreno >= min && doc.bienesInmuebles.valores[i].superficieTerreno <= max)
-            print(doc); 
-        }
-        console.log("llega 2");
-        });
+          .then((res) => {
+            console.log(res)
+          })
+          console.log("llega 2");
       }
-      else{
+      else {
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
 
       }
