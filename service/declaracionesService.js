@@ -577,7 +577,7 @@ async function post_declaraciones(body) {
         console.log("llega");
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select })
           .then((doc) => {
-            console.log(doc);
+            console.log(doc.bienesInmuebles);
           })
         console.log("llega 2");
       }
