@@ -578,9 +578,13 @@ async function post_declaraciones(body) {
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select })
           .then((doc) => {
             newItem=JSON.parse(JSON.stringify(doc));
+            console.log("newItem");
             console.log(newItem);
+            console.log("pagination");
+            console.log(paginationResult.docs);
           })
-        console.log(paginationResult);
+          console.log("pagination 2");
+        console.log(paginationResult.docs);
       }
       else {
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
