@@ -577,7 +577,10 @@ async function post_declaraciones(body) {
         console.log("llega");
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select })
           .then((res) => {
-            console.log(res)
+            for(let i=0; i< doc.bienesInmuebles.valores.length; i++){
+              if(res.bienesInmuebles.valores[i].superficieTerreno >= min && res.bienesInmuebles.valores[i].superficieTerreno <= max)
+              console.log(res); 
+          }
           })
           console.log("llega 2");
       }
@@ -589,6 +592,7 @@ async function post_declaraciones(body) {
       /*paginationResult.forEach(resultado=>{
         resultado.bienesInmuebles=paginationResult.bienesInmuebles.filter(bienInmueble => bienInmueble.superficieConstruccion.valor === 60)
       });*/
+      console.log("llega 3");
       let objpagination = { hasNextPage: paginationResult.hasNextPage, page: paginationResult.page, pageSize: paginationResult.limit, totalRows: paginationResult.totalDocs }
       let objresults = paginationResult.docs;
 
