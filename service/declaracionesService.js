@@ -443,6 +443,11 @@ async function post_declaraciones(body) {
                 {$and:[{'bienesInmuebles.valores.13.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.13.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.14.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.14.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.15.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.15.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.16.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.16.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.17.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.17.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.18.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.18.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.19.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.19.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.20.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.20.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
             ]}]};
           }
           else if (value.superficieConstruccion.min) {
@@ -497,6 +502,11 @@ async function post_declaraciones(body) {
                 {$and:[{'bienesInmuebles.valores.13.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.13.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.14.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.14.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.15.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.15.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.16.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.16.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.17.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.17.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.18.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.18.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.19.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.19.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.20.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.20.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
               ]}]};
           }
           else if (value.superficieTerreno.min) {
@@ -551,6 +561,11 @@ async function post_declaraciones(body) {
                 {$and:[{'bienesInmuebles.valores.13.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.13.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.14.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.14.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.15.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.15.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.16.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.16.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.17.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.17.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.18.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.18.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.19.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.19.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
+                {$and:[{'bienesInmuebles.valores.20.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.20.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
               ]}]};
           }
           else if (value.valorAdquisicion.min) {
