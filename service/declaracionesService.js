@@ -577,12 +577,12 @@ async function post_declaraciones(body) {
         console.log("llega");
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select })
           .then((res) => {
-            for(let i=0; i< doc.bienesInmuebles.valores.length; i++){
-              if(res.bienesInmuebles.valores[i].superficieTerreno >= min && res.bienesInmuebles.valores[i].superficieTerreno <= max)
-              console.log(res); 
-          }
+            for (let i = 0; i < res.bienesInmuebles.valores.length; i++) {
+              if (res.bienesInmuebles.valores[i].superficieTerreno >= min && res.bienesInmuebles.valores[i].superficieTerreno <= max)
+                console.log(res);
+            }
           })
-          console.log("llega 2");
+        console.log("llega 2");
       }
       else {
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
