@@ -575,9 +575,11 @@ async function post_declaraciones(body) {
     if (pageSize <= 200 && pageSize >= 1) {
       if (key === "bienesInmuebles") {
         console.log("llega");
+        let newItem;
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select })
           .then((doc) => {
-            console.log(doc.bienesInmuebles);
+            newItem=JSON.parse(JSON.stringify(doc))
+            console.log(newItem.bienesInmuebles);
           })
         console.log("llega 2");
       }
