@@ -425,8 +425,8 @@ async function post_declaraciones(body) {
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
             newQuery = {
-              firmada: true, "bienesInmuebles.bienInmueble.0":{$exists:true},
-              $or:[ 
+              $and:[{firmada: true}, {"bienesInmuebles.bienInmueble.0":{$exists:true}},
+              {$or:[ 
                 {$and:[{'bienesInmuebles.valores.0.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.0.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.1.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.1.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.2.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.2.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
@@ -443,7 +443,7 @@ async function post_declaraciones(body) {
                 {$and:[{'bienesInmuebles.valores.13.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.13.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.14.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.14.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.15.superficieConstruccion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.15.superficieConstruccion':{$lte:value.superficieConstruccion.max}},]},
-            ]};
+            ]}]};
           }
           else if (value.superficieConstruccion.min) {
             //newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $gte: (value.superficieConstruccion.min) }
@@ -479,8 +479,8 @@ async function post_declaraciones(body) {
           }
           else if (value.superficieTerreno.min && value.superficieTerreno.max) {
             newQuery = {
-              firmada: true, "bienesInmuebles.bienInmueble.0":{$exists:true},
-              $or:[ 
+              $and:[{firmada: true}, {"bienesInmuebles.bienInmueble.0":{$exists:true}},
+              {$or:[ 
                 {$and:[{'bienesInmuebles.valores.0.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.0.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.1.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.1.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.2.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.2.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
@@ -497,7 +497,7 @@ async function post_declaraciones(body) {
                 {$and:[{'bienesInmuebles.valores.13.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.13.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.14.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.14.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.15.superficieTerreno':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.15.superficieTerreno':{$lte:value.superficieConstruccion.max}},]},
-            ]};
+              ]}]};
           }
           else if (value.superficieTerreno.min) {
             //newQuery["bienesInmuebles.bienInmueble.superficieTerreno.valor"] = { $gte: (value.superficieTerreno.min) }
@@ -533,8 +533,8 @@ async function post_declaraciones(body) {
           }
           else if (value.valorAdquisicion.min && value.valorAdquisicion.max) {
             newQuery = {
-              firmada: true, "bienesInmuebles.bienInmueble.0":{$exists:true},
-              $or:[ 
+              $and:[{firmada: true}, {"bienesInmuebles.bienInmueble.0":{$exists:true}},
+              {$or:[
                 {$and:[{'bienesInmuebles.valores.0.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.0.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.1.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.1.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.2.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.2.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
@@ -551,7 +551,7 @@ async function post_declaraciones(body) {
                 {$and:[{'bienesInmuebles.valores.13.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.13.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.14.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.14.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
                 {$and:[{'bienesInmuebles.valores.15.valorAdquisicion':{$gte:value.superficieConstruccion.min}}, {'bienesInmuebles.valores.15.valorAdquisicion':{$lte:value.superficieConstruccion.max}},]},
-            ]};
+              ]}]};
           }
           else if (value.valorAdquisicion.min) {
             //newQuery["bienesInmuebles.bienInmueble.valorAdquisicion.valor"] = { $gte: (value.valorAdquisicion.min) }
