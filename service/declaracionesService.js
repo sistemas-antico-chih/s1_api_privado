@@ -4,7 +4,7 @@ var _ = require('underscore');
 var { Declaraciones, declaracionesSchema } = require('../utils/declaraciones_models');
 var ObjectId = require('mongoose').Types.ObjectId;
 var {
-  valoresSuperficieConstruccion,
+  //valoresSuperficieConstruccion,
   convertirFechaLarga,
   datosGenerales,
   datosCurricularesDeclarante,
@@ -429,8 +429,11 @@ async function post_declaraciones(body) {
             //valoresSuperficieConstruccion();
             newQuery = {
               firmada: true,
-              "bienesInmuebles.bienInmueble.0": { $exists: true },
-
+              $and: [
+                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
+                { "bienesInmuebles.valores.superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
+                { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
+              ]
             };
           }
           else if (value.superficieConstruccion.min) {

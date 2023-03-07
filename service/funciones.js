@@ -1,7 +1,7 @@
 const { values } = require('underscore');
 var _ = require('underscore');
 
-function valoresSuperficieConstruccion(min,max){
+/*function valoresSuperficieConstruccion(min,max){
   let text="";
   for (let i=0; i<2; i++){
   text=
@@ -11,7 +11,7 @@ function valoresSuperficieConstruccion(min,max){
   console.log("llega funcion");
   console.log(text)
   return text;
-}
+}*/
 
 function convertirFechaLarga(fecha) {
   let year = fecha.getFullYear();
@@ -826,7 +826,7 @@ function fideicomisos(fideicomiso) {
 }
 
 module.exports = {
-  valoresSuperficieConstruccion,
+//  valoresSuperficieConstruccion,
   convertirFechaLarga,
   datosGenerales,
   datosCurricularesDeclarante,
