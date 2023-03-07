@@ -425,8 +425,6 @@ async function post_declaraciones(body) {
             }
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
-
-            console.log("llega");
             newQuery = {
               firmada: true,
               $and: [
@@ -575,9 +573,21 @@ async function post_declaraciones(body) {
     }
 
     if (pageSize <= 200 && pageSize >= 1) {
-      console.log("llega2");
-      let paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
-      console.log(key);
+      if (key === "bienesInmuebles"){
+        console.log("llega");
+        var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select })
+        .then(function (doc){
+          for(let i=0; i< doc.bienesInmuebles.valores.length; i++){
+            if(doc.bienesInmuebles.valores[i].superficieTerreno >= min && doc.bienesInmuebles.valores[i].superficieTerreno <= max)
+            print(doc); 
+        }
+        console.log("llega 2");
+        });
+      }
+      else{
+        var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
+
+      }
 
       /*paginationResult.forEach(resultado=>{
         resultado.bienesInmuebles=paginationResult.bienesInmuebles.filter(bienInmueble => bienInmueble.superficieConstruccion.valor === 60)
