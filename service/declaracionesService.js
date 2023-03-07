@@ -576,11 +576,8 @@ async function post_declaraciones(body) {
       if (key === "bienesInmuebles") {
         console.log("llega");
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select })
-          .then((res) => {
-            for (let i = 0; i < res.bienesInmuebles.valores.length; i++) {
-              if (res.bienesInmuebles.valores[i].superficieTerreno >= min && res.bienesInmuebles.valores[i].superficieTerreno <= max)
-                console.log(res);
-            }
+          .then((doc) => {
+            console.log(doc);
           })
         console.log("llega 2");
       }
