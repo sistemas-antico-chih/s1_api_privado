@@ -321,7 +321,7 @@ async function post_declaraciones(body) {
       }
     }
 
-    for (let [key, value] of Object.entries(query)) {
+    for (var [key, value] of Object.entries(query)) {
       if (key === "id") {
         if ((value.trim().length || 0) > 0) {
           if (ObjectId.isValid(value)) {
@@ -577,7 +577,7 @@ async function post_declaraciones(body) {
     if (pageSize <= 200 && pageSize >= 1) {
       console.log("llega2");
       let paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
-      console.log("llega3");
+      console.log(key);
 
       /*paginationResult.forEach(resultado=>{
         resultado.bienesInmuebles=paginationResult.bienesInmuebles.filter(bienInmueble => bienInmueble.superficieConstruccion.valor === 60)
