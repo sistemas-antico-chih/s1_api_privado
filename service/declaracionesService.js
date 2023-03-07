@@ -409,9 +409,9 @@ async function post_declaraciones(body) {
 
       } else if (key === "bienesInmuebles") {
        
-        console.log("llega");
+        /*console.log("llega");
         const arr = await Declaraciones.find({ "bienesInmuebles.bienInmueble.0": { $exists: true } });
-        console.log(arr.length);
+        console.log(arr.length);*/
 
         if (value.superficieConstruccion) {
           if (value.superficieConstruccion.min === value.superficieConstruccion.max) {
@@ -426,7 +426,7 @@ async function post_declaraciones(body) {
           }
           else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
 
-            //valoresSuperficieConstruccion();
+            console.log("llega");
             newQuery = {
               firmada: true,
               $and: [
