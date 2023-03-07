@@ -4,7 +4,6 @@ var _ = require('underscore');
 var { Declaraciones, declaracionesSchema } = require('../utils/declaraciones_models');
 var ObjectId = require('mongoose').Types.ObjectId;
 var {
-  //valoresSuperficieConstruccion,
   convertirFechaLarga,
   datosGenerales,
   datosCurricularesDeclarante,
@@ -591,9 +590,14 @@ async function post_declaraciones(body) {
       /*paginationResult.forEach(resultado=>{
         resultado.bienesInmuebles=paginationResult.bienesInmuebles.filter(bienInmueble => bienInmueble.superficieConstruccion.valor === 60)
       });*/
+      
+      //let paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
       console.log("llega 3");
       let objpagination = { hasNextPage: paginationResult.hasNextPage, page: paginationResult.page, pageSize: paginationResult.limit, totalRows: paginationResult.totalDocs }
       let objresults = paginationResult.docs;
+      console.log(objpagination);
+      console.log(objresults);
+
 
       try {
         var strippedRows = _.map(objresults, function (row) {

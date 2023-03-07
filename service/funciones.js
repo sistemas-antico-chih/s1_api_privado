@@ -1,18 +1,6 @@
 const { values } = require('underscore');
 var _ = require('underscore');
 
-/*function valoresSuperficieConstruccion(min,max){
-  let text="";
-  for (let i=0; i<2; i++){
-  text=
-      `{$and:[{bienesInmuebles.valores.[${i}].superficieConstruccion:{$gte:(${min}) } },
-        {bienesInmuebles.valores.[${i}].superficieConstruccion:{ $lte:(${max}},]},`
-  }
-  console.log("llega funcion");
-  console.log(text)
-  return text;
-}*/
-
 function convertirFechaLarga(fecha) {
   let year = fecha.getFullYear();
   let month = fecha.getMonth() + 1 < 10 ? '0' + (fecha.getMonth() + 1) : fecha.getMonth() + 1;
@@ -826,7 +814,6 @@ function fideicomisos(fideicomiso) {
 }
 
 module.exports = {
-//  valoresSuperficieConstruccion,
   convertirFechaLarga,
   datosGenerales,
   datosCurricularesDeclarante,
