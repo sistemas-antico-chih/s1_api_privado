@@ -585,7 +585,7 @@ async function post_declaraciones(body) {
       }
       else {
         var paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
-
+        console.log(paginationResult);
       }
 
       /*paginationResult.forEach(resultado=>{
