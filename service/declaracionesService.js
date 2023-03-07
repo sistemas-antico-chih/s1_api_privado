@@ -411,6 +411,7 @@ async function post_declaraciones(body) {
        
         console.log("llega");
         const arr = await Declaraciones.find({ "bienesInmuebles.bienInmueble.0": { $exists: true } });
+        console.log(arr);
 
         if (value.superficieConstruccion) {
           if (value.superficieConstruccion.min === value.superficieConstruccion.max) {
