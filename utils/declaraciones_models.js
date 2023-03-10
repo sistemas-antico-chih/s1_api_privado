@@ -37,7 +37,7 @@ const declaracionesSchema = new Schema({
            nivel: String
       }
    }
-}, { collation: { locale: 'en_US', strength: 4 } });
+}, { collation: { locale: 'es', strength: 4 } });
 
 declaracionesSchema.plugin(mongoosePaginate);
 
