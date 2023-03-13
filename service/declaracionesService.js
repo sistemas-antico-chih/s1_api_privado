@@ -308,7 +308,11 @@ async function post_declaraciones(body) {
           }
         }
         if (value.formaAdquisicion) {
-          newSort[key + ".bienInmueble.formaAdquisicion.clave"] = value.formaAdquisicion
+          //newSort[key + ".bienInmueble.formaAdquisicion.clave"] = value.formaAdquisicion
+          newSort = {
+            //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
+            "bienesInmuebles.valores.formaAdquisicion": value.formaAdquisicion
+          }
         }
         if (value.valorAdquisicion) {
           //newSort[key + ".bienInmueble.valorAdquisicion.valor"] = value.valorAdquisicion
@@ -590,7 +594,14 @@ async function post_declaraciones(body) {
           }
         }
         else if (value.formaAdquisicion) {
-          newQuery["bienesInmuebles.bienInmueble.formaAdquisicion.clave"] = { $regex: diacriticSensitiveRegex(value.formaAdquisicion), $options: 'i' }
+          //newQuery["bienesInmuebles.bienInmueble.formaAdquisicion.clave"] = { $regex: diacriticSensitiveRegex(value.formaAdquisicion), $options: 'i' }
+          newQuery = {
+            firmada: true,
+            $and: [
+              { "bienesInmuebles.valores.0": { $exists: true } },
+              { "bienesInmuebles.valores.formaAdquisicion": { $regex: diacriticSensitiveRegex(value.formaAdquisicion), $options: 'i' }}
+            ]
+          };
         }
       }
       else if (key === "totalIngresosNetos") {
