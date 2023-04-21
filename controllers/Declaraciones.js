@@ -1,7 +1,7 @@
 'use strict';
 
 var utils = require('../utils/writer.js');
-var Spic = require('../service/SpicService');
+var DecService = require('../service/declaracionesService');
 var jwt = require('jsonwebtoken');
 require('dotenv').config({path: './utils/.env'});
 
@@ -38,18 +38,8 @@ var validateToken = function(req){
     }
 }
 
-async function get_dependencias (req, res, next) {
-     var code = validateToken(req);
-     if(code.code == 401){
-         console.log(code);
-         res.status(401).json({code: '401', message: code.message});
-     }else if (code.code == 200 ){
-         let dependencias = await Spic.getDependencias();
-         utils.writeJson(res,dependencias);
-     }
-};
 
-module.exports.post_spic = function post_spic (req, res, next) {
+module.exports.post_declaraciones = function post_declaraciones (req, res, next) {
 
     let { body } = req;
 
@@ -61,7 +51,7 @@ module.exports.post_spic = function post_spic (req, res, next) {
     if(code.code == 401){
         res.status(401).json({code: '401', message: code.message});
     }else if (code.code == 200 ){
-        Spic.post_spic(body)
+        DecService.post_declaraciones(body)
             .then(function (response) {
                 utils.writeJson(res, response);
             })
@@ -81,4 +71,3 @@ module.exports.post_spic = function post_spic (req, res, next) {
     }
 };
 
-module.exports.get_dependencias = get_dependencias;
