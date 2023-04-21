@@ -1,4 +1,4 @@
-# API S1 Versión Pública- Declaración patrimonial y de intereses.
+# API S1 Versión Privada- Declaración patrimonial y de intereses.
 ## Introducción
 API del S1 - Declaración patrimonial y de intereses. El funcionamiento del API se encuentra aprobado por la SESNA.
 
