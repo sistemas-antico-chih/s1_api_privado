@@ -8,7 +8,7 @@ Las áreas de oportunidad que detecten favor de comunicarlas al correo sistemas@
 
 ## Documentación
 
-* *
+*Cuando se apruebe el manual se pondrá la liga de acceso*
 
 
 
