@@ -238,6 +238,9 @@ function bienesInmuebles(bienInmueble) {
         if (n.domicilioMexico === null) {
           delete n.domicilioMexico;
         }
+        if (n.tercero === null){
+          delete n.tercero
+        } 
         if (n.tercero[0].tipoPersona === null) {
           delete n.tercero;
         }
