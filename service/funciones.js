@@ -238,11 +238,8 @@ function bienesInmuebles(bienInmueble) {
         if (n.domicilioMexico === null) {
           delete n.domicilioMexico;
         }
-        if (n.tercero[0].tipoPersona === null) {
-          delete n.tercero;
-        }
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === "FISICA") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -254,11 +251,8 @@ function bienesInmuebles(bienInmueble) {
             }
           }
         }
-        if (n.transmisor[0].tipoPersona === null) {
-          delete n.transmisor;
-        }
         if (n.transmisor) {
-          if (n.transmisor[0].tipoPersona === "FISICA") {
+          if (n.transmisor[0].tipoPersona === null || n.transmisor[0].tipoPersona === "FISICA") {
             delete n.transmisor;
           }
           else {
