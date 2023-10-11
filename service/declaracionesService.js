@@ -647,9 +647,25 @@ async function post_declaraciones(body) {
       try {
         var strippedRows = _.map(objresults, function (row) {
           let fechaLarga = convertirFechaLarga(row.toObject().updatedAt);
+          
+          /*
           let rowExtend = _.extend({
             id: row.toObject()._id
           }, row.toObject());
+          */
+          
+          if(row.toObject().id){
+            var rowExtend = _.extend({
+              id: row.toObject().id
+            }, row.toObject());
+          }
+          else if(row.toObject()._id){
+            var rowExtend = _.extend({
+              id: row.toObject()._id
+            }, row.toObject());
+          }
+
+
           let tipo = row.toObject().tipoDeclaracion;
           if (tipo === 'MODIFICACION') {
             tipo = 'MODIFICACIÓN';
