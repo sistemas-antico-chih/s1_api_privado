@@ -252,10 +252,7 @@ function bienesInmuebles(bienInmueble) {
           }
         }
         if (n.transmisor) {
-          if (n.transmisor[0].tipoPersona === null) {
-            delete n.transmisor;
-          }
-          if (n.transmisor[0].tipoPersona === null || n.transmisor[0].tipoPersona === "FISICA") {
+          if (n.transmisor[0].tipoPersona != "MORAL") {
             delete n.transmisor;
           }
           else {
@@ -310,7 +307,7 @@ function vehiculos(vehiculo) {
           }
         }
         if (n.transmisor) {
-          if (n.transmisor[0].tipoPersona === null || n.transmisor[0].tipoPersona === "FISICA") {
+          if (n.transmisor[0].tipoPersona != "MORAL") {
             delete n.transmisor;
           }
           else {
@@ -368,7 +365,7 @@ function bienesMuebles(bienMueble) {
           }
         }
         if (n.transmisor) {
-          if (n.transmisor[0].tipoPersona === null || n.transmisor[0].tipoPersona === "FISICA") {
+          if (n.transmisor[0].tipoPersona != "MORAL") {
             delete n.transmisor;
           }
           else {
