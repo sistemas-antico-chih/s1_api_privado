@@ -517,6 +517,9 @@ function inversionesCuentasValores(inversion) {
 function prestamoComodato(prestamo) {
   prestamo.forEach((n) => {
     if (n.duenoTitular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.duenoTitular.tipoDuenoTitular != "FISICA") {
         if (n.tipoBien) {
           if (n.tipoBien.inmueble === null) {
