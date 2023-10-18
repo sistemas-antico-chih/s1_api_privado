@@ -225,6 +225,9 @@ function bienesInmuebles(bienInmueble) {
   bienInmueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.titular[0].clave === "DEC") {
         if (n.superficieConstruccion.unidad === null) {
           n.superficieConstruccion.unidad = 'm2';
@@ -353,6 +356,9 @@ function bienesMuebles(bienMueble) {
   bienMueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero) {
           if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
@@ -470,6 +476,9 @@ function inversionesCuentasValores(inversion) {
   let inversiones = [];
   inversion.forEach((n) => {
     if (n.titular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero) {
           if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
@@ -566,10 +575,10 @@ function participacion(participacion) {
   let participaciones = [];
   participacion.forEach((n) => {
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.tipoRelacion === "DECLARANTE") {
-        if (n.tipoOperacion === null) {
-          n.tipoOperacion = "AGREGAR";
-        }
         if (n.recibeRemuneracion === false) {
           delete n.montoMensual;
         }
@@ -597,11 +606,11 @@ function tomaDecisiones(tomaDecision) {
   let tomaDecisiones = [];
   tomaDecision.forEach((n) => {
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       n.fechaInicioParticipacion = convertirFechaCorta(n.fechaInicioParticipacion);
       if (n.tipoRelacion === "DECLARANTE") {
-        if (n.tipoOperacion === null) {
-          n.tipoOperacion = "AGREGAR";
-        }
         if (n.recibeRemuneracion === false) {
           delete n.montoMensual;
         }
@@ -626,6 +635,9 @@ function apoyos(apoyo) {
   let apoyos = [];
   apoyo.forEach((n) => {
     if (n.beneficiarioPrograma) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.beneficiarioPrograma.clave === "DC") {
         if (n.montoApoyoMensual) {
           if (n.montoApoyoMensual.moneda === null) {
@@ -644,6 +656,9 @@ function representaciones(representacion) {
   representacion.forEach((n) => {
     n.fechaInicioRepresentacion = convertirFechaCorta(n.fechaInicioRepresentacion);
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.tipoRelacion === "DECLARANTE") {
         if (n.tipoOperacion === null) {
           n.tipoOperacion = "AGREGAR";
@@ -681,6 +696,9 @@ function clientesPrincipales(cliente) {
   let clientes = [];
   cliente.forEach((n) => {
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.tipoRelacion === "DECLARANTE") {
         if (n.clientePrincipal.tipoPersona === "FISICA") {
           delete n.clientePrincipal;
@@ -716,6 +734,9 @@ function beneficiosPrivados(beneficio) {
   let beneficios = [];
   beneficio.forEach((n) => {
     if (n.beneficiario) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.beneficiario[0].clave === "DC") {
 
         if (n.otorgante.tipoPersona === null) {
@@ -748,6 +769,9 @@ function fideicomisos(fideicomiso) {
   let fideicomisos = [];
   fideicomiso.forEach((n) => {
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.tipoRelacion === "DECLARANTE") {
         if (n.rfcFideicomiso === null) {
           delete n.rfcFideicomiso;
