@@ -399,6 +399,9 @@ function adeudosPasivos(adeudo) {
   adeudo.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero) {
           if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
