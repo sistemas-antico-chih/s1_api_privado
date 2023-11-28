@@ -193,8 +193,6 @@ function actividadAnualAnterior(actividadAnualAnterior) {
     delete actividadAnualAnterior.ingresoNetoAnualDeclarante;
     delete actividadAnualAnterior.ingresoNetoAnualParejaDependiente;
     delete actividadAnualAnterior.totalIngresosNetosAnuales;
-    console.log("ll");
-    console.log(actividadAnualAnterior.servidorPublicoAnioAnterior);
   }
   return actividadAnualAnterior;
 }
