@@ -316,7 +316,7 @@ function vehiculos(vehiculo) {
           if (n.transmisor.length === 0) {
             delete n.transmisor;
           }
-          if (n.transmisor[0].tipoPersona != "MORAL") {
+          else if (n.transmisor[0].tipoPersona != "MORAL") {
             delete n.transmisor;
           }
           else {
