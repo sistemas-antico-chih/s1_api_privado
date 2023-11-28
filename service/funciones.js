@@ -313,7 +313,10 @@ function vehiculos(vehiculo) {
           }
         }
         if (n.transmisor) {
-          if (n.transmisor[0].tipoPersona != "MORAL" || n.transmisor[0].length === 0) {
+          if (n.transmisor.length === 0) {
+            delete n.transmisor;
+          }
+          if (n.transmisor[0].tipoPersona != "MORAL") {
             delete n.transmisor;
           }
           else {
