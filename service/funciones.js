@@ -550,6 +550,13 @@ function prestamoComodato(prestamo) {
       }
       if (n.duenoTitular.tipoDuenoTitular != "FISICA") {
         if (n.tipoBien) {
+          if (n.tipoBien.inmueble){
+            if(n.tipoBien.inmueble.tipoInmueble){
+              if(n.tipoBien.inmueble.tipoInmueble.clave === ""){
+                delete n.tipoBien.inmueble;    
+              }
+            }
+          }
           if (n.tipoBien.inmueble === null) {
             delete n.tipoBien.inmueble;
           }
