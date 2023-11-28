@@ -176,8 +176,24 @@ function ingresos(ingresos, tipoDeclaracion) {
 }
 
 function actividadAnualAnterior(actividadAnualAnterior) {
-  actividadAnualAnterior.fechaIngreso = convertirFechaCorta(actividadAnualAnterior.fechaIngreso);
-  actividadAnualAnterior.fechaConclusion = convertirFechaCorta(actividadAnualAnterior.fechaConclusion);
+  if(actividadAnualAnterior.servidorPublicoAnioAnterior === true){
+    actividadAnualAnterior.fechaIngreso = convertirFechaCorta(actividadAnualAnterior.fechaIngreso);
+    actividadAnualAnterior.fechaConclusion = convertirFechaCorta(actividadAnualAnterior.fechaConclusion);
+  }
+  if(actividadAnualAnterior.servidorPublicoAnioAnterior === false){
+    delete fechaIngreso;
+    delete fechaEgreso;
+    delete remuneracionNetaCargoPublico;
+    delete otrosIngresosTotal;
+    delete actividadIndustrialComercialEmpresarial;
+    delete actividadFinanciera;
+    delete serviciosProfesionales;
+    delete enajenacionBienes;
+    delete otrosIngresos;
+    delete ingresoNetoAnualDeclarante;
+    delete ingresoNetoAnualParejaDependiente;
+    delete totalIngresosNetosAnuales;
+  }
   return actividadAnualAnterior;
 }
 
