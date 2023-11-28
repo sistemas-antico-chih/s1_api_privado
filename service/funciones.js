@@ -573,6 +573,12 @@ function prestamoComodato(prestamo) {
             }
           }
           if (n.tipoBien.vehiculo) {
+            if(n.tipoBien.vehiculo.tipo){
+              if(n.tipoBien.vehiculo.tipo.clave === ""){
+                console.log("llega");
+                delete n.tipoBien.vehiculo;
+              }
+            }
             if (n.tipoBien.vehiculo === null) {
               delete n.tipoBien.vehiculo;
             }
