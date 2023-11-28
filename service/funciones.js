@@ -181,19 +181,18 @@ function actividadAnualAnterior(actividadAnualAnterior) {
     actividadAnualAnterior.fechaConclusion = convertirFechaCorta(actividadAnualAnterior.fechaConclusion);
   }
   if(actividadAnualAnterior.servidorPublicoAnioAnterior === false){
-    console.log(actividadAnualAnterior.fechaIngreso);
-    delete fechaIngreso;
-    delete fechaConclusion;
-    delete remuneracionNetaCargoPublico;
-    delete otrosIngresosTotal;
-    delete actividadIndustrialComercialEmpresarial;
-    delete actividadFinanciera;
-    delete serviciosProfesionales;
-    delete enajenacionBienes;
-    delete otrosIngresos;
-    delete ingresoNetoAnualDeclarante;
-    delete ingresoNetoAnualParejaDependiente;
-    delete totalIngresosNetosAnuales;
+    delete actividadAnualAnterior.fechaIngreso;
+    delete actividadAnualAnterior.fechaConclusion;
+    delete actividadAnualAnterior.remuneracionNetaCargoPublico;
+    delete actividadAnualAnterior.otrosIngresosTotal;
+    delete actividadAnualAnterior.actividadIndustrialComercialEmpresarial;
+    delete actividadAnualAnterior.actividadFinanciera;
+    delete actividadAnualAnterior.serviciosProfesionales;
+    delete actividadAnualAnterior.enajenacionBienes;
+    delete actividadAnualAnterior.otrosIngresos;
+    delete actividadAnualAnterior.ingresoNetoAnualDeclarante;
+    delete actividadAnualAnterior.ingresoNetoAnualParejaDependiente;
+    delete actividadAnualAnterior.totalIngresosNetosAnuales;
     console.log("ll");
     console.log(actividadAnualAnterior.servidorPublicoAnioAnterior);
   }
