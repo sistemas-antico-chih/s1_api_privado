@@ -177,10 +177,12 @@ function ingresos(ingresos, tipoDeclaracion) {
 
 function actividadAnualAnterior(actividadAnualAnterior) {
   if(actividadAnualAnterior.servidorPublicoAnioAnterior === true){
+    console.log("llega 1");
     actividadAnualAnterior.fechaIngreso = convertirFechaCorta(actividadAnualAnterior.fechaIngreso);
     actividadAnualAnterior.fechaConclusion = convertirFechaCorta(actividadAnualAnterior.fechaConclusion);
   }
   if(actividadAnualAnterior.servidorPublicoAnioAnterior === false){
+    console.log("llega 2");
     delete fechaIngreso;
     delete fechaEgreso;
     delete remuneracionNetaCargoPublico;
