@@ -176,8 +176,24 @@ function ingresos(ingresos, tipoDeclaracion) {
 }
 
 function actividadAnualAnterior(actividadAnualAnterior) {
-  actividadAnualAnterior.fechaIngreso = convertirFechaCorta(actividadAnualAnterior.fechaIngreso);
-  actividadAnualAnterior.fechaConclusion = convertirFechaCorta(actividadAnualAnterior.fechaConclusion);
+  if(actividadAnualAnterior.servidorPublicoAnioAnterior === true){
+    actividadAnualAnterior.fechaIngreso = convertirFechaCorta(actividadAnualAnterior.fechaIngreso);
+    actividadAnualAnterior.fechaConclusion = convertirFechaCorta(actividadAnualAnterior.fechaConclusion);
+  }
+  if(actividadAnualAnterior.servidorPublicoAnioAnterior === false){
+    delete actividadAnualAnterior.fechaIngreso;
+    delete actividadAnualAnterior.fechaConclusion;
+    delete actividadAnualAnterior.remuneracionNetaCargoPublico;
+    delete actividadAnualAnterior.otrosIngresosTotal;
+    delete actividadAnualAnterior.actividadIndustrialComercialEmpresarial;
+    delete actividadAnualAnterior.actividadFinanciera;
+    delete actividadAnualAnterior.serviciosProfesionales;
+    delete actividadAnualAnterior.enajenacionBienes;
+    delete actividadAnualAnterior.otrosIngresos;
+    delete actividadAnualAnterior.ingresoNetoAnualDeclarante;
+    delete actividadAnualAnterior.ingresoNetoAnualParejaDependiente;
+    delete actividadAnualAnterior.totalIngresosNetosAnuales;
+  }
   return actividadAnualAnterior;
 }
 
@@ -225,6 +241,9 @@ function bienesInmuebles(bienInmueble) {
   bienInmueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.titular[0].clave === "DEC") {
         if (n.superficieConstruccion.unidad === null) {
           n.superficieConstruccion.unidad = 'm2';
@@ -238,11 +257,8 @@ function bienesInmuebles(bienInmueble) {
         if (n.domicilioMexico === null) {
           delete n.domicilioMexico;
         }
-        if (n.tercero[0].tipoPersona === null) {
-          delete n.tercero;
-        }
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === "FISICA") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -254,11 +270,8 @@ function bienesInmuebles(bienInmueble) {
             }
           }
         }
-        if (n.transmisor[0].tipoPersona === null) {
-          delete n.transmisor;
-        }
         if (n.transmisor) {
-          if (n.transmisor[0].tipoPersona === "FISICA") {
+          if (n.transmisor[0].tipoPersona != "MORAL") {
             delete n.transmisor;
           }
           else {
@@ -298,12 +311,12 @@ function vehiculos(vehiculo) {
   vehiculo.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona === null) {
-          delete n.tercero;
-        }
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === "FISICA") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -315,11 +328,11 @@ function vehiculos(vehiculo) {
             }
           }
         }
-        if (n.transmisor[0].tipoPersona === null) {
-          delete n.transmisor;
-        }
         if (n.transmisor) {
-          if (n.transmisor[0].tipoPersona === "FISICA") {
+          if (n.transmisor.length === 0) {
+            delete n.transmisor;
+          }
+          else if (n.transmisor[0].tipoPersona != "MORAL") {
             delete n.transmisor;
           }
           else {
@@ -362,12 +375,12 @@ function bienesMuebles(bienMueble) {
   bienMueble.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona === null) {
-          delete n.tercero;
-        }
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === "FISICA") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -379,11 +392,8 @@ function bienesMuebles(bienMueble) {
             }
           }
         }
-        if (n.transmisor[0].tipoPersona === null) {
-          delete n.transmisor;
-        }
         if (n.transmisor) {
-          if (n.transmisor[0].tipoPersona === "FISICA") {
+          if (n.transmisor[0].tipoPersona != "MORAL") {
             delete n.transmisor;
           }
           else {
@@ -417,12 +427,12 @@ function adeudosPasivos(adeudo) {
   adeudo.forEach((n) => {
     n.fechaAdquisicion = convertirFechaCorta(n.fechaAdquisicion);
     if (n.titular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona === null) {
-          delete n.tercero;
-        }
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === "FISICA") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -485,12 +495,12 @@ function inversionesCuentasValores(inversion) {
   let inversiones = [];
   inversion.forEach((n) => {
     if (n.titular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.titular[0].clave === "DEC") {
-        if (n.tercero[0].tipoPersona === null) {
-          delete n.tercero;
-        }
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === "FISICA") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -535,8 +545,18 @@ function inversionesCuentasValores(inversion) {
 function prestamoComodato(prestamo) {
   prestamo.forEach((n) => {
     if (n.duenoTitular) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.duenoTitular.tipoDuenoTitular != "FISICA") {
         if (n.tipoBien) {
+          if (n.tipoBien.inmueble){
+            if(n.tipoBien.inmueble.tipoInmueble){
+              if(n.tipoBien.inmueble.tipoInmueble.clave === ""){
+                delete n.tipoBien.inmueble;    
+              }
+            }
+          }
           if (n.tipoBien.inmueble === null) {
             delete n.tipoBien.inmueble;
           }
@@ -552,7 +572,7 @@ function prestamoComodato(prestamo) {
               }
             }
           }
-          if (n.tipoBien.vehiculo) {
+          if (n.tipoBien.vehiculo) {}
             if (n.tipoBien.vehiculo === null) {
               delete n.tipoBien.vehiculo;
             }
@@ -563,6 +583,12 @@ function prestamoComodato(prestamo) {
               delete n.tipoBien.vehiculo.lugarRegistro.entidadFederativa;
             }
             delete n.tipoBien.vehiculo.numeroSerieRegistro;
+            if(n.tipoBien.vehiculo.tipo){
+              if(n.tipoBien.vehiculo.tipo.clave === ""){
+                console.log("llega");
+                delete n.tipoBien.vehiculo;
+              }
+            
           }
         }
       }
@@ -581,10 +607,10 @@ function participacion(participacion) {
   let participaciones = [];
   participacion.forEach((n) => {
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.tipoRelacion === "DECLARANTE") {
-        if (n.tipoOperacion === null) {
-          delete n.tipoOperacion;
-        }
         if (n.recibeRemuneracion === false) {
           delete n.montoMensual;
         }
@@ -612,11 +638,11 @@ function tomaDecisiones(tomaDecision) {
   let tomaDecisiones = [];
   tomaDecision.forEach((n) => {
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       n.fechaInicioParticipacion = convertirFechaCorta(n.fechaInicioParticipacion);
       if (n.tipoRelacion === "DECLARANTE") {
-        if (n.tipoOperacion === null) {
-          n.tipoOperacion = "AGREGAR";
-        }
         if (n.recibeRemuneracion === false) {
           delete n.montoMensual;
         }
@@ -641,6 +667,9 @@ function apoyos(apoyo) {
   let apoyos = [];
   apoyo.forEach((n) => {
     if (n.beneficiarioPrograma) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.beneficiarioPrograma.clave === "DC") {
         if (n.montoApoyoMensual) {
           if (n.montoApoyoMensual.moneda === null) {
@@ -659,6 +688,9 @@ function representaciones(representacion) {
   representacion.forEach((n) => {
     n.fechaInicioRepresentacion = convertirFechaCorta(n.fechaInicioRepresentacion);
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.tipoRelacion === "DECLARANTE") {
         if (n.tipoOperacion === null) {
           n.tipoOperacion = "AGREGAR";
@@ -696,6 +728,9 @@ function clientesPrincipales(cliente) {
   let clientes = [];
   cliente.forEach((n) => {
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.tipoRelacion === "DECLARANTE") {
         if (n.clientePrincipal.tipoPersona === "FISICA") {
           delete n.clientePrincipal;
@@ -731,6 +766,9 @@ function beneficiosPrivados(beneficio) {
   let beneficios = [];
   beneficio.forEach((n) => {
     if (n.beneficiario) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.beneficiario[0].clave === "DC") {
 
         if (n.otorgante.tipoPersona === null) {
@@ -763,6 +801,9 @@ function fideicomisos(fideicomiso) {
   let fideicomisos = [];
   fideicomiso.forEach((n) => {
     if (n.tipoRelacion) {
+      if (n.tipoOperacion === null) {
+        n.tipoOperacion = "AGREGAR";
+      }
       if (n.tipoRelacion === "DECLARANTE") {
         if (n.rfcFideicomiso === null) {
           delete n.rfcFideicomiso;

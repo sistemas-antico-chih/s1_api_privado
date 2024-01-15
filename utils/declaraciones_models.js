@@ -41,7 +41,10 @@ const declaracionesSchema = new Schema({
 
 declaracionesSchema.plugin(mongoosePaginate);
 
-let Declaraciones = model('declaraciones', declaracionesSchema, 'declaraciones_api');
+//model('base de datos', 'esquema', 'coleccion')
+//para este manual se está apuntando a la coleccion 'declaraciones' de la base de datos 'declaraciones'
+//el usuari puede cambiar el nombre de la coleccion o de la base de datos.
+let Declaraciones = model('declaraciones', declaracionesSchema, 'declaraciones');
 
 module.exports = {
    declaracionesSchema,
