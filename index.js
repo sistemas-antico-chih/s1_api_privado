@@ -29,9 +29,9 @@ const db = mongoose
 /************ Mongo DB ******************/
 /************ Mongo DB ******************/
 
-const standar = 'api/openapi.yaml';
-const spec = fs.readFileSync(standar, 'utf8');
-const swaggerDoc = jsyaml.safeLoad(spec);
+//const standar = 'api/openapi.yaml';
+//const spec = fs.readFileSync(standar, 'utf8');
+//const swaggerDoc = jsyaml.safeLoad(spec);
 
 const serverPort = 8080;
 
