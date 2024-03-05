@@ -11,8 +11,8 @@ const Ajv = require('ajv');
 
 const localize = require('ajv-i18n');
 
-const jsyaml = require('js-yaml');
-const fs = require('fs');
+//const jsyaml = require('js-yaml');
+//const fs = require('fs');
 const { post_declaraciones } = require('./controllers/Declaraciones');
 
 //require('dotenv').config({ path: './utils/.env' });
