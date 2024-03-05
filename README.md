@@ -7,7 +7,7 @@ Las áreas de oportunidad que detecten favor de comunicarlas al correo sistemas@
 
 
 ## Documentación
-https://drive.google.com/file/d/1kcUU773E1qVipJrvO_FHZODcUdKKodvL/view?usp=sharing
+https://drive.google.com/drive/u/0/folders/1SRwRYtota3pTHsNPCYamK9RPXfn7NSzh
 
 
 
