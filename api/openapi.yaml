@@ -1,0 +1,248 @@
+openapi: 3.0.0
+info:
+  version: "1.1"
+  title: >-
+    API para interconectar la información de declaraciones del panel de captura desplegado por la SESNA.
+paths:
+  /v1/spic:
+    post:
+      tags:
+        - spic
+      summary: API para interconectar Declaraciones patrimoniales.
+      operationId: post_spic
+      requestBody:
+        description: JSON para peticiones de busqueda avanzada
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/reqSpic'
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/resSpic'
+        '400':
+          description: Página inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/resError'
+        '401':
+          description: No tienes permisos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/resError'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/resError'
+      security:
+        - spic_auth: []
+externalDocs:
+  description: Más información.
+  url: 'https://github.com/PDNMX/api_docs'
+components:
+  securitySchemes:
+    spic_auth:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: /oauth
+          scopes: {}
+  schemas:
+    resSpic:
+      type: object
+      required:
+        - pagination
+        - results
+      properties:
+        pagination:
+          type: object
+          required:
+            - pageSize
+            - page
+            - totalRows
+            - hasNextPage
+          properties:
+            pageSize:
+              type: integer
+              minimum: 1
+              description: 'Número de registros mostrados, por defecto muestra diez.'
+              example: 100
+            page:
+              type: integer
+              minimum: 1
+              description: Número de página actual
+              example: 20
+            totalRows:
+              type: integer
+              minimum: 1
+              description: Total de registros
+              example: 30
+            hasNextPage:
+              type: boolean
+              description: Indica si existe otra página
+              example: true  
+        results:
+          $ref: '#/components/schemas/respSpic'
+    reqSpic:
+      type: object
+      properties:
+        sort:
+          type: object
+          properties:
+            nombres:
+              type: string
+              enum:
+                - asc
+                - desc
+              description: 'Campo a ordenar de forma ascendente o descente'
+              example: asc
+            primerApellido:
+              type: string
+              enum:
+                - asc
+                - desc
+              description: 'Campo a ordenar de forma ascendente o descente'
+              example: asc
+            segundoApellido:
+              type: string
+              enum:
+                - asc
+                - desc
+              description: 'Campo a ordenar de forma ascendente o descente'
+              example: asc
+            institucionDependencia:
+              type: string
+              enum:
+                - asc
+                - desc
+              description: 'Campo a ordenar de forma ascendente o descente, se debe ordenar por el valor'
+              example: asc
+            puesto:
+              type: string
+              enum:
+                - asc
+                - desc
+              description: 'Campo a ordenar de forma ascendente o descente'
+              example: asc
+        page:
+          type: integer
+          description: Número de página a mostrar, por default 1
+          example: 1
+          default: 1
+        pageSize:
+          type: integer
+          description: >-
+            Número de registros a mostrar por página, el máximo permitido es
+            doscientos y el mínimo uno, por defecto muestra diez registros.
+            Por default 10
+          example: 10
+          default: 10
+        query:
+          properties:
+            id:
+              type: string
+              description: >-
+                Devuelve resultados al buscar un servidor público por su ID. Si se
+                especifica este valor, el objeto query es omitido.
+              example: 123abc
+            nombres:
+              type: string
+              description: Nombres o nombre de la persona.
+              example: Juan Pedro
+            primerApellido:
+              type: string
+              description: Primer apellido de la persona.
+              example: Tenorio
+            segundoApellido:
+              type: string
+              description: Segundo apellido de la persona.
+              example: Calderón
+            curp:
+              type: string
+              description: CURP de la persona.
+              example: PUXB571021HNELXR00
+            rfc:
+              type: string
+              description:  RFC de la persona
+              example: PUXB5710219K8
+            institucionDependencia:
+              type: string
+              description: >-
+                Se deberá señalar el Ente Público o entidad que corresponda al
+                Servidor Público.
+              example: Presidencia de la República
+            rfcSolicitante:
+              type: string
+              description: >-
+                RFC de la persona quien hace la consulta.
+              example: GOAP780710RH7
+    respSpic:
+      type: array
+      items:
+        type: object
+        required:
+          - id
+          - nombres
+          - fechaCaptura
+          - primerApellido
+          - tipoProcedimiento
+          - institucionDependencia
+          - puesto
+        properties:
+          id:
+            type: string
+            description: Dato que permita identificar de manera  unívoca al registro
+            example: RFT129
+          fechaCaptura:
+            type: string
+            format: date-time
+            description: >-
+              Fecha y hora en la que se agrega o modifca el registro. Fecha
+              en formato ISO 8601
+            example: '2019-01-21T17:32:28Z'
+          ejercicioFiscal:
+            type: string
+            description: Ejercicio fiscal
+            example: '2018'
+          rfc:
+            type: string
+            description: RFC del Servidor Público con homoclave
+            example: JPM851111C44
+          curp:
+            type: string
+            description: CURP del Servidor Público
+            example: BEML920313HMCLNS09
+          nombres:
+            type: string
+            description: Nombre(s) del Servidor Público
+            example: John Juan
+          primerApellido:
+            type: string
+            description: Primer apellido del servidor público
+            example: Pérez
+          segundoApellido:
+            type: string
+            description: Segundo apellido del servidor público
+            example: Mendez          
+    resError:
+      description: Estos valores son definidos por el sistema del API.
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          description: Código alfa numérico del error de la consulta.
+          example: abc123
+        message:
+          type: string
+          description: Texto descriptivo para el usuario final del error en la consulta
+          example: 'Error al formar la consulta, revise el formato de los campos.'

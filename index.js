@@ -11,8 +11,8 @@ const Ajv = require('ajv');
 
 const localize = require('ajv-i18n');
 
-//const jsyaml = require('js-yaml');
-//const fs = require('fs');
+const jsyaml = require('js-yaml');
+const fs = require('fs');
 const { post_declaraciones } = require('./controllers/Declaraciones');
 
 //require('dotenv').config({ path: './utils/.env' });
@@ -29,10 +29,26 @@ const db = mongoose
 /************ Mongo DB ******************/
 /************ Mongo DB ******************/
 
+const standar = 'api/openapi.yaml';
+const spec = fs.readFileSync(standar, 'utf8');
+const swaggerDoc = jsyaml.safeLoad(spec);
+
 const serverPort = 8080;
+
+let spic_auth = swaggerDoc.components.securitySchemes.spic_auth;
+
+swaggerDoc.components.securitySchemes = {
+	spic_auth,
+	BearerAuth: {
+		type: 'http',
+		scheme: 'bearer',
+		bearerFormat: 'JWT'
+	}
+};
 
 console.log();
 
+swaggerValidation.init(swaggerDoc);
 const app = express();
 app.use(bodyParser.json());
 
