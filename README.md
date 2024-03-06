@@ -7,7 +7,11 @@ Las áreas de oportunidad que detecten favor de comunicarlas al correo sistemas@
 
 
 ## Documentación
-https://drive.google.com/drive/u/0/folders/1SRwRYtota3pTHsNPCYamK9RPXfn7NSzh
+Manual de instalación
+https://drive.google.com/file/d/19nPnCWTP0yZzJ8GShChquAsPPV6ttSLc/view
+
+Anexos
+https://drive.google.com/file/d/16WzaZw85HItu7Ey7Yclszh24EazD9POq/view
 
 
 
