@@ -864,7 +864,7 @@ module.exports = {
   ingresos,
   actividadAnualAnterior,
   datosPareja,
-  datosDependientesEconomicos,
+  //datosDependientesEconomicos,
   bienesInmuebles,
   vehiculos,
   bienesMuebles,
