@@ -12,7 +12,7 @@ var {
   experienciaLaboral,
   ingresos,
   actividadAnualAnterior,
-  datosPareja,
+  //datosPareja,
   //datosDependientesEconomicos,
   bienesInmuebles,
   vehiculos,
