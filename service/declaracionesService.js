@@ -12,7 +12,7 @@ var {
   experienciaLaboral,
   ingresos,
   actividadAnualAnterior,
-  //datosPareja,
+  datosPareja,
   //datosDependientesEconomicos,
   bienesInmuebles,
   vehiculos,
@@ -1048,14 +1048,14 @@ async function post_declaraciones(body) {
           rowExtend["declaracion"] = ({
             "situacionPatrimonial": {
               datosGenerales: rowExtend.datosGenerales,
-              //domicilioDeclarante: rowExtend.domicilioDeclarante,
+              domicilioDeclarante: rowExtend.domicilioDeclarante,
               datosCurricularesDeclarante: rowExtend.datosCurricularesDeclarante,
               datosEmpleoCargoComision: rowExtend.datosEmpleoCargoComision,
               experienciaLaboral: {
                 ninguno: ningunoExperienciaLaboral,
                 experiencia
               },
-              //datosPareja: rowExtend.datosPareja,
+              datosPareja: rowExtend.datosPareja,
               /*datosDependientesEconomicos: {
                 ninguno: ningunoDependiente,
                 dependienteEconomico
@@ -1132,7 +1132,7 @@ async function post_declaraciones(body) {
             'tipoDeclaracion',
             'updatedAt',
             'datosGenerales',
-            //'domicilioDeclarante',
+            'domicilioDeclarante',
             'datosCurricularesDeclarante',
             'datosEmpleoCargoComision',
             'experienciaLaboral',
@@ -1173,4 +1173,3 @@ async function post_declaraciones(body) {
   }
 }
 module.exports.post_declaraciones = post_declaraciones;
-

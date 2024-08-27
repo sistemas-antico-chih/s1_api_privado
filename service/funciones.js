@@ -553,7 +553,7 @@ function prestamoComodato(prestamo) {
           if (n.tipoBien.inmueble){
             if(n.tipoBien.inmueble.tipoInmueble){
               if(n.tipoBien.inmueble.tipoInmueble.clave === ""){
-                delete n.tipoBien.inmueble;    
+                delete n.tipoBien.inmueble;
               }
             }
           }
@@ -588,7 +588,7 @@ function prestamoComodato(prestamo) {
                 console.log("llega");
                 delete n.tipoBien.vehiculo;
               }
-            
+
           }
         }
       }
@@ -878,4 +878,3 @@ module.exports = {
   clientesPrincipales,
   beneficiosPrivados,
   fideicomisos
-};

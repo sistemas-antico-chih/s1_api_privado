@@ -34,7 +34,7 @@ const declaracionesSchema = new Schema({
         nacionalidad: String,
         aclaracionesObservaciones: String
     },
-    /*domicilioDeclarante: {
+    domicilioDeclarante: {
         domicilioMexico: {
             calle: String,
             numeroExterior: String,
@@ -54,7 +54,7 @@ const declaracionesSchema = new Schema({
             codigoPostal: String
         },
         aclaracionesObservaciones: String
-    },*/
+    },
     datosCurricularesDeclarante: {
         escolaridad: { type: [], default: void 0 },
         aclaracionesObservaciones: String
