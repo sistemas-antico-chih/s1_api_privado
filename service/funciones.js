@@ -859,7 +859,7 @@ module.exports = {
   datosGenerales,
   datosCurricularesDeclarante,
   datosEmpleoCargoComision,
-  //domicilioDeclarante,
+  domicilioDeclarante,
   experienciaLaboral,
   ingresos,
   actividadAnualAnterior,
