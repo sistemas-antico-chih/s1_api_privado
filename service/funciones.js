@@ -572,7 +572,7 @@ function prestamoComodato(prestamo) {
               }
             }
           }
-          if (n.tipoBien.vehiculo) {}
+          if (n.tipoBien.vehiculo) {
             if (n.tipoBien.vehiculo === null) {
               delete n.tipoBien.vehiculo;
             }
@@ -588,7 +588,7 @@ function prestamoComodato(prestamo) {
                 console.log("llega");
                 delete n.tipoBien.vehiculo;
               }
-
+            }
           }
         }
       }
