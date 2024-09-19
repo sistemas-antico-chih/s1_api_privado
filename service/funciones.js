@@ -585,7 +585,7 @@ function prestamoComodato(prestamo) {
             delete n.tipoBien.vehiculo.numeroSerieRegistro;
             if(n.tipoBien.vehiculo.tipo){
               if(n.tipoBien.vehiculo.tipo.clave === ""){
-                console.log("llega");
+                
                 delete n.tipoBien.vehiculo;
               }
             }
@@ -878,3 +878,4 @@ module.exports = {
   clientesPrincipales,
   beneficiosPrivados,
   fideicomisos
+}
