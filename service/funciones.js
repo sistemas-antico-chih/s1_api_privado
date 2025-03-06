@@ -838,11 +838,16 @@ function fideicomisos(fideicomiso) {
           //delete ingresos['totalIngresosMensualesNetos'];
           
           if (!n.fiduciario) {
-            console.log("llegaaa");
             n.fiduciario=n.fideicomitente;
+            n.fiduciario.rfc="";
+            n.fiduciario.tipoPersona="";
+            n.fiduciario.nombreRazonSocial="";
           }
           if (!n.fideicomisario) {
             n.fideicomisario=n.fideicomitente;
+            n.fideicomisario.rfc="";
+            n.fideicomisario.tipoPersona="";
+            n.fideicomisario.nombreRazonSocial="";
           }
         }
 
