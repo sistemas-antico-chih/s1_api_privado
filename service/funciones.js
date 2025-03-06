@@ -838,7 +838,8 @@ function fideicomisos(fideicomiso) {
           //delete ingresos['totalIngresosMensualesNetos'];
           
           if (!n.fiduciario) {
-            n.fiduciario.rfc = "";
+            n['fiduciario']
+            n['fiduciario.rfc']="";
           }
           if (!n.fideicomisario) {
             n.fideicomisario.rfc = "";
