@@ -833,10 +833,6 @@ function fideicomisos(fideicomiso) {
           if (n.fideicomitente.rfc === null) {
             n.fideicomitente.rfc = "";
           }
-          
-          //ingresos['totalIngresosAnualesNetos'] = ingresos['totalIngresosMensualesNetos'];
-          //delete ingresos['totalIngresosMensualesNetos'];
-          
           if (!n.fiduciario) {
             n.fiduciario=n.fideicomitente;
             n.fiduciario.rfc="";
@@ -856,10 +852,16 @@ function fideicomisos(fideicomiso) {
             n.fiduciario.rfc = "";
           }
           if (!n.fideicomitente === null) {
-            n.fideicomitente.rfc = "";
+            n.fideicomitente=n.fiduciario;
+            n.fideicomitente.rfc="";
+            n.fideicomitente.tipoPersona="";
+            n.fideicomitente.nombreRazonSocial="";
           }
           if (!n.fideicomisario === null) {
-            n.fideicomisario.rfc = "";
+            n.fideicomisario=n.fiduciario;
+            n.fideicomisario.rfc="";
+            n.fideicomisario.tipoPersona="";
+            n.fideicomisario.nombreRazonSocial="";
           }
         }
 
@@ -868,10 +870,16 @@ function fideicomisos(fideicomiso) {
             n.fideicomisario.rfc = "";
           }
           if (!n.fideicomitente === null) {
-            n.fideicomitente.rfc = "";
+            n.fideicomitente=n.fideicomisario;
+            n.fideicomitente.rfc="";
+            n.fideicomitente.tipoPersona="";
+            n.fideicomitente.nombreRazonSocial="";
           }
           if (n.fiduciario === null) {
-            n.fiduciario.rfc = "";
+            n.fiduciario=n.fideicomisario;
+            n.fiduciario.rfc="";
+            n.fiduciario.tipoPersona="";
+            n.fiduciario.nombreRazonSocial="";
           }
         }
         if (n.extranjero === null) {
