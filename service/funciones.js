@@ -839,9 +839,10 @@ function fideicomisos(fideicomiso) {
           
           if (!n.fiduciario) {
             console.log("llegaaa");
+            n.fiduciario=n.fideicomitente;
           }
           if (!n.fideicomisario) {
-            n.fideicomisario.rfc = "";
+            n.fideicomisario=n.fideicomitente;
           }
         }
 
