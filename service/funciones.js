@@ -364,8 +364,7 @@ function vehiculos(vehiculo) {
             }
           }
         }
-        
-        if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
+        /*if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
           n.lugarRegistro.pais = "MX";
         }
         if (n.lugarRegistro.entidadFederativa === null) {
@@ -373,7 +372,8 @@ function vehiculos(vehiculo) {
         }
         if (n.lugarRegistro.pais != 'MX') {
           delete n.lugarRegistro.entidadFederativa;
-        }
+        }*/
+        delete n.lugarRegistro;
 
         if (n.motivoBaja === null) {
           delete n.motivoBaja;
@@ -384,8 +384,7 @@ function vehiculos(vehiculo) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
-        delete n.lugarRegistro;
-        delete n.numeroSerieRegistro;
+        delete n.numeroSerieRegistro
         vehiculos.push(n);
       }
     }
