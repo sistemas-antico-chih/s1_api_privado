@@ -364,7 +364,8 @@ function vehiculos(vehiculo) {
             }
           }
         }
-        /*if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
+        
+        if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
           n.lugarRegistro.pais = "MX";
         }
         if (n.lugarRegistro.entidadFederativa === null) {
@@ -372,8 +373,8 @@ function vehiculos(vehiculo) {
         }
         if (n.lugarRegistro.pais != 'MX') {
           delete n.lugarRegistro.entidadFederativa;
-        }*/
-        delete n.lugarRegistro;
+        }
+        //delete n.lugarRegistro;
 
         if (n.motivoBaja === null) {
           delete n.motivoBaja;
