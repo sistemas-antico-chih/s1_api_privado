@@ -378,7 +378,6 @@ function vehiculos(vehiculo) {
         delete n.lugarRegistro.entidadFederativa.clave;
         delete n.lugarRegistro.entidadFederativa.valor;
         delete n.lugarRegistro;
-        
 
         if (n.motivoBaja === null) {
           delete n.motivoBaja;
