@@ -335,6 +335,10 @@ function vehiculos(vehiculo) {
         n.tipoOperacion = "AGREGAR";
       }
       if (n.titular[0].clave === "DEC") {
+        delete n.lugarRegistro.pais;
+        delete n.lugarRegistro.entidadFederativa.clave;
+        delete n.lugarRegistro.entidadFederativa.valor;
+        delete n.lugarRegistro;
         if (n.tercero) {
           if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona != "MORAL") {
             delete n.tercero;
@@ -364,6 +368,7 @@ function vehiculos(vehiculo) {
             }
           }
         }
+        
         if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
           n.lugarRegistro.pais = "MX";
         }
@@ -373,11 +378,6 @@ function vehiculos(vehiculo) {
         if (n.lugarRegistro.pais != 'MX') {
           delete n.lugarRegistro.entidadFederativa;
         }
-
-        delete n.lugarRegistro.pais;
-        delete n.lugarRegistro.entidadFederativa.clave;
-        delete n.lugarRegistro.entidadFederativa.valor;
-        delete n.lugarRegistro;
 
         if (n.motivoBaja === null) {
           delete n.motivoBaja;
