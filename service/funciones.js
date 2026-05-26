@@ -335,10 +335,6 @@ function vehiculos(vehiculo) {
         n.tipoOperacion = "AGREGAR";
       }
       if (n.titular[0].clave === "DEC") {
-        delete n.lugarRegistro.pais;
-        delete n.lugarRegistro.entidadFederativa.clave;
-        delete n.lugarRegistro.entidadFederativa.valor;
-        delete n.lugarRegistro;
         if (n.tercero) {
           if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona != "MORAL") {
             delete n.tercero;
@@ -388,7 +384,8 @@ function vehiculos(vehiculo) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
-        delete n.numeroSerieRegistro
+        delete n.lugarRegistro;
+        delete n.numeroSerieRegistro;
         vehiculos.push(n);
       }
     }
