@@ -278,7 +278,7 @@ function bienesInmuebles(bienInmueble) {
           delete n.domicilioMexico;
         }
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona != "MORAL") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -336,7 +336,7 @@ function vehiculos(vehiculo) {
       }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona != "MORAL") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -405,7 +405,7 @@ function bienesMuebles(bienMueble) {
       }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona != "MORAL") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -457,7 +457,7 @@ function adeudosPasivos(adeudo) {
       }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona  != "MORAL") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -475,7 +475,7 @@ function adeudosPasivos(adeudo) {
           }
         }
         if (n.otorganteCredito.tipoPersona) {
-          if (n.otorganteCredito.tipoPersona  != "MORAL") {
+          if (n.otorganteCredito.tipoPersona === "FISICA") {
             delete n.otorganteCredito;
           }
           else {
@@ -525,7 +525,7 @@ function inversionesCuentasValores(inversion) {
       }
       if (n.titular[0].clave === "DEC") {
         if (n.tercero) {
-          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona  != "MORAL") {
+          if (n.tercero[0].tipoPersona === null || n.tercero[0].tipoPersona === "FISICA") {
             delete n.tercero;
           }
           else {
@@ -738,7 +738,7 @@ function representaciones(representacion) {
         if (n.rfc === null) {
           n.rfc = "";
         }
-        if (n.tipoPersona  != "MORAL") {
+        if (n.tipoPersona === "FISICA") {
           delete n.rfc;
           delete n.nombreRazonSocial;
         }
@@ -757,7 +757,7 @@ function clientesPrincipales(cliente) {
         n.tipoOperacion = "AGREGAR";
       }
       if (n.tipoRelacion === "DECLARANTE") {
-        if (n.clientePrincipal.tipoPersona  != "MORAL") {
+        if (n.clientePrincipal.tipoPersona === "FISICA") {
           delete n.clientePrincipal;
         }
         if (n.empresa.rfc === null) {
@@ -806,7 +806,7 @@ function beneficiosPrivados(beneficio) {
           if (n.otorgante.rfc === null) {
             n.otorgante.rfc = "";
           }
-          if (n.otorgante.tipoPersona  != "MORAL") {
+          if (n.otorgante.tipoPersona === "FISICA") {
             delete n.otorgante;
           }
         }
