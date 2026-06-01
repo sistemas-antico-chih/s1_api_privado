@@ -382,7 +382,8 @@ function vehiculos(vehiculo) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
-        delete n.numeroSerieRegistro
+        delete n.lugarRegistro;
+        delete n.numeroSerieRegistro;
         vehiculos.push(n);
       }
     }
