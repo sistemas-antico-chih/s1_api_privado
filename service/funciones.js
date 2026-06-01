@@ -373,7 +373,6 @@ function vehiculos(vehiculo) {
         if (n.lugarRegistro.pais != 'MX') {
           delete n.lugarRegistro.entidadFederativa;
         }
-        
         if (n.motivoBaja === null) {
           delete n.motivoBaja;
         }
@@ -383,9 +382,7 @@ function vehiculos(vehiculo) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
-        
-        delete n.lugarRegistro;
-        delete n.numeroSerieRegistro;
+        delete n.numeroSerieRegistro
         vehiculos.push(n);
       }
     }
