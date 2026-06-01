@@ -364,7 +364,10 @@ function vehiculos(vehiculo) {
             }
           }
         }
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of c7dbd1d... quitar lugarRegistro de vehiculos
         if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
           n.lugarRegistro.pais = "MX";
         }
@@ -374,9 +377,12 @@ function vehiculos(vehiculo) {
         if (n.lugarRegistro.pais != 'MX') {
           delete n.lugarRegistro.entidadFederativa;
         }
+<<<<<<< HEAD
         
         delete n.lugarRegistro;
 
+=======
+>>>>>>> parent of c7dbd1d... quitar lugarRegistro de vehiculos
         if (n.motivoBaja === null) {
           delete n.motivoBaja;
         }
