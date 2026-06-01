@@ -515,6 +515,7 @@ function adeudosPasivos(adeudo) {
           delete n.motivoBaja;
         }
         delete n.lugarRegistro;
+        //algo
         delete n.numeroCuentaContrato;
         adeudos.push(n);
       }
