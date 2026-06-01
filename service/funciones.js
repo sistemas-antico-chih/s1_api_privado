@@ -364,10 +364,6 @@ function vehiculos(vehiculo) {
             }
           }
         }
-<<<<<<< HEAD
-        
-=======
->>>>>>> parent of c7dbd1d... quitar lugarRegistro de vehiculos
         if (n.lugarRegistro.pais === null || !n.lugarRegistro.pais) {
           n.lugarRegistro.pais = "MX";
         }
@@ -377,12 +373,9 @@ function vehiculos(vehiculo) {
         if (n.lugarRegistro.pais != 'MX') {
           delete n.lugarRegistro.entidadFederativa;
         }
-<<<<<<< HEAD
         
         delete n.lugarRegistro;
 
-=======
->>>>>>> parent of c7dbd1d... quitar lugarRegistro de vehiculos
         if (n.motivoBaja === null) {
           delete n.motivoBaja;
         }
@@ -392,8 +385,9 @@ function vehiculos(vehiculo) {
         if (n.formaPago === 'NO_APLICA') {
           n.formaPago = 'NO APLICA';
         }
-      
-        delete n.numeroSerieRegistro
+        
+        delete n.lugarRegistro;
+        delete n.numeroSerieRegistro;
         vehiculos.push(n);
       }
     }
@@ -514,8 +508,6 @@ function adeudosPasivos(adeudo) {
         if (n.motivoBaja === null) {
           delete n.motivoBaja;
         }
-        delete n.lugarRegistro;
-        //ALGO
         delete n.numeroCuentaContrato;
         adeudos.push(n);
       }
