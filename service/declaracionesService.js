@@ -8,12 +8,12 @@ var {
   datosGenerales,
   datosCurricularesDeclarante,
   datosEmpleoCargoComision,
-  //domicilioDeclarante,
+  domicilioDeclarante,
   experienciaLaboral,
   ingresos,
   actividadAnualAnterior,
   datosPareja,
-  //datosDependientesEconomicos,
+  datosDependientesEconomicos,
   bienesInmuebles,
   vehiculos,
   bienesMuebles,
@@ -52,203 +52,35 @@ async function post_declaraciones(body) {
   if (pageSize <= 0) { pageSize = 10; }
   if (pageSize > 200) { pageSize = 200; }
 
-  let select = {
-    'firmada': 0,
-    'owner': 0,
-    '__v': 0,
-    'createdAt': 0,
-    'datosGenerales._id': 0,
-    'datosGenerales.rfc': 0,
-    'datosGenerales.curp': 0,
-    'datosGenerales.correoElectronico._id': 0,
-    'datosGenerales.correoElectronico.personal': 0,
-    'datosGenerales.telefono': 0,
-    'datosGenerales.situacionPersonalEstadoCivil': 0,
-    'datosGenerales.regimenMatrimonial': 0,
-    'datosGenerales.paisNacimiento': 0,
-    'datosGenerales.nacionalidad': 0,
-    'domicilioDeclarante': 0,
-    'datosCurricularesDeclarante._id': 0,
-    'datosCurricularesDeclarante.escolaridad._id': 0,
-    'datosCurricularesDeclarante.escolaridad.nivel._id': 0,
-    'datosCurricularesDeclarante.escolaridad.institucionEducativa._id': 0,
-    'datosEmpleoCargoComision._id': 0,
-    'datosEmpleoCargoComision.telefonoOficina._id': 0,
-    'datosEmpleoCargoComision.domicilioMexico._id': 0,
-    'datosEmpleoCargoComision.domicilioMexico.municipioAlcaldia._id': 0,
-    'datosEmpleoCargoComision.domicilioMexico.entidadFederativa._id': 0,
-    'datosEmpleoCargoComision.domicilioExtranjero._id': 0,
-    'experienciaLaboral._id': 0,
-    'experienciaLaboral.experiencia._id': 0,
-    'experienciaLaboral.experiencia.sector._id': 0,
-    'experienciaLaboral.experiencia.ambitoSector._id': 0,
-    'datosPareja': 0,
-    'datosDependientesEconomicos': 0,
-    'ingresos._id': 0,
-    'ingresos.remuneracionMensualCargoPublico._id': 0,
-    'ingresos.otrosIngresosMensualesTotal._id': 0,
-    'ingresos.actividadIndustrialComercialEmpresarial._id': 0,
-    'ingresos.actividadIndustrialComercialEmpresarial.actividades._id': 0,
-    'ingresos.actividadIndustrialComercialEmpresarial.remuneracionTotal._id': 0,
-    'ingresos.actividadIndustrialComercialEmpresarial.actividades.remuneracion._id': 0,
-    'ingresos.actividadFinanciera._id': 0,
-    'ingresos.actividadFinanciera.actividades._id': 0,
-    'ingresos.actividadFinanciera.remuneracionTotal._id': 0,
-    'ingresos.actividadFinanciera.actividades.remuneracion._id': 0,
-    'ingresos.actividadFinanciera.actividades.tipoInstrumento._id': 0,
-    'ingresos.serviciosProfesionales._id': 0,
-    'ingresos.serviciosProfesionales.servicios._id': 0,
-    'ingresos.serviciosProfesionales.remuneracionTotal._id': 0,
-    'ingresos.serviciosProfesionales.servicios.remuneracion._id': 0,
-    'ingresos.servicios._id': 0,
-    'ingresos.otrosIngresos._id': 0,
-    'ingresos.otrosIngresos.ingresos._id': 0,
-    'ingresos.otrosIngresos.remuneracionTotal._id': 0,
-    'ingresos.otrosIngresos.ingresos.remuneracion._id': 0,
-    'ingresos.ingresoMensualNetoDeclarante._id': 0,
-    'ingresos.ingresoMensualNetoParejaDependiente': 0,
-    'ingresos.totalIngresosMensualesNetos._id': 0,
-    'actividadAnualAnterior._id': 0,
-    'actividadAnualAnterior.remuneracionNetaCargoPublico._id': 0,
-    'actividadAnualAnterior.otrosIngresosTotal._id': 0,
-    'actividadAnualAnterior.actividadIndustrialComercialEmpresarial._id': 0,
-    'actividadAnualAnterior.actividadIndustrialComercialEmpresarial.remuneracionTotal._id': 0,
-    'actividadAnualAnterior.actividadIndustrialComercialEmpresarial.actividades._id': 0,
-    'actividadAnualAnterior.actividadIndustrialComercialEmpresarial.actividades.remuneracion._id': 0,
-    'actividadAnualAnterior.actividadFinanciera._id': 0,
-    'actividadAnualAnterior.actividadFinanciera.actividades._id': 0,
-    'actividadAnualAnterior.actividadFinanciera.remuneracionTotal._id': 0,
-    'actividadAnualAnterior.actividadFinanciera.actividades.remuneracion._id': 0,
-    'actividadAnualAnterior.actividadFinanciera.actividades.tipoInstrumento._id': 0,
-    'actividadAnualAnterior.serviciosProfesionales._id': 0,
-    'actividadAnualAnterior.serviciosProfesionales.servicios._id': 0,
-    'actividadAnualAnterior.serviciosProfesionales.remuneracionTotal._id': 0,
-    'actividadAnualAnterior.serviciosProfesionales.servicios.remuneracion._id': 0,
-    'actividadAnualAnterior.enajenacionBienes._id': 0,
-    'actividadAnualAnterior.enajenacionBienes.remuneracionTotal._id': 0,
-    'actividadAnualAnterior.enajenacionBienes.bienes._id': 0,
-    'actividadAnualAnterior.enajenacionBienes.bienes.remuneracion._id': 0,
-    'actividadAnualAnterior.otrosIngresos._id': 0,
-    'actividadAnualAnterior.otrosIngresos.remuneracionTotal._id': 0,
-    'actividadAnualAnterior.otrosIngresos.ingresos._id': 0,
-    'actividadAnualAnterior.otrosIngresos.ingresos.remuneracion._id': 0,
-    'actividadAnualAnterior.ingresoNetoAnualDeclarante._id': 0,
-    'actividadAnualAnterior.ingresoNetoAnualParejaDependiente': 0,
-    'actividadAnualAnterior.totalIngresosNetosAnuales._id': 0,
-    'bienesInmuebles._id': 0,
-    'bienesInmuebles.bienInmueble._id': 0,
-    'bienesInmuebles.bienInmueble.tipoInmueble._id': 0,
-    'bienesInmuebles.bienInmueble.titular._id': 0,
-    'bienesInmuebles.bienInmueble.superficieTerreno._id': 0,
-    'bienesInmuebles.bienInmueble.superficieConstruccion._id': 0,
-    'bienesInmuebles.bienInmueble.tercero._id': 0,
-    'bienesInmuebles.bienInmueble.transmisor._id': 0,
-    'bienesInmuebles.bienInmueble.transmisor.relacion._id': 0,
-    'bienesInmuebles.bienInmueble.formaAdquisicion._id': 0,
-    'bienesInmuebles.bienInmueble.valorAdquisicion._id': 0,
-    'bienesInmuebles.bienInmueble.domicilioMexico': 0,
-    'bienesInmuebles.bienInmueble.domicilioExtranjero': 0,
-    'bienesInmuebles.bienInmueble.motivoBaja._id': 0,
-    'vehiculos._id': 0,
-    'vehiculos.vehiculo._id': 0,
-    'vehiculos.vehiculo.tipoVehiculo._id': 0,
-    'vehiculos.vehiculo.titular._id': 0,
-    'vehiculos.vehiculo.transmisor._id': 0,
-    'vehiculos.vehiculo.transmisor.relacion._id': 0,
-    'vehiculos.vehiculo.tercero._id': 0,
-    'vehiculos.vehiculo.lugarRegistro._id': 0,
-    'vehiculos.vehiculo.lugarRegistro.entidadFederativa._id': 0,
-    'vehiculos.vehiculo.formaAdquisicion._id': 0,
-    'vehiculos.vehiculo.valorAdquisicion._id': 0,
-    'vehiculos.vehiculo.motivoBaja._id': 0,
-    'bienesMuebles._id': 0,
-    'bienesMuebles.bienMueble._id': 0,
-    'bienesMuebles.bienMueble.titular._id': 0,
-    'bienesMuebles.bienMueble.tipoBien._id': 0,
-    'bienesMuebles.bienMueble.transmisor._id': 0,
-    'bienesMuebles.bienMueble.transmisor.tipoPersona._id': 0,
-    'bienesMuebles.bienMueble.transmisor.relacion._id': 0,
-    'bienesMuebles.bienMueble.tercero._id': 0,
-    'bienesMuebles.bienMueble.formaAdquisicion._id': 0,
-    'bienesMuebles.bienMueble.valorAdquisicion._id': 0,
-    'bienesMuebles.bienMueble.motivoBaja._id': 0,
-    'inversionesCuentasValores._id': 0,
-    'inversionesCuentasValores.inversion._id': 0,
-    'inversionesCuentasValores.inversion.tipoInversion._id': 0,
-    'inversionesCuentasValores.inversion.subTipoInversion._id': 0,
-    'inversionesCuentasValores.inversion.titular._id': 0,
-    'inversionesCuentasValores.inversion.tercero._id': 0,
-    'inversionesCuentasValores.inversion.localizacionInversion._id': 0,
-    'inversionesCuentasValores.inversion.saldoSituacionActual._id': 0,
-    'adeudosPasivos._id': 0,
-    'adeudosPasivos.adeudo._id': 0,
-    'adeudosPasivos.adeudo.titular._id': 0,
-    'adeudosPasivos.adeudo.tipoAdeudo._id': 0,
-    'adeudosPasivos.adeudo.montoOriginal._id': 0,
-    'adeudosPasivos.adeudo.saldoInsolutoSituacionActual._id': 0,
-    'adeudosPasivos.adeudo.tercero._id': 0,
-    'adeudosPasivos.adeudo.otorganteCredito._id': 0,
-    'adeudosPasivos.adeudo.localizacionAdeudo._id': 0,
-    'prestamoComodato._id': 0,
-    'prestamoComodato.prestamo._id': 0,
-    'prestamoComodato.prestamo.tipoBien._id': 0,
-    'prestamoComodato.prestamo.tipoBien.inmueble._id': 0,
-    'prestamoComodato.prestamo.tipoBien.inmueble.tipoInmueble._id': 0,
-    'prestamoComodato.prestamo.tipoBien.inmueble.domicilioMexico._id': 0,
-    'prestamoComodato.prestamo.tipoBien.inmueble.domicilioMexico.municipioAlcaldia._id': 0,
-    'prestamoComodato.prestamo.tipoBien.inmueble.domicilioMexico.entidadFederativa._id': 0,
-    'prestamoComodato.prestamo.tipoBien.inmueble.domicilioExtranjero._id': 0,
-    'prestamoComodato.prestamo.tipoBien.vehiculo._id': 0,
-    'prestamoComodato.prestamo.tipoBien.vehiculo.tipo._id': 0,
-    'prestamoComodato.prestamo.tipoBien.vehiculo.lugarRegistro._id': 0,
-    'prestamoComodato.prestamo.tipoBien.vehiculo.lugarRegistro.entidadFederativa._id': 0,
-    'prestamoComodato.prestamo.duenoTitular._id': 0,
-    'participacion._id': 0,
-    'participacion.participacion._id': 0,
-    'participacion.participacion.tipoParticipacion._id': 0,
-    'participacion.participacion.montoMensual._id': 0,
-    'participacion.participacion.ubicacion._id': 0,
-    'participacion.participacion.ubicacion.entidadFederativa._id': 0,
-    'participacion.participacion.sector._id': 0,
-    'participacionTomaDecisiones._id': 0,
-    'participacionTomaDecisiones.participacion._id': 0,
-    'participacionTomaDecisiones.participacion.tipoInstitucion._id': 0,
-    'participacionTomaDecisiones.participacion.montoMensual._id': 0,
-    'participacionTomaDecisiones.participacion.ubicacion._id': 0,
-    'participacionTomaDecisiones.participacion.ubicacion.entidadFederativa._id': 0,
-    'apoyos._id': 0,
-    'apoyos.apoyo._id': 0,
-    'apoyos.apoyo.tipoApoyo._id': 0,
-    'apoyos.apoyo.montoApoyoMensual._id': 0,
-    'apoyos.apoyo.beneficiarioPrograma._id': 0,
-    'representaciones._id': 0,
-    'representaciones.representacion._id': 0,
-    'representaciones.representacion.montoMensual._id': 0,
-    'representaciones.representacion.ubicacion._id': 0,
-    'representaciones.representacion.ubicacion.entidadFederativa._id': 0,
-    'representaciones.representacion.sector._id': 0,
-    'clientesPrincipales._id': 0,
-    'clientesPrincipales.cliente._id': 0,
-    'clientesPrincipales.cliente.empresa._id': 0,
-    'clientesPrincipales.cliente.clientePrincipal._id': 0,
-    'clientesPrincipales.cliente.sector._id': 0,
-    'clientesPrincipales.cliente.montoAproximadoGanancia._id': 0,
-    'clientesPrincipales.cliente.ubicacion._id': 0,
-    'clientesPrincipales.cliente.ubicacion.entidadFederativa._id': 0,
-    'beneficiosPrivados._id': 0,
-    'beneficiosPrivados.beneficio._id': 0,
-    'beneficiosPrivados.beneficio.tipoBeneficio._id': 0,
-    'beneficiosPrivados.beneficio.beneficiario._id': 0,
-    'beneficiosPrivados.beneficio.otorgante._id': 0,
-    'beneficiosPrivados.beneficio.montoMensualAproximado._id': 0,
-    'beneficiosPrivados.beneficio.sector._id': 0,
-    'fideicomisos._id': 0,
-    'fideicomisos.fideicomiso._id': 0,
-    'fideicomisos.fideicomiso.fideicomitente._id': 0,
-    'fideicomisos.fideicomiso.fiduciario._id': 0,
-    'fideicomisos.fideicomiso.fideicomisario._id': 0,
-    'fideicomisos.fideicomiso.sector._id': 0
-  }
+  const select = {
+    _id: 1,
+    tipoDeclaracion: 1,
+    updatedAt: 1,
+    anioEjercicio: 1,
+    declaracionCompleta: 1,
+    datosGenerales: 1,
+    datosCurricularesDeclarante: 1,
+    datosEmpleoCargoComision: 1,
+    domicilioDeclarante: 1,
+    datosDependientesEconomicos: 1,
+    experienciaLaboral: 1,
+    ingresos: 1,
+    actividadAnualAnterior: 1,
+    datosPareja: 1,
+    bienesInmuebles: 1,
+    vehiculos: 1,
+    bienesMuebles: 1,
+    inversionesCuentasValores: 1,
+    adeudosPasivos: 1,
+    prestamoComodato: 1,
+    participacion: 1,
+    participacionTomaDecisiones: 1,
+    apoyos: 1,
+    representaciones: 1,
+    clientesPrincipales: 1,
+    beneficiosPrivados: 1,
+    fideicomisos: 1
+  };
 
   if (page <= 0) {
     throw new RangeError("Error campo page fuera de rango");
@@ -256,73 +88,34 @@ async function post_declaraciones(body) {
     let newQuery = { firmada: true };
     let newSort = {};
 
-    for (let [key, value] of Object.entries(sortObj)) {
-      if (key === "nombres") {
-        newSort["datosGenerales.nombre"] = value
+    const sortMap = {
+      nombres: "datosGenerales.nombre",
+      primerApellido: "datosGenerales.primerApellido",
+      segundoApellido: "datosGenerales.segundoApellido",
+      escolaridadNivel: "datosCurricularesDeclarante.escolaridad.nivel.clave",
+      totalIngresosNetos: "ingresos.ingresoMensualNetoDeclarante.valor"
+    };
+
+    Object.entries(sortObj || {}).forEach(([key, value]) => {
+      if (sortMap[key]) {
+        newSort[sortMap[key]] = value;
       }
-      if (key === "primerApellido") {
-        newSort["datosGenerales.primerApellido"] = value
-      }
-      if (key === "segundoApellido") {
-        newSort = { "datosGenerales.segundoApellido": value }
-      }
-      if (key === "escolaridadNivel") {
-        newSort["datosCurricularesDeclarante.escolaridad.nivel.clave"] = value
-      }
+
       if (key === "datosEmpleoCargoComision") {
-        if (value.nombreEntePublico) {
-          newSort["datosEmpleoCargoComision.nombreEntePublico"] = value.nombreEntePublico
-        }
-        if (value.entidadFederativa) {
-          newSort["datosEmpleoCargoComision.domicilioMexico.entidadFederativa.clave"] = value.entidadFederativa
-        }
-        if (value.municipioAlcaldia) {
-          newSort["datosEmpleoCargoComision.domicilioMexico.municipioAlcaldia.clave"] = value.municipioAlcaldia
-        }
-        if (value.empleoCargoComision) {
-          newSort["datosEmpleoCargoComision.empleoCargoComision"] = value.empleoCargoComision
-        }
-        if (value.nivelEmpleoCargoComision) {
-          newSort["datosEmpleoCargoComision.nivelEmpleoCargoComision"] = value.nivelEmpleoCargoComision
-        }
-        if (value.nivelOrdenGobierno) {
-          newSort["datosEmpleoCargoComision.nivelOrdenGobierno"] = value.nivelOrdenGobierno
-        }
+        const map = {
+          nombreEntePublico: "datosEmpleoCargoComision.nombreEntePublico",
+          entidadFederativa: "datosEmpleoCargoComision.domicilioMexico.entidadFederativa.clave",
+          municipioAlcaldia: "datosEmpleoCargoComision.domicilioMexico.municipioAlcaldia.clave",
+          empleoCargoComision: "datosEmpleoCargoComision.empleoCargoComision",
+          nivelEmpleoCargoComision: "datosEmpleoCargoComision.nivelEmpleoCargoComision",
+          nivelOrdenGobierno: "datosEmpleoCargoComision.nivelOrdenGobierno"
+        };
+
+        Object.entries(value || {}).forEach(([k, v]) => {
+          if (map[k]) newSort[map[k]] = v;
+        });
       }
-      if (key === "totalIngresosNetos") {
-        newSort["ingresos.ingresoMensualNetoDeclarante.valor"] = value
-      }
-      if (key === "bienesInmuebles") {
-        if (value.superficieConstruccion) {
-          //newSort[key + ".bienInmueble.superficieConstruccion.valor"] = value.superficieConstruccion
-          newSort = {
-            //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.valores.superficieConstruccion": value.superficieConstruccion
-          }
-        }
-        if (value.superficieTerreno) {
-          //newSort[key + ".bienInmueble.superficieTerreno.valor"] = value.superficieTerreno
-          newSort = {
-            //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.valores.superficieTerreno": value.superficieTerreno
-          }
-        }
-        if (value.formaAdquisicion) {
-          //newSort[key + ".bienInmueble.formaAdquisicion.clave"] = value.formaAdquisicion
-          newSort = {
-            //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.valores.formaAdquisicion": value.formaAdquisicion
-          }
-        }
-        if (value.valorAdquisicion) {
-          //newSort[key + ".bienInmueble.valorAdquisicion.valor"] = value.valorAdquisicion
-          newSort = {
-            //"bienesInmuebles.bienesDeclarante": value.superficieConstruccion,
-            "bienesInmuebles.valores.valorAdquisicion": value.valorAdquisicion
-          }
-        }
-      }
-    }
+    });
 
     for (var [key, value] of Object.entries(query)) {
       if (key === "id") {
@@ -359,8 +152,10 @@ async function post_declaraciones(body) {
             }
           }
           else {
-            value = diacriticSensitiveRegex(value);
-            newQuery["datosGenerales.segundoApellido"] = { $regex: value, $options: 'i' };
+            const regex = buildRegex(value);
+            if (regex) {
+              newQuery["datosGenerales.segundoApellido"] = { $regex: regex, $options: 'i' };
+            }
           }
         }
       } else if (key === "primerApellido") {
@@ -379,8 +174,10 @@ async function post_declaraciones(body) {
           }
         }
         else {
-          value = diacriticSensitiveRegex(value);
-          newQuery["datosGenerales.primerApellido"] = { $regex: value, $options: 'i' };
+          const regex = buildRegex(value);
+          if (regex) {
+            newQuery["datosGenerales.primerApellido"] = { $regex: regex, $options: 'i' };
+          }
         }
       }
       else if (key === "nombres") {
@@ -394,251 +191,93 @@ async function post_declaraciones(body) {
         if (value.nombreEntePublico) {
           newQuery["datosEmpleoCargoComision.nombreEntePublico"] = { $regex: diacriticSensitiveRegex(value.nombreEntePublico), $options: 'i' }
         }
-        else if (value.empleoCargoComision) {
+        if (value.empleoCargoComision) {
           newQuery["datosEmpleoCargoComision.empleoCargoComision"] = { $regex: diacriticSensitiveRegex(value.empleoCargoComision), $options: 'i' }
         }
-        else if (value.nivelOrdenGobierno) {
+        if (value.nivelOrdenGobierno) {
           newQuery["datosEmpleoCargoComision.nivelOrdenGobierno"] = { $regex: diacriticSensitiveRegex(value.nivelOrdenGobierno), $options: 'i' }
         }
-        else if (value.nivelEmpleoCargoComision) {
+        if (value.nivelEmpleoCargoComision) {
           newQuery["datosEmpleoCargoComision.nivelEmpleoCargoComision"] = { $regex: diacriticSensitiveRegex(value.nivelEmpleoCargoComision), $options: 'i' }
         }
-        else if (value.entidadFederativa) {
+        if (value.entidadFederativa) {
           newQuery["datosEmpleoCargoComision.domicilioMexico.entidadFederativa.clave"] = { $regex: diacriticSensitiveRegex(value.entidadFederativa), $options: 'i' }
         }
-        else if (value.municipioAlcaldia) {
+        if (value.municipioAlcaldia) {
           newQuery["datosEmpleoCargoComision.domicilioMexico.municipioAlcaldia.clave"] = { $regex: diacriticSensitiveRegex(value.municipioAlcaldia), $options: 'i' }
         }
 
-      } else if (key === "bienesInmuebles") {
+      } if (key === "bienesInmuebles") {
 
-        /*console.log("llega");
-        const arr = await Declaraciones.find({ "bienesInmuebles.bienInmueble.0": { $exists: true } });
-        console.log(arr.length);*/
+        let elemMatch = {
+          "titular.0.clave": "DEC"
+        };
+        let condiciones = [];
 
         if (value.superficieConstruccion) {
-          if (value.superficieConstruccion.min === value.superficieConstruccion.max) {
-            //newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $eq:(value.superficieConstruccion.min) }
-            newQuery = {
-              firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.superficieConstruccion": { $eq: (value.superficieConstruccion.min) } },
-              ]
+          let cond = {};
+
+          if (value.superficieConstruccion.min != null) {
+            cond.$gte = value.superficieConstruccion.min;
+          }
+          if (value.superficieConstruccion.max != null) {
+            cond.$lte = value.superficieConstruccion.max;
+          }
+
+          elemMatch["superficieConstruccion.valor"] = cond;
+        }
+
+        if (value.superficieTerreno) {
+          let cond = {};
+
+          if (value.superficieTerreno.min != null) {
+            cond.$gte = value.superficieTerreno.min;
+          }
+          if (value.superficieTerreno.max != null) {
+            cond.$lte = value.superficieTerreno.max;
+          }
+
+          elemMatch["superficieTerreno.valor"] = cond;
+        }
+
+        if (value.valorAdquisicion) {
+          let cond = {};
+
+          if (value.valorAdquisicion.min != null) {
+            cond.$gte = value.valorAdquisicion.min;
+          }
+          if (value.valorAdquisicion.max != null) {
+            cond.$lte = value.valorAdquisicion.max;
+          }
+
+          elemMatch["valorAdquisicion.valor"] = cond;
+        }
+
+        if (value.formaAdquisicion) {
+          elemMatch["formaAdquisicion.clave"] =
+            value.formaAdquisicion;
+        }
+
+        if (Object.keys(elemMatch).length > 0) {
+          condiciones.push({
+            "bienesInmuebles.bienInmueble": {
+              $elemMatch: elemMatch
             }
-          }
-          else if (value.superficieConstruccion.min && value.superficieConstruccion.max) {
-            newQuery = {
-              $and: [{ firmada: true }, { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-              {
-                $or: [
-                  { $and: [{ 'bienesInmuebles.valores.0.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.0.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.1.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.1.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.2.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.2.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.3.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.3.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.4.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.4.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.5.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.5.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.6.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.6.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.7.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.7.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.8.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.8.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.9.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.9.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.10.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.10.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.11.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.11.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.12.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.12.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.13.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.13.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.14.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.14.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.15.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.15.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.16.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.16.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.17.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.17.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.18.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.18.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.19.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.19.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.20.superficieConstruccion': { $gte: value.superficieConstruccion.min } }, { 'bienesInmuebles.valores.20.superficieConstruccion': { $lte: value.superficieConstruccion.max } },] },
-                ]
-              }]
-            };
-          }
-          else if (value.superficieConstruccion.min) {
-            //newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $gte: (value.superficieConstruccion.min) }
-            newQuery = {
-              firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.superficieConstruccion": { $gte: (value.superficieConstruccion.min) } },
-              ]
-            };
-          }
-          else if (value.superficieConstruccion.max) {
-            //newQuery["bienesInmuebles.bienInmueble.superficieConstruccion.valor"] = { $lte: (value.superficieConstruccion.max) }
-            newQuery = {
-              firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.superficieConstruccion": { $lte: (value.superficieConstruccion.max) } },
-              ]
-            };
-          }
+          });
         }
-        else if (value.superficieTerreno) {
-          if (value.superficieTerreno.min === value.superficieTerreno.max) {
-            //newQuery["bienesInmuebles.bienInmueble.superficieTerreno.valor"] = { $eq:(value.superficieTerreno.min) }
-            newQuery = {
-              firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.superficieTerreno": { $eq: (value.superficieTerreno.min) } },
-              ]
-            };
-          }
-          else if (value.superficieTerreno.min && value.superficieTerreno.max) {
-            newQuery = {
-              $and: [{ firmada: true }, { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-              {
-                $or: [
-                  { $and: [{ 'bienesInmuebles.valores.0.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.0.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.1.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.1.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.2.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.2.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.3.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.3.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.4.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.4.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.5.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.5.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.6.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.6.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.7.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.7.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.8.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.8.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.9.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.9.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.10.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.10.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.11.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.11.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.12.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.12.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.13.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.13.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.14.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.14.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.15.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.15.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.16.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.16.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.17.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.17.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.18.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.18.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.19.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.19.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.20.superficieTerreno': { $gte: value.superficieTerreno.min } }, { 'bienesInmuebles.valores.20.superficieTerreno': { $lte: value.superficieTerreno.max } },] },
-                ]
-              }]
-            };
-          }
-          else if (value.superficieTerreno.min) {
-            //newQuery["bienesInmuebles.bienInmueble.superficieTerreno.valor"] = { $gte: (value.superficieTerreno.min) }
-            newQuery = {
-              firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.superficieTerreno": { $gte: (value.superficieTerreno.min) } },
-              ]
-            };
-          }
-          else if (value.superficieTerreno.max) {
-            //newQuery["bienesInmuebles.bienInmueble.superficieTerreno.valor"] = { $lte: (value.superficieTerreno.max) }
-            newQuery = {
-              firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.superficieTerreno": { $lte: (value.superficieTerreno.max) } },
-              ]
-            };
-          }
-        }
-        else if (value.valorAdquisicion) {
-          if (value.valorAdquisicion.min === value.valorAdquisicion.max) {
-            //newQuery["bienesInmuebles.bienInmueble.valorAdquisicion.valor"] = { $eq: (value.valorAdquisicion.min)  }
-            newQuery = {
-              firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.valorAdquisicion": { $eq: (value.valorAdquisicion.min) } },
-              ]
-            };
-          }
-          else if (value.valorAdquisicion.min && value.valorAdquisicion.max) {
-            newQuery = {
-              $and: [{ firmada: true }, { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-              {
-                $or: [
-                  { $and: [{ 'bienesInmuebles.valores.0.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.0.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.1.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.1.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.2.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.2.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.3.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.3.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.4.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.4.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.5.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.5.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.6.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.6.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.7.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.7.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.8.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.8.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.9.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.9.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.10.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.10.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.11.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.11.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.12.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.12.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.13.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.13.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.14.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.14.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.15.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.15.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.16.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.16.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.17.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.17.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.18.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.18.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.19.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.19.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                  { $and: [{ 'bienesInmuebles.valores.20.valorAdquisicion': { $gte: value.valorAdquisicion.min } }, { 'bienesInmuebles.valores.20.valorAdquisicion': { $lte: value.valorAdquisicion.max } },] },
-                ]
-              }]
-            };
-          }
-          else if (value.valorAdquisicion.min) {
-            //newQuery["bienesInmuebles.bienInmueble.valorAdquisicion.valor"] = { $gte: (value.valorAdquisicion.min) }
-            newQuery = {
-              firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.valorAdquisicion": { $gte: (value.valorAdquisicion.min) } },
-              ]
-            };
-          }
-          else if (value.valorAdquisicion.max) {
-            //newQuery["bienesInmuebles.bienInmueble.valorAdquisicion.valor"] = { $lte: (value.valorAdquisicion.max) }
-            newQuery = {
-              firmada: true,
-              $and: [
-                { "bienesInmuebles.bienInmueble.0": { $exists: true } },
-                { "bienesInmuebles.valores.valorAdquisicion": { $lte: (value.valorAdquisicion.max) } },
-              ]
-            };
-          }
-        }
-        else if (value.formaAdquisicion) {
-          //newQuery["bienesInmuebles.bienInmueble.formaAdquisicion.clave"] = { $regex: diacriticSensitiveRegex(value.formaAdquisicion), $options: 'i' }
-          newQuery = {
-            firmada: true,
-            $and: [
-              { "bienesInmuebles.valores.0": { $exists: true } },
-              { "bienesInmuebles.valores.formaAdquisicion": { $regex: diacriticSensitiveRegex(value.formaAdquisicion), $options: 'i' } }
-            ]
-          };
-        }
-      }
-      else if (key === "totalIngresosNetos") {
-        if (value.min === 0 && value.max === 0) {
-          newQuery["ingresos.ingresoMensualNetoDeclarante.valor"] = { $eq: 0 }
-        }
-        if (value.min && value.max) {
-          newQuery = {
-            firmada: true,
-            $and: [
-              { "ingresos.ingresoMensualNetoDeclarante.valor": { $gte: (value.min) } },
-              { "ingresos.ingresoMensualNetoDeclarante.valor": { $lte: (value.max) } }
-            ]
-          };
-        }
-        else if (value.min) {
-          newQuery["ingresos.ingresoMensualNetoDeclarante.valor"] = { $gte: (value.min) }
-        }
-        else if (value.max) {
-          newQuery["ingresos.ingresoMensualNetoDeclarante.valor"] = { $lte: (value.max) }
-        }
-        else if (value.max === 0) {
-          newQuery["ingresos.ingresoMensualNetoDeclarante.valor"] = { $lte: (value.max) }
-        }
+
+        // ❗ ESTE LO PUEDES DEJAR O QUITAR SEGÚN REGLA DE NEGOCIO
+        condiciones.push({
+          "bienesInmuebles.bienInmueble.0": { $exists: true }
+        });
+
+        if (!newQuery.$and) newQuery.$and = [];
+        newQuery.$and.push(...condiciones);
       } else if (key === "rfcSolicitante") {
         newQuery[key + ".clave"] = { $in: value };
       } else {
-        newQuery[key] = value;
+        // Ignorar cualquier campo no permitido
+        //newQuery[key] = value;
       }
     }
 
@@ -649,514 +288,21 @@ async function post_declaraciones(body) {
         resultado.bienesInmuebles=paginationResult.bienesInmuebles.filter(bienInmueble => bienInmueble.superficieConstruccion.valor === 60)
       });*/
 
-      let paginationResult = await Declaraciones.paginate(newQuery, { page: page, limit: pageSize, sort: newSort, select: select }).then();
+      let paginationResult = await Declaraciones.paginate(newQuery, {
+        page,
+        limit: pageSize,
+        sort: newSort,
+        select,
+        lean: true   // 🔥 IMPORTANTE
+      });
       let objpagination = { hasNextPage: paginationResult.hasNextPage, page: paginationResult.page, pageSize: paginationResult.limit, totalRows: paginationResult.totalDocs }
       let objresults = paginationResult.docs;
 
-      try {
-        var strippedRows = _.map(objresults, function (row) {
-          let fechaLarga = convertirFechaLarga(row.toObject().updatedAt);
+      const transformDeclaracion = require('../utils/transformDeclaracion');
 
-          /*
-          let rowExtend = _.extend({
-            id: row.toObject()._id
-          }, row.toObject());
-          */
-
-          if (row.toObject().id) {
-            var rowExtend = _.extend({
-              id: row.toObject().id
-            }, row.toObject());
-          }
-          else if (row.toObject()._id) {
-            var rowExtend = _.extend({
-              id: row.toObject()._id
-            }, row.toObject());
-          }
-
-
-          let tipo = row.toObject().tipoDeclaracion;
-          if (tipo === 'MODIFICACION') {
-            tipo = 'MODIFICACIÓN';
-          }
-          if (tipo === 'CONCLUSION')
-            tipo = 'CONCLUSIÓN';
-          let institucion = row.toObject().datosEmpleoCargoComision.nombreEntePublico;
-          rowExtend["institucion"] = institucion;
-          rowExtend["metadata"] = ({
-            declaracionCompleta: rowExtend.declaracionCompleta,
-            tipo: tipo,
-            actualizacion: fechaLarga,
-            institucion: institucion,
-            actualizacionConflictoInteres: false
-          });
-
-          //LLAMADO A FUNCIONES
-          //datosGenerales
-          datosGenerales(rowExtend.datosGenerales);
-
-          //datosCurricularesDeclarante
-          datosCurricularesDeclarante(rowExtend.datosCurricularesDeclarante);
-
-          //datosEmpleoCargocomision
-          datosEmpleoCargoComision(rowExtend.datosEmpleoCargoComision);
-
-          //experienciaLaboral
-          var experiencia = experienciaLaboral(rowExtend.experienciaLaboral);
-          var ningunoExperienciaLaboral = false
-          if (!rowExtend.experienciaLaboral || rowExtend.experienciaLaboral.ninguno === true) {
-            ningunoExperienciaLaboral = true;
-            experiencia = []
-          } else {
-            ningunoExperienciaLaboral = false;
-          }
-
-          //ingresos
-          ingresos(rowExtend.ingresos, rowExtend.tipoDeclaracion);
-
-          //actividadAnualAnterior
-          if (rowExtend.actividadAnualAnterior) {
-              actividadAnualAnterior(rowExtend.actividadAnualAnterior);
-          }
-
-          //datosPareja
-          if (rowExtend.datosPareja) {
-            if (!rowExtend.datosPareja.ninguno) {
-              datosPareja(rowExtend.datosPareja);
-            }
-          }
-
-          //bienesInmuebles
-          var bienInmueble;
-          var ningunoInmueble = false;
-          if (rowExtend.bienesInmuebles === undefined) {
-            ningunoInmueble = true;
-            bienInmueble = [];
-          }
-          if (rowExtend.bienesInmuebles) {
-            if (rowExtend.bienesInmuebles.bienInmueble.length >= 1) {
-              //ningunoInmueble = false;
-              bienInmueble = bienesInmuebles(rowExtend.bienesInmuebles.bienInmueble);
-              if (bienInmueble) {
-                ningunoInmueble = false;
-                bienInmueble = bienInmueble;
-              }
-              else {
-                ningunoInmueble = true;
-                bienInmueble = [];
-              }
-            } else {
-              ningunoInmueble = true;
-              bienInmueble = [];
-            }
-          }
-
-          //vehiculos
-          var vehiculo;
-          var ningunoVehiculo = false;
-          if (rowExtend.vehiculos === undefined) {
-            ningunoVehiculo = true;
-            vehiculo = [];
-          }
-          if (rowExtend.vehiculos) {
-            if (rowExtend.vehiculos.vehiculo.length >= 1) {
-              //ningunoVehiculo = false;
-              vehiculo = vehiculos(rowExtend.vehiculos.vehiculo);
-              if (vehiculo) {
-                ningunoVehiculo = false;
-                vehiculo = vehiculo;
-              }
-              else {
-                ningunoVehiculo = true;
-                vehiculo = [];
-              }
-            } else {
-              ningunoVehiculo = true;
-              vehiculo = [];
-            }
-          }
-
-          //bienesMuebles
-          var bienMueble;
-          var ningunoMueble = false;
-          if (rowExtend.bienesMuebles === undefined) {
-            ningunoMueble = true;
-            bienMueble = [];
-          }
-          if (rowExtend.bienesMuebles) {
-            if (rowExtend.bienesMuebles.bienMueble.length >= 1) {
-              //ningunoMueble = false;
-              bienMueble = bienesMuebles(rowExtend.bienesMuebles.bienMueble);
-              if (bienMueble) {
-                ningunoMueble = false;
-                bienMueble = bienMueble;
-              }
-              else {
-                ningunoMueble = true;
-                bienMueble = [];
-              }
-            } else {
-              ningunoMueble = true;
-              bienMueble = [];
-            }
-          }
-
-          //adeudosPasivos
-          var adeudo;
-          var ningunoAdeudo = false;
-          if (rowExtend.adeudosPasivos === undefined) {
-            ningunoAdeudo = true;
-            adeudo = [];
-          }
-          if (rowExtend.adeudosPasivos) {
-            if (rowExtend.adeudosPasivos.adeudo.length >= 1) {
-              //ningunoAdeudo = false;
-              adeudo = adeudosPasivos(rowExtend.adeudosPasivos.adeudo);
-              if (adeudo) {
-                ningunoAdeudo = false;
-                adeudo = adeudo;
-              }
-              else {
-                ningunoAdeudo = true;
-                adeudo = [];
-              }
-            } else {
-              ningunoAdeudo = true;
-              adeudo = [];
-            }
-          }
-
-          //inversionesCuentasValores
-          var inversion;
-          var ningunoInversion = false;
-          if (rowExtend.inversionesCuentasValores === undefined) {
-            ningunoInversion = true;
-            inversion = [];
-          }
-          if (rowExtend.inversionesCuentasValores) {
-            if (rowExtend.inversionesCuentasValores.inversion.length >= 1) {
-              //ningunoInversion = false;
-              inversion = inversionesCuentasValores(rowExtend.inversionesCuentasValores.inversion);
-              if (inversion) {
-                ningunoInversion = false;
-                inversion = inversion;
-              }
-              else {
-                ningunoInversion = true;
-                inversion = [];
-              }
-            } else {
-              ningunoInversion = true;
-              inversion = [];
-            }
-          }
-
-          //prestamoComodato
-          var prestamo;
-          var ningunoPrestamo = false;
-          if (rowExtend.prestamoComodato === undefined) {
-            ningunoPrestamo = true;
-            prestamo = [];
-          }
-          if (rowExtend.prestamoComodato) {
-            if (rowExtend.prestamoComodato.prestamo.length >= 1) {
-              ningunoPrestamo = false;
-              prestamo = prestamoComodato(rowExtend.prestamoComodato.prestamo);
-            }
-            else {
-              ningunoPrestamo = true;
-              prestamo = [];
-            }
-          }
-
-          //participacion
-          var participacion1;
-          var ningunoParticipacion = false;
-          if (rowExtend.participacion === undefined) {
-            ningunoParticipacion = true;
-            prestamo = [];
-          }
-          if (rowExtend.participacion) {
-            if (rowExtend.participacion.participacion.length >= 1) {
-              //ningunoParticipacion = false;
-              participacion1 = participacion(rowExtend.participacion.participacion);
-              if (participacion1) {
-                ningunoParticipacion = false;
-                participacion1 = participacion1;
-              }
-              else {
-                ningunoParticipacion = true;
-                participacion1 = [];
-              }
-            } else {
-              ningunoParticipacion = true;
-              participacion1 = [];
-            }
-          }
-
-          //participacionTomaDecisiones
-          var participacionTomaDecisiones;
-          var ningunoParticipacionTomaDecisiones = false;
-          if (rowExtend.participacionTomaDecisiones === undefined) {
-            ningunoParticipacionTomaDecisiones = true;
-            participacionTomaDecisiones = [];
-          }
-          if (rowExtend.participacionTomaDecisiones) {
-            if (rowExtend.participacionTomaDecisiones.participacion.length >= 1) {
-              //ningunoParticipacionTomaDecisiones = false;
-              participacionTomaDecisiones = tomaDecisiones(rowExtend.participacionTomaDecisiones.participacion);
-              if (participacionTomaDecisiones) {
-                ningunoParticipacionTomaDecisiones = false;
-                participacionTomaDecisiones = participacionTomaDecisiones;
-              }
-              else {
-                ningunoParticipacionTomaDecisiones = true;
-                participacionTomaDecisiones = [];
-              }
-            } else {
-              ningunoParticipacionTomaDecisiones = true;
-              participacionTomaDecisiones = [];
-            }
-          }
-
-          //apoyos
-          var apoyo;
-          var ningunoApoyo = false;
-          if (rowExtend.apoyos === undefined) {
-            ningunoApoyo = true;
-            apoyo = [];
-          }
-          if (rowExtend.apoyos) {
-            if (rowExtend.apoyos.apoyo.length >= 1) {
-              //ningunoApoyo = false;
-              apoyo = apoyos(rowExtend.apoyos.apoyo);
-              if (apoyo.length) {
-                ningunoApoyo = false;
-                apoyo = apoyo;
-              }
-              else {
-                ningunoApoyo = true;
-                apoyo = [];
-              }
-            } else {
-              ningunoApoyo = true;
-              apoyo = [];
-            }
-          }
-
-          //representaciones
-          var representacion;
-          var ningunoRepresentacion = false;
-          if (rowExtend.representaciones === undefined) {
-            ningunoRepresentacion = true;
-            representacion = [];
-          }
-          if (rowExtend.representaciones) {
-            if (rowExtend.representaciones.representacion.length >= 1) {
-              //ningunoRepresentacion = false;
-              representacion = representaciones(rowExtend.representaciones.representacion);
-              if (representacion) {
-                ningunoRepresentacion = false;
-                representacion = representacion;
-              }
-              else {
-                ningunoRepresentacion = true;
-                representacion = [];
-              }
-            } else {
-              ningunoRepresentacion = true;
-              representacion = [];
-            }
-          }
-
-          //clientesPrincipales
-          var cliente;
-          var ningunoClientes = false;
-          if (rowExtend.clientesPrincipales === undefined) {
-            ningunoClientes = true;
-            cliente = [];
-          }
-          if (rowExtend.clientesPrincipales) {
-            if (rowExtend.clientesPrincipales.cliente.length >= 1) {
-              //ningunoClientes = false;
-              cliente = clientesPrincipales(rowExtend.clientesPrincipales.cliente);
-              if (cliente) {
-                ningunoClientes = false;
-                cliente = cliente;
-              }
-              else {
-                ningunoClientes = true;
-                cliente = [];
-              }
-            } else {
-              ningunoClientes = true;
-              cliente = [];
-            }
-          }
-
-          //beneficiosPrivados
-          var beneficio;
-          var ningunoBeneficios = false;
-          if (rowExtend.beneficiosPrivados === undefined) {
-            ningunoBeneficios = true;
-            beneficio = [];
-          }
-          if (rowExtend.beneficiosPrivados) {
-            if (rowExtend.beneficiosPrivados.beneficio.length >= 1) {
-              //ningunoBeneficios = false;
-              beneficio = beneficiosPrivados(rowExtend.beneficiosPrivados.beneficio);
-              if (beneficio) {
-                ningunoBeneficios = false;
-                beneficio = beneficio;
-              }
-              else {
-                ningunoBeneficios = true;
-                beneficio = [];
-              }
-            } else {
-              ningunoBeneficios = true;
-              beneficio = [];
-            }
-          }
-
-          //fideicomisos
-          var fideicomiso;
-          var ningunoFideicomisos = false;
-          if (rowExtend.fideicomisos === undefined) {
-            ningunoFideicomisos = true;
-            fideicomiso = [];
-          }
-          if (rowExtend.fideicomisos) {
-            if (rowExtend.fideicomisos.fideicomiso.length >= 1) {
-              //ningunoFideicomisos = false;
-              fideicomiso = fideicomisos(rowExtend.fideicomisos.fideicomiso);
-              if (fideicomiso) {
-                ningunoFideicomisos = false;
-                fideicomiso = fideicomiso;  //se quita campo fideicomiso
-                //fideicomiso = [];
-              }
-              else {
-                ningunoFideicomisos = true;
-                fideicomiso = [];
-              }
-            } else {
-              ningunoFideicomisos = true;
-              fideicomiso = [];
-            }
-          }
-
-          rowExtend["declaracion"] = ({
-            "situacionPatrimonial": {
-              datosGenerales: rowExtend.datosGenerales,
-              domicilioDeclarante: rowExtend.domicilioDeclarante,
-              datosCurricularesDeclarante: rowExtend.datosCurricularesDeclarante,
-              datosEmpleoCargoComision: rowExtend.datosEmpleoCargoComision,
-              experienciaLaboral: {
-                ninguno: ningunoExperienciaLaboral,
-                experiencia
-              },
-              datosPareja: rowExtend.datosPareja,
-              /*datosDependientesEconomicos: {
-                ninguno: ningunoDependiente,
-                dependienteEconomico
-              },*/
-              ingresos: rowExtend.ingresos,
-              actividadAnualAnterior: rowExtend.actividadAnualAnterior,
-              bienesInmuebles: {
-                ninguno: ningunoInmueble,
-                bienInmueble
-              },
-              vehiculos: {
-                ninguno: ningunoVehiculo,
-                vehiculo
-              },
-              bienesMuebles: {
-                ninguno: ningunoMueble,
-                bienMueble
-              },
-              inversiones: {
-                ninguno: ningunoInversion,
-                inversion
-              },
-              adeudos: {
-                ninguno: ningunoAdeudo,
-                adeudo
-              },
-              prestamoOComodato: {
-                ninguno: ningunoPrestamo,
-                prestamo
-              }
-            },
-            "interes": {
-              actualizacionConflictoInteres: false,
-              participacion: {
-                ninguno: ningunoParticipacion,
-                participacion: participacion1
-              },
-              participacionTomaDecisiones: {
-                ninguno: ningunoParticipacionTomaDecisiones,
-                participacion: participacionTomaDecisiones
-              },
-              apoyos: {
-                ninguno: ningunoApoyo,
-                apoyo
-              },
-              representacion: {
-                ninguno: ningunoRepresentacion,
-                representacion
-              },
-              clientesPrincipales: {
-                ninguno: ningunoClientes,
-                cliente
-              },
-              beneficiosPrivados: {
-                ninguno: ningunoBeneficios,
-                beneficio
-              },
-              fideicomisos: {
-                ninguno: ningunoFideicomisos,
-                fideicomiso
-              }
-            }
-          });
-
-
-          return _.omit(rowExtend,
-            '_id',
-            'declaracionCompleta',
-            'firmada',
-            'owner',
-            '__v',
-            'createdAt',
-            'institucion',
-            'tipoDeclaracion',
-            'updatedAt',
-            'datosGenerales',
-            'domicilioDeclarante',
-            'datosCurricularesDeclarante',
-            'datosEmpleoCargoComision',
-            'experienciaLaboral',
-            'datosPareja',
-            'datosDependientesEconomicos',
-            'ingresos',
-            'actividadAnualAnterior',
-            'bienesInmuebles',
-            'vehiculos',
-            'bienesMuebles',
-            'inversionesCuentasValores',
-            'adeudosPasivos',
-            'prestamoComodato',
-            'participacion',
-            'participacionTomaDecisiones',
-            'apoyos',
-            'representaciones',
-            'clientesPrincipales',
-            'beneficiosPrivados',
-            'fideicomisos');
-        });
-      } catch (e) {
-        console.log(e);
-      }
+      const strippedRows = objresults.map(row =>
+        transformDeclaracion(row, { publico: false })
+      );
 
       console.log(newSort);
       console.log(newQuery);
@@ -1164,6 +310,8 @@ async function post_declaraciones(body) {
       let objResponse = {};
       objResponse["pagination"] = objpagination;
       objResponse["results"] = strippedRows;
+      // DEBUG (opcional)
+      console.log(JSON.stringify(strippedRows[0], null, 2));
       return objResponse;
 
 
@@ -1172,4 +320,18 @@ async function post_declaraciones(body) {
     }
   }
 }
+
+function buildRegex(value = '') {
+  if (!value) return null;
+
+  value = value.toLowerCase();
+
+  if (value.includes('ñ')) {
+    const parts = value.split('ñ').map(diacriticSensitiveRegex);
+    return parts.join('ñ');
+  }
+
+  return diacriticSensitiveRegex(value);
+}
+
 module.exports.post_declaraciones = post_declaraciones;
